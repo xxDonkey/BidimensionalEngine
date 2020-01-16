@@ -10,7 +10,6 @@ import basic2Dgraphics.Window.ComplexMouseEventInterface;
  */
 class MouseInput implements MouseListener
 {
-
 	@Override
 	public void mouseClicked(MouseEvent e)
 	{
