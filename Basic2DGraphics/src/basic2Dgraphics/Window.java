@@ -16,33 +16,37 @@ import javax.swing.JFrame;
 public class Window extends JFrame
 {
 
-	private static Window instance; /*
-									 * Singleton variable to assure only one instance of this class is ever
-									 * instantiated.
-									 */
+	/*
+	 * Singleton variable to assure only one instance of this class is ever
+	 * instantiated.
+	 */
+	private static Window instance;
 
-	private static int tps; /* How many times per second updateMethod and graphicsMethod are called. */
+	/* How many times per second updateMethod and graphicsMethod are called. */
+	private static int tps;
 
-	private static CustomGraphics gfx; /* Reference to the window's CustomGraphics component. */
+	/* Reference to the window's CustomGraphics component. */
+	private static CustomGraphics gfx;
 
-	private static ComplexInterface startMethod; /* Method to be called once upon the main thread's start. */
-	private static ComplexInterface updateMethod; /* Method to be called every tick on the main thread. */
-	private static Consumer<Graphics2D> graphicsMethod; /* Method to be called every tick to handle graphics. */
+	/* Method to be called once upon the main thread's start. */
+	private static ComplexInterface startMethod;
+	/* Method to be called every tick on the main thread. */
+	private static ComplexInterface updateMethod;
+	/* Method to be called every tick to handle graphics. */
+	private static Consumer<Graphics2D> graphicsMethod;
 
-	/* #fmt:off */
+	/*
+	 * Stores method references to be called by the keyboard listener.
+	 */
+	private static KeyboardInputMethodData onKeyboardInputMethod;
 
-	private static KeyboardInputMethodData onKeyboardInputMethod; /* 
-																   * Stores method references to be called by the
-																   * keyboard listener.
-																   */
-	/* #fmt:on */
+	/*
+	 * Stores method references to be called by the mouse listener.
+	 */
+	private static MouseInputMethodData onMouseInputMethodData;
 
-	private static MouseInputMethodData onMouseInputMethodData; /*
-																 * Stores method references to be called by the mouse
-																 * listener.
-																 */
-
-	private static Thread thread; /* Reference to the main thread. */
+	/* Reference to the main thread. */
+	private static Thread thread;
 
 	/*
 	 * Access methods so variables are read-only.
