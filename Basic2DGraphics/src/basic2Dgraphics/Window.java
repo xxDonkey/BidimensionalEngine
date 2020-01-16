@@ -35,22 +35,16 @@ public class Window extends JFrame
 	/* Method to be called every tick to handle graphics. */
 	private static Consumer<Graphics2D> graphicsMethod;
 
-	/*
-	 * Stores method references to be called by the keyboard listener.
-	 */
+	/* Stores method references to be called by the keyboard listener. */
 	private static KeyboardInputMethodData onKeyboardInputMethod;
 
-	/*
-	 * Stores method references to be called by the mouse listener.
-	 */
+	/* Stores method references to be called by the mouse listener. */
 	private static MouseInputMethodData onMouseInputMethodData;
 
 	/* Reference to the main thread. */
 	private static Thread thread;
 
-	/*
-	 * Access methods so variables are read-only.
-	 */
+	/* Access methods so variables are read-only. */
 
 	public static int getTPS()
 	{ return Window.tps; }
@@ -74,8 +68,8 @@ public class Window extends JFrame
 	{ return Window.onMouseInputMethodData; }
 
 	/**
-	 * Window constructer with all possible arguements. Creates a window and sets up
-	 * runtime calls.
+	 * Window constructer with <u>all possible arguements</u>. Creates a window and
+	 * sets up runtime calls.
 	 * 
 	 * @param name                      name of the window
 	 * @param width                     width of the window
@@ -138,8 +132,8 @@ public class Window extends JFrame
 	}
 
 	/**
-	 * Window constructer with no mouse listener. Creates a window and runs sets up
-	 * runtime calls.
+	 * Window constructer with <u>no mouse listener</u>. Creates a window and runs
+	 * sets up runtime calls.
 	 * 
 	 * @param name
 	 * @param name                      name of the window
@@ -199,8 +193,8 @@ public class Window extends JFrame
 	}
 
 	/**
-	 * Window constructer with no keyboard listener. Creates a window and runs sets
-	 * up runtime calls.
+	 * Window constructer with <u>no keyboard listener</u>. Creates a window and
+	 * runs sets up runtime calls.
 	 * 
 	 * @param name                   name of the window
 	 * @param width                  width of the window
@@ -259,8 +253,8 @@ public class Window extends JFrame
 	}
 
 	/**
-	 * Window constructer with no update method, and therefore no input. Calls the
-	 * start method and graphics method one time each.
+	 * Window constructer with <u>no update method, and therefore no input</u>.
+	 * Calls the start method and graphics method <b>one time each</b>.
 	 * 
 	 * @param name
 	 * @param name           name of the window
