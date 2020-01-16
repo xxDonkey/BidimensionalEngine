@@ -1,9 +1,9 @@
-package basic2Dgraphics;
+package basic2Dgraphics.core;
 
 /**
  * @author Dylan Raiff
  */
-class GameLoop implements Runnable
+public class GameLoop implements Runnable
 {
 	/**
 	 * Called on the start of the main thread.

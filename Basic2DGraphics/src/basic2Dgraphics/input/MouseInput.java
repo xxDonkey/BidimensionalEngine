@@ -1,14 +1,15 @@
-package basic2Dgraphics;
+package basic2Dgraphics.input;
 
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
-import basic2Dgraphics.Window.ComplexMouseEventInterface;
+import basic2Dgraphics.core.Window;
+import basic2Dgraphics.core.Window.ComplexMouseEventInterface;
 
 /**
  * @author Dylan Raiff
  */
-class MouseInput implements MouseListener
+public class MouseInput implements MouseListener
 {
 	@Override
 	public void mouseClicked(MouseEvent e)

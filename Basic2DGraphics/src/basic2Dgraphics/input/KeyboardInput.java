@@ -1,14 +1,15 @@
-package basic2Dgraphics;
+package basic2Dgraphics.input;
 
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
-import basic2Dgraphics.Window.ComplexKeyEventInterface;
+import basic2Dgraphics.core.Window;
+import basic2Dgraphics.core.Window.ComplexKeyEventInterface;
 
 /**
  * @author Dylan Raiff
  */
-class KeyboardInput implements KeyListener
+public class KeyboardInput implements KeyListener
 {
 	@Override
 	public void keyPressed(KeyEvent e)
