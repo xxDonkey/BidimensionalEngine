@@ -9,6 +9,9 @@ class GameLoop implements Runnable
 
 	private boolean started = false;
 
+	/**
+	 * Called on the start of the main thread.
+	 */
 	@Override
 	public void run()
 	{
