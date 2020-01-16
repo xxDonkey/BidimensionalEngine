@@ -5,8 +5,6 @@ package basic2Dgraphics;
  */
 class GameLoop implements Runnable
 {
-	private static final long serialVersionUID = 8669307908760643850L;
-
 	/**
 	 * Called on the start of the main thread.
 	 */
