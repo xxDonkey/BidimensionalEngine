@@ -4,11 +4,13 @@ import java.awt.Dimension;
 import java.awt.Graphics2D;
 import java.awt.event.KeyEvent;
 import java.awt.event.MouseEvent;
+import java.io.File;
 import java.util.function.Consumer;
 
 import javax.swing.JFrame;
 
 import basic2Dgraphics.graphics.CustomGraphics;
+import basic2Dgraphics.graphics.SpriteLoader;
 import basic2Dgraphics.input.KeyboardInput;
 import basic2Dgraphics.input.MouseInput;
 
@@ -20,35 +22,60 @@ import basic2Dgraphics.input.MouseInput;
 public class Window extends JFrame
 {
 
-	/*
+	/**
 	 * Singleton variable to assure only one instance of this class is ever
 	 * instantiated.
 	 */
 	private static Window instance;
 
-	/* How many times per second updateMethod and graphicsMethod are called. */
+	/**
+	 * How many times per second {@code updateMethod} and {@code graphicsMethod} are
+	 * called.
+	 */
 	private static int tps;
 
-	/* Reference to the window's CustomGraphics component. */
+	/**
+	 * Reference to the window's {@code CustomGraphics}.
+	 */
 	private static CustomGraphics gfx;
 
-	/* Method to be called once upon the main thread's start. */
+	/**
+	 * Method to be called once upon the start of {@code thread}.
+	 */
 	private static ComplexInterface startMethod;
-	/* Method to be called every tick on the main thread. */
+	/**
+	 * Method to be called every tick on {@code thread}.
+	 */
 	private static ComplexInterface updateMethod;
-	/* Method to be called every tick to handle graphics. */
+	/**
+	 * Method to be called every tick to handle graphics.
+	 */
 	private static Consumer<Graphics2D> graphicsMethod;
 
-	/* Stores method references to be called by the keyboard listener. */
+	/**
+	 * Stores method references to be called by the {@code KeyboardListener}.
+	 */
 	private static KeyboardInputMethodData onKeyboardInputMethod;
 
-	/* Stores method references to be called by the mouse listener. */
+	/**
+	 * Stores method references to be called by the {@code MouseListener}.
+	 */
 	private static MouseInputMethodData onMouseInputMethodData;
 
-	/* Reference to the main thread. */
+	/**
+	 * 
+	 */
+	private static String assetDirectory;
+
+	/**
+	 * Reference to the main thread.
+	 */
 	private static Thread thread;
 
 	/* Access methods so variables are read-only. */
+
+	public static Window getInstance()
+	{ return Window.instance; }
 
 	public static int getTPS()
 	{ return Window.tps; }
@@ -71,8 +98,11 @@ public class Window extends JFrame
 	public static MouseInputMethodData getOnMouseInputMethodData()
 	{ return Window.onMouseInputMethodData; }
 
+	public static String getAssetDirectory()
+	{ return assetDirectory; }
+
 	/**
-	 * Window constructer with <u>all possible arguements</u>. Creates a window and
+	 * Window constructer with <b>all possible arguements</b>. Creates a window and
 	 * sets up runtime calls.
 	 * 
 	 * @param name                      name of the window
@@ -80,6 +110,8 @@ public class Window extends JFrame
 	 * @param height                    height of the window
 	 * @param ticksPerSecond            number of times per second to update game
 	 *                                  logic and graphics
+	 * @param assetDirectory            directory of assets: <u>images to use in
+	 *                                  graphics, audio files, etc...</u>
 	 * @param startMethod               reference to the method that will be called
 	 *                                  once on start returns void takes 0 args
 	 * @param updateMethod              reference to the method that will be called
@@ -91,8 +123,8 @@ public class Window extends JFrame
 	 * @param onMouseInputMethodData    object with references to the methods that
 	 *                                  will be called by the mouse listener
 	 */
-	public Window(String name, int width, int height, int ticksPerSecond, ComplexInterface startMethod,
-			ComplexInterface updateMethod, Consumer<Graphics2D> graphicsMethod,
+	public Window(String name, int width, int height, int ticksPerSecond, String assetDirectory,
+			ComplexInterface startMethod, ComplexInterface updateMethod, Consumer<Graphics2D> graphicsMethod,
 			KeyboardInputMethodData onKeyboardInputMethod, MouseInputMethodData onMouseInputMethodData)
 	{
 		super(name);
@@ -112,6 +144,8 @@ public class Window extends JFrame
 		Window.onKeyboardInputMethod = onKeyboardInputMethod;
 		Window.onMouseInputMethodData = onMouseInputMethodData;
 
+		Window.assetDirectory = assetDirectory;
+
 		Window.tps = ticksPerSecond;
 
 		Window.gfx = new CustomGraphics();
@@ -120,19 +154,7 @@ public class Window extends JFrame
 		this.addKeyListener(new KeyboardInput());
 		this.addMouseListener(new MouseInput());
 
-		this.setPreferredSize(new Dimension(width, height));
-		this.setMaximumSize(new Dimension(width, height));
-		this.setMinimumSize(new Dimension(width, height));
-
-		this.pack();
-		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		this.setResizable(false);
-		this.setLocationRelativeTo(null);
-		this.setVisible(true);
-
-		GameLoop game = new GameLoop();
-		thread = new Thread(game);
-		thread.start();
+		onConstructed(this, width, height);
 	}
 
 	/**
@@ -145,6 +167,8 @@ public class Window extends JFrame
 	 * @param height                    height of the window
 	 * @param ticksPerSecond            number of times per second to update game
 	 *                                  logic and graphics
+	 * @param assetDirectory            directory of assets: <u>images to use in
+	 *                                  graphics, audio files, etc...</u>
 	 * @param startMethod               reference to the method that will be called
 	 *                                  once on start returns void takes 0 args
 	 * @param updateMethod              reference to the method that will be called
@@ -154,8 +178,8 @@ public class Window extends JFrame
 	 * @param onKeyboardInputMethodData object with references to the methods that
 	 *                                  will be called by the key listener
 	 */
-	public Window(String name, int width, int height, int ticksPerSecond, ComplexInterface startMethod,
-			ComplexInterface updateMethod, Consumer<Graphics2D> graphicsMethod,
+	public Window(String name, int width, int height, int ticksPerSecond, String assetDirectory,
+			ComplexInterface startMethod, ComplexInterface updateMethod, Consumer<Graphics2D> graphicsMethod,
 			KeyboardInputMethodData onKeyboardInputMethod)
 	{
 		super(name);
@@ -174,6 +198,8 @@ public class Window extends JFrame
 
 		Window.onKeyboardInputMethod = onKeyboardInputMethod;
 
+		Window.assetDirectory = assetDirectory;
+
 		Window.tps = ticksPerSecond;
 
 		Window.gfx = new CustomGraphics();
@@ -181,19 +207,7 @@ public class Window extends JFrame
 
 		this.addKeyListener(new KeyboardInput());
 
-		this.setPreferredSize(new Dimension(width, height));
-		this.setMaximumSize(new Dimension(width, height));
-		this.setMinimumSize(new Dimension(width, height));
-
-		this.pack();
-		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		this.setResizable(false);
-		this.setLocationRelativeTo(null);
-		this.setVisible(true);
-
-		GameLoop game = new GameLoop();
-		thread = new Thread(game);
-		thread.start();
+		onConstructed(this, width, height);
 	}
 
 	/**
@@ -205,6 +219,8 @@ public class Window extends JFrame
 	 * @param height                 height of the window
 	 * @param ticksPerSecond         number of times per second to update game logic
 	 *                               and graphics
+	 * @param assetDirectory         directory of assets: <u>images to use in
+	 *                               graphics, audio files, etc...</u>
 	 * @param startMethod            reference to the method that will be called
 	 *                               once on start returns void takes 0 args
 	 * @param updateMethod           reference to the method that will be called
@@ -214,8 +230,8 @@ public class Window extends JFrame
 	 * @param onMouseInputMethodData object with references to the methods that will
 	 *                               be called by the mouse listener
 	 */
-	public Window(String name, int width, int height, int ticksPerSecond, ComplexInterface startMethod,
-			ComplexInterface updateMethod, Consumer<Graphics2D> graphicsMethod,
+	public Window(String name, int width, int height, int ticksPerSecond, String assetDirectory,
+			ComplexInterface startMethod, ComplexInterface updateMethod, Consumer<Graphics2D> graphicsMethod,
 			MouseInputMethodData onMouseInputMethodData)
 	{
 		super(name);
@@ -234,6 +250,8 @@ public class Window extends JFrame
 
 		Window.onMouseInputMethodData = onMouseInputMethodData;
 
+		Window.assetDirectory = assetDirectory;
+
 		Window.tps = ticksPerSecond;
 
 		Window.gfx = new CustomGraphics();
@@ -241,19 +259,7 @@ public class Window extends JFrame
 
 		this.addMouseListener(new MouseInput());
 
-		this.setPreferredSize(new Dimension(width, height));
-		this.setMaximumSize(new Dimension(width, height));
-		this.setMinimumSize(new Dimension(width, height));
-
-		this.pack();
-		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		this.setResizable(false);
-		this.setLocationRelativeTo(null);
-		this.setVisible(true);
-
-		GameLoop game = new GameLoop();
-		thread = new Thread(game);
-		thread.start();
+		onConstructed(this, width, height);
 	}
 
 	/**
@@ -264,14 +270,14 @@ public class Window extends JFrame
 	 * @param name           name of the window
 	 * @param width          width of the window
 	 * @param height         height of the window
-	 * @param ticksPerSecond number of times per second to update game logic and
-	 *                       graphics
+	 * @param assetDirectory directory of assets: <u>images to use in graphics,
+	 *                       audio files, etc...</u>
 	 * @param startMethod    reference to the method that will be called once on
 	 *                       start returns void takes 0 args
 	 * @param graphicsMethod reference to the method that will draw graphics returns
 	 *                       void takes Graphics2D
 	 */
-	public Window(String name, int width, int height, int ticksPerSecond, ComplexInterface startMethod,
+	public Window(String name, int width, int height, String assetDirectory, ComplexInterface startMethod,
 			Consumer<Graphics2D> graphicsMethod)
 	{
 		super(name);
@@ -287,20 +293,39 @@ public class Window extends JFrame
 		Window.startMethod = startMethod;
 		Window.graphicsMethod = graphicsMethod;
 
-		Window.tps = ticksPerSecond;
+		Window.assetDirectory = assetDirectory;
+
+		Window.tps = -1;
 
 		Window.gfx = new CustomGraphics();
 		this.add(gfx);
 
-		this.setPreferredSize(new Dimension(width, height));
-		this.setMaximumSize(new Dimension(width, height));
-		this.setMinimumSize(new Dimension(width, height));
+		onConstructed(this, width, height);
+	}
 
-		this.pack();
-		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		this.setResizable(false);
-		this.setLocationRelativeTo(null);
-		this.setVisible(true);
+	/**
+	 * Consolidates all code that is used by all of the constructors.
+	 * 
+	 * @param frame  reference to the {@code Window}.
+	 * @param width  width of the window
+	 * @param height height of the window
+	 */
+	private static void onConstructed(JFrame frame, int width, int height)
+	{
+		frame.setPreferredSize(new Dimension(width, height));
+		frame.setMaximumSize(new Dimension(width, height));
+		frame.setMinimumSize(new Dimension(width, height));
+
+		frame.pack();
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frame.setResizable(false);
+		frame.setLocationRelativeTo(null);
+		frame.setVisible(true);
+
+		for (String file : new File(Window.assetDirectory).list())
+		{
+			SpriteLoader.loadImage(file);
+		}
 
 		GameLoop game = new GameLoop();
 		thread = new Thread(game);
