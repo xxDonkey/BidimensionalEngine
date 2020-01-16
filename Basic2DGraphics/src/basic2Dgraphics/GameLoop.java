@@ -7,8 +7,6 @@ class GameLoop implements Runnable
 {
 	private static final long serialVersionUID = 8669307908760643850L;
 
-	private boolean started = false;
-
 	/**
 	 * Called on the start of the main thread.
 	 */
