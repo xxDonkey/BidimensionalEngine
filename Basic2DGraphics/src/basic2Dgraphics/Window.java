@@ -15,6 +15,7 @@ import javax.swing.JFrame;
  */
 public class Window extends JFrame
 {
+
 	private static Window instance; /*
 									 * Singleton variable to assure only one instance of this class is ever
 									 * instantiated.
