@@ -82,9 +82,6 @@ public class Window extends JFrame
 	public static int getTPS()
 	{ return Window.tps; }
 
-	public static Consumer<Graphics2D> getGraphicsMethod()
-	{ return Window.graphicsMethod; }
-
 	public static CustomGraphics getGFX()
 	{ return Window.gfx; }
 
@@ -94,6 +91,9 @@ public class Window extends JFrame
 	public static ComplexInterface getUpdateMethod()
 	{ return Window.updateMethod; }
 
+	public static Consumer<Graphics2D> getGraphicsMethod()
+	{ return Window.graphicsMethod; }
+
 	public static KeyboardInputMethodData getOnKeyboardInputMethodData()
 	{ return Window.onKeyboardInputMethod; }
 
@@ -101,7 +101,10 @@ public class Window extends JFrame
 	{ return Window.onMouseInputMethodData; }
 
 	public static String getAssetDirectory()
-	{ return assetDirectory; }
+	{ return Window.assetDirectory; }
+
+	public static Thread getThread()
+	{ return Window.thread; }
 
 	/**
 	 * Window constructer with <b>all possible arguements</b>. Creates a window and
