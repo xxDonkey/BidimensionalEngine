@@ -521,7 +521,9 @@ public class Window extends JFrame
 	}
 
 	/**
-	 * Stores a method with return type void with no arguments.
+	 * Stores a method.<br>
+	 * <BLOCKQUOTE> <u>Returns:</u> void <br>
+	 * <u>Arguments:</u> None </BLOCKQUOTE>
 	 * 
 	 * @author Dylan Raiff
 	 */
@@ -532,7 +534,9 @@ public class Window extends JFrame
 	}
 
 	/**
-	 * Stores a method with return type void with one argument of type KeyEvent.
+	 * Stores a method.<br>
+	 * <BLOCKQUOTE> <u>Returns:</u> void <br>
+	 * <u>Arguments (1):</u> KeyEvent </BLOCKQUOTE>
 	 * 
 	 * @author Dylan Raiff
 	 */
@@ -543,7 +547,9 @@ public class Window extends JFrame
 	}
 
 	/**
-	 * Stores a method with return type void with one argument of type MouseEvent.
+	 * Stores a method.<br>
+	 * <BLOCKQUOTE> <u>Returns:</u> void <br>
+	 * <u>Arguments (1):</u> MouseEvent </BLOCKQUOTE>
 	 * 
 	 * @author Dylan Raiff
 	 */
