@@ -1,4 +1,4 @@
-package bidimensionalengine.playercomponents;
+package bidimensionalengine.engine.playercomponents;
 
 abstract class PlayerComponent
 {

@@ -1,4 +1,4 @@
-package bidimensionalengine.physics;
+package bidimensionalengine.engine.physics;
 
 /**
  * @author Dylan Raiff
