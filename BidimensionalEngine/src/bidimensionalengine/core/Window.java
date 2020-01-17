@@ -21,7 +21,6 @@ import bidimensionalengine.input.MouseInput;
  */
 public class Window extends JFrame
 {
-
 	/**
 	 * Singleton variable to assure only one instance of this class is ever
 	 * instantiated.
@@ -66,7 +65,7 @@ public class Window extends JFrame
 	private static MouseInputMethodData onMouseInputMethodData;
 
 	/**
-	 * 
+	 * Directory where all assets are stored.
 	 */
 	private static String assetDirectory;
 
@@ -116,11 +115,17 @@ public class Window extends JFrame
 	 * @param assetDirectory            directory of assets: <u>images to use in
 	 *                                  graphics, audio files, etc...</u>
 	 * @param startMethod               reference to the method that will be called
-	 *                                  once on start returns void takes 0 args
+	 *                                  once on start <br>
+	 *                                  <BLOCKQUOTE><u>Returns:</u> void <br>
+	 *                                  <u>Arguments</u>: None
 	 * @param updateMethod              reference to the method that will be called
-	 *                                  every tick returns void takes 0 args
+	 *                                  every tick <br>
+	 *                                  <BLOCKQUOTE><u>Returns:</u> void <br>
+	 *                                  <u>Arguments</u>: None
 	 * @param graphicsMethod            reference to the method that will draw
-	 *                                  graphics returns void takes Graphics2D
+	 *                                  graphics <br>
+	 *                                  <BLOCKQUOTE><u>Returns:</u> void <br>
+	 *                                  <u>Arguments (1)</u>: Graphics2D
 	 * @param onKeyboardInputMethodData object with references to the methods that
 	 *                                  will be called by the key listener
 	 * @param onMouseInputMethodData    object with references to the methods that
@@ -172,11 +177,16 @@ public class Window extends JFrame
 	 * @param assetDirectory directory of assets: <u>images to use in graphics,
 	 *                       audio files, etc...</u>
 	 * @param startMethod    reference to the method that will be called once on
-	 *                       start returns void takes 0 args
+	 *                       start <br>
+	 *                       <BLOCKQUOTE><u>Returns:</u> void <br>
+	 *                       <u>Arguments</u>: None
 	 * @param updateMethod   reference to the method that will be called every tick
-	 *                       returns void takes 0 args
-	 * @param graphicsMethod reference to the method that will draw graphics returns
-	 *                       void takes Graphics2D
+	 *                       <br>
+	 *                       <BLOCKQUOTE><u>Returns:</u> void <br>
+	 *                       <u>Arguments</u>: None
+	 * @param graphicsMethod reference to the method that will draw graphics <br>
+	 *                       <BLOCKQUOTE><u>Returns:</u> void <br>
+	 *                       <u>Arguments (1)</u>: Graphics2D
 	 */
 	public Window(String name, int width, int height, int ticksPerSecond, String assetDirectory,
 			ComplexInterface startMethod, ComplexInterface updateMethod, Consumer<Graphics2D> graphicsMethod)
@@ -218,11 +228,17 @@ public class Window extends JFrame
 	 * @param assetDirectory            directory of assets: <u>images to use in
 	 *                                  graphics, audio files, etc...</u>
 	 * @param startMethod               reference to the method that will be called
-	 *                                  once on start returns void takes 0 args
+	 *                                  once on start <br>
+	 *                                  <BLOCKQUOTE><u>Returns:</u> void <br>
+	 *                                  <u>Arguments</u>: None
 	 * @param updateMethod              reference to the method that will be called
-	 *                                  every tick returns void takes 0 args
+	 *                                  every tick <br>
+	 *                                  <BLOCKQUOTE><u>Returns:</u> void <br>
+	 *                                  <u>Arguments</u>: None
 	 * @param graphicsMethod            reference to the method that will draw
-	 *                                  graphics returns void takes Graphics2D
+	 *                                  graphics <br>
+	 *                                  <BLOCKQUOTE><u>Returns:</u> void <br>
+	 *                                  <u>Arguments (1)</u>: Graphics2D
 	 * @param onKeyboardInputMethodData object with references to the methods that
 	 *                                  will be called by the key listener
 	 */
@@ -270,11 +286,17 @@ public class Window extends JFrame
 	 * @param assetDirectory         directory of assets: <u>images to use in
 	 *                               graphics, audio files, etc...</u>
 	 * @param startMethod            reference to the method that will be called
-	 *                               once on start returns void takes 0 args
+	 *                               once on start <br>
+	 *                               <BLOCKQUOTE><u>Returns:</u> void <br>
+	 *                               <u>Arguments</u>: None
 	 * @param updateMethod           reference to the method that will be called
-	 *                               every tick returns void takes 0 args
+	 *                               every tick <br>
+	 *                               <BLOCKQUOTE><u>Returns:</u> void <br>
+	 *                               <u>Arguments</u>: None
 	 * @param graphicsMethod         reference to the method that will draw graphics
-	 *                               returns void takes Graphics2D
+	 *                               <br>
+	 *                               <BLOCKQUOTE><u>Returns:</u> void <br>
+	 *                               <u>Arguments (1)</u>: Graphics2D
 	 * @param onMouseInputMethodData object with references to the methods that will
 	 *                               be called by the mouse listener
 	 */
@@ -321,9 +343,12 @@ public class Window extends JFrame
 	 * @param assetDirectory directory of assets: <u>images to use in graphics,
 	 *                       audio files, etc...</u>
 	 * @param startMethod    reference to the method that will be called once on
-	 *                       start returns void takes 0 args
-	 * @param graphicsMethod reference to the method that will draw graphics returns
-	 *                       void takes Graphics2D
+	 *                       start <br>
+	 *                       <BLOCKQUOTE><u>Returns:</u> void <br>
+	 *                       <u>Arguments</u>: None
+	 * @param graphicsMethod reference to the method that will draw graphics <br>
+	 *                       <BLOCKQUOTE><u>Returns:</u> void <br>
+	 *                       <u>Arguments (1)</u>: Graphics2D
 	 */
 	public Window(String name, int width, int height, String assetDirectory, ComplexInterface startMethod,
 			Consumer<Graphics2D> graphicsMethod)
