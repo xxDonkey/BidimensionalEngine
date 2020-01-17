@@ -4,16 +4,17 @@ import java.awt.Graphics2D;
 
 import bidimensionalengine.core.Window;
 import bidimensionalengine.core.graphics.Sprite;
+import bidimensionalengine.core.graphics.SpriteLoader;
 import bidimensionalengine.engine.datastructs.GameObject;
 
 public class Image extends ObjectComponent
 {
 	public Sprite sprite;
 
-	public Image(GameObject gameObject)
+	public Image(GameObject gameObject, String spriteName)
 	{
 		super(gameObject);
-
+		sprite = SpriteLoader.getSprite(spriteName);
 	}
 
 	@Override

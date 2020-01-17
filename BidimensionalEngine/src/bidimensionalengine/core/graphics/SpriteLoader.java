@@ -55,7 +55,7 @@ public final class SpriteLoader
 	 * @param index index of sprite to retrieve
 	 * @return desired sprite
 	 */
-	public Sprite getSprite(int index)
+	public static Sprite getSprite(int index)
 	{
 		if (index < 0 || index > loadedSprites.size() - 1)
 			return null;
@@ -70,7 +70,7 @@ public final class SpriteLoader
 	 * @param name name of sprite to retrive
 	 * @return desired sprite
 	 */
-	public Sprite getSprite(String name)
+	public static Sprite getSprite(String name)
 	{
 		for (Sprite s : loadedSprites)
 		{
