@@ -9,19 +9,15 @@ import bidimensionalengine.engine.playercomponents.Transform;
 public abstract class UIElement extends GameObject
 {
 	/**
-	 * 
+	 * Container that this {@code UIElement} belongs to.
 	 */
-	protected Container parent;
+	protected Container uiParent;
 
 	/**
+	 * Creates a standard {@code UIElement}.
 	 * 
-	 */
-	protected Transform transform;
-
-	/**
-	 * 
-	 * @param name
-	 * @param parent
+	 * @param name   of the element
+	 * @param parent container the element belongs to
 	 */
 	public UIElement(String name, Container parent)
 	{
@@ -31,11 +27,17 @@ public abstract class UIElement extends GameObject
 		this.transform = new Transform((GameObject) parent);
 	}
 
+	/**
+	 * Called every tick in the main thread.
+	 */
+	@Override
+	public void update()
+	{
+
+	}
+
 	/* Access methods */
 
-	public String getName()
-	{ return name; }
-
 	public Container getParent()
-	{ return parent; }
+	{ return uiParent; }
 }

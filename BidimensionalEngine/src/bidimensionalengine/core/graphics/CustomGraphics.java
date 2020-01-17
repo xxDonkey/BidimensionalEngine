@@ -3,6 +3,8 @@ package bidimensionalengine.core.graphics;
 import java.awt.Component;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
+import java.util.ArrayList;
+import java.util.function.Consumer;
 
 import bidimensionalengine.core.Window;
 
@@ -11,6 +13,10 @@ import bidimensionalengine.core.Window;
  */
 public final class CustomGraphics extends Component
 {
+	/**
+	 * Methods to be called to render UI.
+	 */
+	private ArrayList<Consumer<Graphics2D>> imageRenderMethods;
 
 	/**
 	 * Called behind the scenes. <br>
@@ -19,5 +25,24 @@ public final class CustomGraphics extends Component
 	 */
 	@Override
 	public void paint(Graphics g)
-	{ Window.getGraphicsMethod().accept((Graphics2D) g); }
+	{
+		Window.getGraphicsMethod().accept((Graphics2D) g);
+
+		for (Consumer<Graphics2D> method : imageRenderMethods)
+			method.accept((Graphics2D) g);
+	}
+
+	/**
+	 * 
+	 * @param method
+	 */
+	public void addImageRenderMethod(Consumer<Graphics2D> method)
+	{ imageRenderMethods.add(method); }
+
+	/**
+	 * 
+	 * @param method
+	 */
+	public void removeImageRenderMethod(Consumer<Graphics2D> method)
+	{ imageRenderMethods.remove(method); }
 }

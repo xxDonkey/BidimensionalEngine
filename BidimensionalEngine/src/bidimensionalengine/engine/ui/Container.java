@@ -25,24 +25,6 @@ public class Container extends UIElement
 	}
 
 	/**
-	 * Called every tick in the main thread.
-	 */
-	@Override
-	public void update()
-	{
-
-	}
-
-	/**
-	 * Called very tick in the rendering thread.
-	 */
-	@Override
-	public void render()
-	{
-
-	}
-
-	/**
 	 * 
 	 * @param type
 	 * @param name

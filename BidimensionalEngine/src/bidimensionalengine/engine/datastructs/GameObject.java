@@ -4,13 +4,14 @@ import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
 
 import bidimensionalengine.core.Window;
+import bidimensionalengine.engine.playercomponents.Image;
 import bidimensionalengine.engine.playercomponents.ObjectComponent;
 import bidimensionalengine.engine.playercomponents.Transform;
 
 /**
  * @author Dylan Raiff
  */
-public class GameObject extends Renderable
+public class GameObject
 {
 	/**
 	 * Name of the {@code GameObject}.
@@ -62,17 +63,7 @@ public class GameObject extends Renderable
 	/**
 	 * Called every tick in the main thread.
 	 */
-	@Override
 	public void update()
-	{
-
-	}
-
-	/**
-	 * Called very tick in the rendering thread.
-	 */
-	@Override
-	public void render()
 	{
 
 	}
@@ -98,6 +89,11 @@ public class GameObject extends Renderable
 		if (obj != null && obj instanceof ObjectComponent)
 		{
 			components.add((ObjectComponent) obj);
+			if (obj instanceof Image)
+			{
+				Window.getGFX().addImageRenderMethod(((Image) obj)::render);
+			}
+
 			return true;
 		}
 		return false;
@@ -108,12 +104,26 @@ public class GameObject extends Renderable
 	 * @param component
 	 */
 	public void removeComponent(ObjectComponent component)
-	{ components.remove(component); }
+	{
+		components.remove(component);
+		if (component instanceof Image)
+		{
+			Window.getGFX().removeImageRenderMethod(((Image) component)::render);
+		}
+	}
 
 	/**
 	 * 
 	 */
 	public void destory()
 	{ Window.getGameLoop().onDestoryGameObject(this); }
+
+	/* Access methods */
+
+	public String getName()
+	{ return name; }
+
+	public Transform getTransform()
+	{ return transform; }
 
 }
