@@ -1,4 +1,4 @@
-# basic2Dgraphics
-A basic package that takes background classes and things of the like off your hands.
+# BidimensionalEngine
 
-To use package, use one of constructor of basic2Dgraphics.core.Window.
+This project is meant to be a simple, easy to use 2D game engine.
+Still got a lot to do, lot of ideas to implement.
