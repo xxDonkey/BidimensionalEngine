@@ -489,13 +489,13 @@ public class Window extends JFrame
 
 		/**
 		 * Called when the user presses a mouse button while the cursor is over the
-		 * listened to component. if not {@code null}.
+		 * listened to component if not {@code null}.
 		 */
 		public ComplexMouseEventInterface onMousePressed;
 
 		/**
 		 * Called when the user releases a mouse button after a mouse press over the
-		 * listened to component. if not {@code null}.
+		 * listened to component if not {@code null}.
 		 */
 		public ComplexMouseEventInterface onMouseReleased;
 
