@@ -42,11 +42,14 @@ public class Window extends JFrame
 	/**
 	 * Method to be called once upon the start of {@code thread}.
 	 */
+
 	private static ComplexInterface startMethod;
+
 	/**
 	 * Method to be called every tick on {@code thread}.
 	 */
 	private static ComplexInterface updateMethod;
+
 	/**
 	 * Method to be called every tick to handle graphics.
 	 */
@@ -153,6 +156,51 @@ public class Window extends JFrame
 
 		this.addKeyListener(new KeyboardInput());
 		this.addMouseListener(new MouseInput());
+
+		onConstructed(this, width, height);
+	}
+
+	/**
+	 * Window constructer with <b>no input</b>. Creates a window and sets up runtime
+	 * calls.
+	 * 
+	 * @param name           name of the window
+	 * @param width          width of the window
+	 * @param height         height of the window
+	 * @param ticksPerSecond number of times per second to update game logic and
+	 *                       graphics
+	 * @param assetDirectory directory of assets: <u>images to use in graphics,
+	 *                       audio files, etc...</u>
+	 * @param startMethod    reference to the method that will be called once on
+	 *                       start returns void takes 0 args
+	 * @param updateMethod   reference to the method that will be called every tick
+	 *                       returns void takes 0 args
+	 * @param graphicsMethod reference to the method that will draw graphics returns
+	 *                       void takes Graphics2D
+	 */
+	public Window(String name, int width, int height, int ticksPerSecond, String assetDirectory,
+			ComplexInterface startMethod, ComplexInterface updateMethod, Consumer<Graphics2D> graphicsMethod)
+	{
+		super(name);
+
+		if (instance != null)
+		{
+			System.err.println("Two instances of basic2Dgraphics.Window are not allowed.");
+			return;
+		}
+
+		instance = this;
+
+		Window.startMethod = startMethod;
+		Window.graphicsMethod = graphicsMethod;
+		Window.updateMethod = updateMethod;
+
+		Window.assetDirectory = assetDirectory;
+
+		Window.tps = ticksPerSecond;
+
+		Window.gfx = new CustomGraphics();
+		this.add(gfx);
 
 		onConstructed(this, width, height);
 	}
@@ -322,9 +370,17 @@ public class Window extends JFrame
 		frame.setLocationRelativeTo(null);
 		frame.setVisible(true);
 
-		for (String file : new File(Window.assetDirectory).list())
+		try
 		{
-			SpriteLoader.loadImage(file);
+			String[] files = new File(Window.assetDirectory).list();
+			for (String file : files)
+			{
+				SpriteLoader.loadImage(file);
+			}
+		}
+		catch (Exception e)
+		{
+			System.err.println("Images could not be loaded.");
 		}
 
 		GameLoop game = new GameLoop();
