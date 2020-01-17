@@ -1,5 +1,8 @@
 package bidimensionalengine.datastructs;
 
+/**
+ * @author Dylan Raiff
+ */
 public class Vector2
 {
 	/**

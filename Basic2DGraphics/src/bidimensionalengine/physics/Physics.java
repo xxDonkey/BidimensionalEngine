@@ -1,5 +1,8 @@
 package bidimensionalengine.physics;
 
+/**
+ * @author Dylan Raiff
+ */
 public final class Physics
 {
 
