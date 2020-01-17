@@ -429,7 +429,7 @@ public class Window extends JFrame
 	 * 
 	 * @author Dylan Raiff
 	 */
-	public static class KeyboardInputMethodData
+	public final static class KeyboardInputMethodData
 	{
 		/**
 		 * Called when a key has been pressed if not {@code null}.
@@ -468,7 +468,7 @@ public class Window extends JFrame
 	 * 
 	 * @author Dylan Raiff
 	 */
-	public static class MouseInputMethodData
+	public final static class MouseInputMethodData
 	{
 		/**
 		 * Called when the user clicks the listened to component if not {@code null}.
