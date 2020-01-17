@@ -9,10 +9,10 @@ import java.util.function.Consumer;
 
 import javax.swing.JFrame;
 
-import bidimensionalengine.graphics.CustomGraphics;
-import bidimensionalengine.graphics.SpriteLoader;
-import bidimensionalengine.input.KeyboardInput;
-import bidimensionalengine.input.MouseInput;
+import bidimensionalengine.core.graphics.CustomGraphics;
+import bidimensionalengine.core.graphics.SpriteLoader;
+import bidimensionalengine.core.input.KeyboardInput;
+import bidimensionalengine.core.input.MouseInput;
 
 /**
  * Main instantiatable class of the basic2Dgraphics package.

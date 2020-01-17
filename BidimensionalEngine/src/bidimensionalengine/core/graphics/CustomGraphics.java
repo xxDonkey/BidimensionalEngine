@@ -1,4 +1,4 @@
-package bidimensionalengine.graphics;
+package bidimensionalengine.core.graphics;
 
 import java.awt.Component;
 import java.awt.Graphics;
