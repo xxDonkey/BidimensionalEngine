@@ -57,7 +57,7 @@ public class Window extends JFrame
 	/**
 	 * Stores method references to be called by the {@code KeyboardListener}.
 	 */
-	private static KeyboardInputMethodData onKeyboardInputMethod;
+	private static KeyboardInputMethodData onKeyboardInputMethodData;
 
 	/**
 	 * Stores method references to be called by the {@code MouseListener}.
@@ -95,7 +95,7 @@ public class Window extends JFrame
 	{ return Window.graphicsMethod; }
 
 	public static KeyboardInputMethodData getOnKeyboardInputMethodData()
-	{ return Window.onKeyboardInputMethod; }
+	{ return Window.onKeyboardInputMethodData; }
 
 	public static MouseInputMethodData getOnMouseInputMethodData()
 	{ return Window.onMouseInputMethodData; }
@@ -110,33 +110,34 @@ public class Window extends JFrame
 	 * Window constructer with <b>all possible arguements</b>. Creates a window and
 	 * sets up runtime calls.
 	 * 
-	 * @param name                      name of the window
-	 * @param width                     width of the window
-	 * @param height                    height of the window
-	 * @param ticksPerSecond            number of times per second to update game
-	 *                                  logic and graphics
-	 * @param assetDirectory            directory of assets: <u>images to use in
-	 *                                  graphics, audio files, etc...</u>
-	 * @param startMethod               reference to the method that will be called
-	 *                                  once on start <br>
-	 *                                  <BLOCKQUOTE><u>Returns:</u> void <br>
-	 *                                  <u>Arguments</u>: None
-	 * @param updateMethod              reference to the method that will be called
-	 *                                  every tick <br>
-	 *                                  <BLOCKQUOTE><u>Returns:</u> void <br>
-	 *                                  <u>Arguments</u>: None
-	 * @param graphicsMethod            reference to the method that will draw
-	 *                                  graphics <br>
-	 *                                  <BLOCKQUOTE><u>Returns:</u> void <br>
-	 *                                  <u>Arguments (1)</u>: Graphics2D
-	 * @param onKeyboardInputMethodData object with references to the methods that
-	 *                                  will be called by the key listener
-	 * @param onMouseInputMethodData    object with references to the methods that
-	 *                                  will be called by the mouse listener
+	 * @param name                          name of the window
+	 * @param width                         width of the window
+	 * @param height                        height of the window
+	 * @param ticksPerSecond                number of times per second to update
+	 *                                      game logic and graphics
+	 * @param assetDirectory                directory of assets: <u>images to use in
+	 *                                      graphics, audio files, etc...</u>
+	 * @param startMethod                   reference to the method that will be
+	 *                                      called once on start <br>
+	 *                                      <BLOCKQUOTE><u>Returns:</u> void <br>
+	 *                                      <u>Arguments</u>: None
+	 * @param updateMethod                  reference to the method that will be
+	 *                                      called every tick <br>
+	 *                                      <BLOCKQUOTE><u>Returns:</u> void <br>
+	 *                                      <u>Arguments</u>: None
+	 * @param graphicsMethod                reference to the method that will draw
+	 *                                      graphics <br>
+	 *                                      <BLOCKQUOTE><u>Returns:</u> void <br>
+	 *                                      <u>Arguments (1)</u>: Graphics2D
+	 * @param onKeyboardInputMethodDataData object with references to the methods
+	 *                                      that will be called by the key listener
+	 * @param onMouseInputMethodData        object with references to the methods
+	 *                                      that will be called by the mouse
+	 *                                      listener
 	 */
 	public Window(String name, int width, int height, int ticksPerSecond, String assetDirectory,
 			ComplexInterface startMethod, ComplexInterface updateMethod, Consumer<Graphics2D> graphicsMethod,
-			KeyboardInputMethodData onKeyboardInputMethod, MouseInputMethodData onMouseInputMethodData)
+			KeyboardInputMethodData onKeyboardInputMethodData, MouseInputMethodData onMouseInputMethodData)
 	{
 		super(name);
 
@@ -152,7 +153,7 @@ public class Window extends JFrame
 		Window.graphicsMethod = graphicsMethod;
 		Window.updateMethod = updateMethod;
 
-		Window.onKeyboardInputMethod = onKeyboardInputMethod;
+		Window.onKeyboardInputMethodData = onKeyboardInputMethodData;
 		Window.onMouseInputMethodData = onMouseInputMethodData;
 
 		Window.assetDirectory = assetDirectory;
@@ -223,31 +224,31 @@ public class Window extends JFrame
 	 * sets up runtime calls.
 	 * 
 	 * @param name
-	 * @param name                      name of the window
-	 * @param width                     width of the window
-	 * @param height                    height of the window
-	 * @param ticksPerSecond            number of times per second to update game
-	 *                                  logic and graphics
-	 * @param assetDirectory            directory of assets: <u>images to use in
-	 *                                  graphics, audio files, etc...</u>
-	 * @param startMethod               reference to the method that will be called
-	 *                                  once on start <br>
-	 *                                  <BLOCKQUOTE><u>Returns:</u> void <br>
-	 *                                  <u>Arguments</u>: None
-	 * @param updateMethod              reference to the method that will be called
-	 *                                  every tick <br>
-	 *                                  <BLOCKQUOTE><u>Returns:</u> void <br>
-	 *                                  <u>Arguments</u>: None
-	 * @param graphicsMethod            reference to the method that will draw
-	 *                                  graphics <br>
-	 *                                  <BLOCKQUOTE><u>Returns:</u> void <br>
-	 *                                  <u>Arguments (1)</u>: Graphics2D
-	 * @param onKeyboardInputMethodData object with references to the methods that
-	 *                                  will be called by the key listener
+	 * @param name                          name of the window
+	 * @param width                         width of the window
+	 * @param height                        height of the window
+	 * @param ticksPerSecond                number of times per second to update
+	 *                                      game logic and graphics
+	 * @param assetDirectory                directory of assets: <u>images to use in
+	 *                                      graphics, audio files, etc...</u>
+	 * @param startMethod                   reference to the method that will be
+	 *                                      called once on start <br>
+	 *                                      <BLOCKQUOTE><u>Returns:</u> void <br>
+	 *                                      <u>Arguments</u>: None
+	 * @param updateMethod                  reference to the method that will be
+	 *                                      called every tick <br>
+	 *                                      <BLOCKQUOTE><u>Returns:</u> void <br>
+	 *                                      <u>Arguments</u>: None
+	 * @param graphicsMethod                reference to the method that will draw
+	 *                                      graphics <br>
+	 *                                      <BLOCKQUOTE><u>Returns:</u> void <br>
+	 *                                      <u>Arguments (1)</u>: Graphics2D
+	 * @param onKeyboardInputMethodDataData object with references to the methods
+	 *                                      that will be called by the key listener
 	 */
 	public Window(String name, int width, int height, int ticksPerSecond, String assetDirectory,
 			ComplexInterface startMethod, ComplexInterface updateMethod, Consumer<Graphics2D> graphicsMethod,
-			KeyboardInputMethodData onKeyboardInputMethod)
+			KeyboardInputMethodData onKeyboardInputMethodData)
 	{
 		super(name);
 
@@ -263,7 +264,7 @@ public class Window extends JFrame
 		Window.graphicsMethod = graphicsMethod;
 		Window.updateMethod = updateMethod;
 
-		Window.onKeyboardInputMethod = onKeyboardInputMethod;
+		Window.onKeyboardInputMethodData = onKeyboardInputMethodData;
 
 		Window.assetDirectory = assetDirectory;
 
