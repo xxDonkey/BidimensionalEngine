@@ -1,10 +1,10 @@
-package basic2Dgraphics.input;
+package bidimensionalengine.input;
 
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
-import basic2Dgraphics.core.Window;
-import basic2Dgraphics.core.Window.ComplexMouseEventInterface;
+import bidimensionalengine.core.Window;
+import bidimensionalengine.core.Window.ComplexMouseEventInterface;
 
 /**
  * @author Dylan Raiff

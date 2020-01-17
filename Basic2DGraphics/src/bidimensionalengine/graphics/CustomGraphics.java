@@ -1,10 +1,10 @@
-package basic2Dgraphics.graphics;
+package bidimensionalengine.graphics;
 
 import java.awt.Component;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 
-import basic2Dgraphics.core.Window;
+import bidimensionalengine.core.Window;
 
 /**
  * @author Dylan Raiff

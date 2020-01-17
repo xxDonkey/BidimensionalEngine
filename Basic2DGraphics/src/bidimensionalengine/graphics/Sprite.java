@@ -1,4 +1,4 @@
-package basic2Dgraphics.graphics;
+package bidimensionalengine.graphics;
 
 import java.awt.image.BufferedImage;
 

@@ -1,4 +1,4 @@
-package basic2Dgraphics.core;
+package bidimensionalengine.core;
 
 import java.awt.Dimension;
 import java.awt.Graphics2D;
@@ -9,10 +9,10 @@ import java.util.function.Consumer;
 
 import javax.swing.JFrame;
 
-import basic2Dgraphics.graphics.CustomGraphics;
-import basic2Dgraphics.graphics.SpriteLoader;
-import basic2Dgraphics.input.KeyboardInput;
-import basic2Dgraphics.input.MouseInput;
+import bidimensionalengine.graphics.CustomGraphics;
+import bidimensionalengine.graphics.SpriteLoader;
+import bidimensionalengine.input.KeyboardInput;
+import bidimensionalengine.input.MouseInput;
 
 /**
  * Main instantiatable class of the basic2Dgraphics package.

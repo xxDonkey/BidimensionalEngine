@@ -1,10 +1,10 @@
-package basic2Dgraphics.input;
+package bidimensionalengine.input;
 
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
-import basic2Dgraphics.core.Window;
-import basic2Dgraphics.core.Window.ComplexKeyEventInterface;
+import bidimensionalengine.core.Window;
+import bidimensionalengine.core.Window.ComplexKeyEventInterface;
 
 /**
  * @author Dylan Raiff

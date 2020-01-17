@@ -1,4 +1,4 @@
-package basic2Dgraphics.core;
+package bidimensionalengine.core;
 
 /**
  * @author Dylan Raiff

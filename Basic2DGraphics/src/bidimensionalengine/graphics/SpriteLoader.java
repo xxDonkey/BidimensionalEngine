@@ -1,4 +1,4 @@
-package basic2Dgraphics.graphics;
+package bidimensionalengine.graphics;
 
 import java.awt.image.BufferedImage;
 import java.io.File;
@@ -8,7 +8,7 @@ import java.util.ArrayList;
 
 import javax.imageio.ImageIO;
 
-import basic2Dgraphics.core.Window;
+import bidimensionalengine.core.Window;
 
 /**
  * @author Dylan Raiff
