@@ -7,7 +7,7 @@ import bidimensionalengine.engine.datastructs.GameObject;
 /**
  * @author Dylan Raiff
  */
-public class GameLoop implements Runnable
+public final class GameLoop implements Runnable
 {
 	/**
 	 * Holds all of the engine's active {@code GameObject}.

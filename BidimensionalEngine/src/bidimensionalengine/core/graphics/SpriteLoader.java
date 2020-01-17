@@ -13,7 +13,7 @@ import bidimensionalengine.core.Window;
 /**
  * @author Dylan Raiff
  */
-public class SpriteLoader
+public final class SpriteLoader
 {
 	/**
 	 * Atlas of all loaded sprites.

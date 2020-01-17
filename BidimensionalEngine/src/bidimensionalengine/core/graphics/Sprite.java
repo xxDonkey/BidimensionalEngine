@@ -5,7 +5,7 @@ import java.awt.image.BufferedImage;
 /**
  * @author Dylan Raiff
  */
-public class Sprite
+public final class Sprite
 {
 	/**
 	 * Name of the sprite.

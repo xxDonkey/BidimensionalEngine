@@ -19,7 +19,7 @@ import bidimensionalengine.core.input.MouseInput;
  * 
  * @author Dylan Raiff
  */
-public class Window extends JFrame
+public final class Window extends JFrame
 {
 	/**
 	 * Singleton variable to assure only one instance of this class is ever

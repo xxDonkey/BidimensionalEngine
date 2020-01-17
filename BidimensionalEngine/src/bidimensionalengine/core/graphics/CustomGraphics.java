@@ -9,7 +9,7 @@ import bidimensionalengine.core.Window;
 /**
  * @author Dylan Raiff
  */
-public class CustomGraphics extends Component
+public final class CustomGraphics extends Component
 {
 	/**
 	 * Called behind the scenes. <br>

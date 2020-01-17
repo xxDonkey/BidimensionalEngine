@@ -9,7 +9,7 @@ import bidimensionalengine.core.Window.ComplexKeyEventInterface;
 /**
  * @author Dylan Raiff
  */
-public class KeyboardInput implements KeyListener
+public final class KeyboardInput implements KeyListener
 {
 	@Override
 	public void keyPressed(KeyEvent e)

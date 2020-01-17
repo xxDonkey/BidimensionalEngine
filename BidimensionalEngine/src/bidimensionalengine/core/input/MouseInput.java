@@ -9,7 +9,7 @@ import bidimensionalengine.core.Window.ComplexMouseEventInterface;
 /**
  * @author Dylan Raiff
  */
-public class MouseInput implements MouseListener
+public final class MouseInput implements MouseListener
 {
 	@Override
 	public void mouseClicked(MouseEvent e)
