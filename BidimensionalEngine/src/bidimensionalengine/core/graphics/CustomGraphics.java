@@ -11,6 +11,7 @@ import bidimensionalengine.core.Window;
  */
 public final class CustomGraphics extends Component
 {
+
 	/**
 	 * Called behind the scenes. <br>
 	 * Calls the graphics function passed to the constructor of

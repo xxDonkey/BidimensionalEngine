@@ -3,6 +3,7 @@ package bidimensionalengine.core;
 import java.util.ArrayList;
 
 import bidimensionalengine.engine.datastructs.GameObject;
+import bidimensionalengine.engine.ui.UIElement;
 
 /**
  * @author Dylan Raiff
@@ -15,18 +16,41 @@ public final class GameLoop implements Runnable
 	private ArrayList<GameObject> gameObjects = new ArrayList<GameObject>();
 
 	/**
+	 * Holds all of the engine's active {@code UIElements}.
+	 */
+	private ArrayList<UIElement> uiElements = new ArrayList<UIElement>();
+
+	/**
+	 * Called when a {@code GameObject} is created.
 	 * 
-	 * @param gameObject
+	 * @param gameObject game object that is being created
 	 */
 	public void onCreateGameObject(GameObject gameObject)
 	{ gameObjects.add(gameObject); }
 
 	/**
+	 * Called when a {@code GameObject} is destoryed.
 	 * 
-	 * @param gameObject
+	 * @param gameObject UI element that is being destroyed
 	 */
 	public void onDestoryGameObject(GameObject gameObject)
 	{ gameObjects.remove(gameObject); }
+
+	/**
+	 * Called when a {@code UIElement} is created.
+	 * 
+	 * @param gameObject game object that is being created
+	 */
+	public void onCreateGameObject(UIElement uiElement)
+	{ uiElements.add(uiElement); }
+
+	/**
+	 * Called when a {@code UIElement} is destoryed.
+	 * 
+	 * @param gameObject UI element that is being destroyed
+	 */
+	public void onDestoryGameObject(UIElement uiElement)
+	{ uiElements.remove(uiElement); }
 
 	/**
 	 * Called on the start of the main thread.

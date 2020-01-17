@@ -10,7 +10,7 @@ import bidimensionalengine.engine.playercomponents.Transform;
 /**
  * @author Dylan Raiff
  */
-public class GameObject
+public class GameObject extends Renderable
 {
 	/**
 	 * Name of the {@code GameObject}.
@@ -59,7 +59,20 @@ public class GameObject
 			Window.getGameLoop().onCreateGameObject(this);
 	}
 
+	/**
+	 * Called every tick in the main thread.
+	 */
+	@Override
 	public void update()
+	{
+
+	}
+
+	/**
+	 * Called very tick in the rendering thread.
+	 */
+	@Override
+	public void render()
 	{
 
 	}
@@ -102,4 +115,5 @@ public class GameObject
 	 */
 	public void destory()
 	{ Window.getGameLoop().onDestoryGameObject(this); }
+
 }
