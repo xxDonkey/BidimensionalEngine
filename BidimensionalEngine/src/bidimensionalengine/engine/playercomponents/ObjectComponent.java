@@ -10,19 +10,13 @@ public abstract class ObjectComponent
 	public abstract void update();
 
 	private GameObject gameObject;
-	private PlayerComponentType type;
 
-	public ObjectComponent(GameObject gameObject, PlayerComponentType type)
-	{
-		this.gameObject = gameObject;
-		this.type = type;
-	}
+	public ObjectComponent(GameObject gameObject)
+	{ this.gameObject = gameObject; }
 
 	/* Access methods */
 
 	public GameObject getParent()
 	{ return gameObject; }
 
-	public PlayerComponentType getType()
-	{ return type; }
 }

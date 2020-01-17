@@ -1,10 +1,10 @@
 package bidimensionalengine.engine.datastructs;
 
+import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
 
 import bidimensionalengine.core.Window;
 import bidimensionalengine.engine.playercomponents.ObjectComponent;
-import bidimensionalengine.engine.playercomponents.PlayerComponentType;
 
 /**
  * @author Dylan Raiff
@@ -12,29 +12,32 @@ import bidimensionalengine.engine.playercomponents.PlayerComponentType;
 public class GameObject
 {
 	/**
-	 * 
+	 * Name of the {@code GameObject}.
 	 */
-	String name;
+	private String name;
 
 	/**
-	 * 
+	 * {@code GameObject} that this is parented to in the hierarchy.
 	 */
-	GameObject parent;
+	private GameObject parent;
 
 	/**
-	 * 
+	 * A list containing objects of type {@code GameObject}, where each element has
+	 * its parent set to this.
 	 */
-	ArrayList<GameObject> children;
+	private ArrayList<GameObject> children;
 
 	/**
-	 * 
+	 * A list containing objects of type {@code ObjectComponent}, representing all
+	 * components attached to this {@code GameObject}.
 	 */
-	ArrayList<ObjectComponent> components;
+	private ArrayList<ObjectComponent> components;
 
 	/**
+	 * Default constructor.
 	 * 
-	 * @param name
-	 * @param parent
+	 * @param name   name of the game object
+	 * @param parent parent of the game object
 	 */
 	public GameObject(String name, GameObject parent)
 	{
@@ -44,15 +47,38 @@ public class GameObject
 		children = new ArrayList<GameObject>();
 		components = new ArrayList<ObjectComponent>();
 
-		Window.getGameLoop().onCreateGameObject(this);
+		if (Window.getGameLoop() != null)
+			Window.getGameLoop().onCreateGameObject(this);
+	}
+
+	public void update()
+	{
+
 	}
 
 	/**
 	 * 
+	 * 
 	 * @param component
 	 */
-	public void addComponent(ObjectComponent component)
-	{ components.add(component); }
+	public void addComponent(Class<?> type)
+	{
+		Object obj = null;
+		try
+		{
+			obj = type.getDeclaredConstructors()[0].newInstance(this);
+		}
+		catch (InstantiationException | IllegalAccessException | IllegalArgumentException | InvocationTargetException
+				| SecurityException e)
+		{
+			e.printStackTrace();
+		}
+
+		if (obj != null && obj instanceof ObjectComponent)
+		{
+			components.add((ObjectComponent) obj);
+		}
+	}
 
 	/**
 	 * 
@@ -66,20 +92,4 @@ public class GameObject
 	 */
 	public void destory()
 	{ Window.getGameLoop().onDestoryGameObject(this); }
-
-	/**
-	 * 
-	 * @param type
-	 * @return
-	 */
-	public ObjectComponent getComponent(PlayerComponentType type)
-	{
-		for (ObjectComponent c : components)
-		{
-			if (c.getType() == type)
-				return c;
-		}
-		return null;
-	}
-
 }

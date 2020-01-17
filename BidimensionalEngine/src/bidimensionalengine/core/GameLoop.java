@@ -14,9 +14,17 @@ public class GameLoop implements Runnable
 	 */
 	private ArrayList<GameObject> gameObjects = new ArrayList<GameObject>();
 
+	/**
+	 * 
+	 * @param gameObject
+	 */
 	public void onCreateGameObject(GameObject gameObject)
 	{ gameObjects.add(gameObject); }
 
+	/**
+	 * 
+	 * @param gameObject
+	 */
 	public void onDestoryGameObject(GameObject gameObject)
 	{ gameObjects.remove(gameObject); }
 
@@ -35,6 +43,9 @@ public class GameLoop implements Runnable
 			{
 				if (Window.getUpdateMethod() != null)
 					Window.getUpdateMethod().method();
+
+				for (GameObject gameObject : gameObjects)
+					gameObject.update();
 
 				Window.getGFX().repaint();
 

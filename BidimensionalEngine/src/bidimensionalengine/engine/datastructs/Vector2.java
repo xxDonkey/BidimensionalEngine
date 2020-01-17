@@ -5,6 +5,13 @@ package bidimensionalengine.engine.datastructs;
  */
 public class Vector2
 {
+	/* Static data */
+
+	/**
+	 * An empty {@code Vector2} that is always referenceable.
+	 */
+	public static final Vector2 zero = new Vector2(0, 0);
+
 	/**
 	 * Calculates the dot product of two vectors {@code v1} and {@code v2}.
 	 * 
@@ -41,6 +48,42 @@ public class Vector2
 	{ return new Vector2(v1.x, -v1.y); }
 
 	/**
+	 * Linearly interpolates between the two points.
+	 * 
+	 * @param p1 first point
+	 * @param p2 second point
+	 * @return a {@code Vector2} which is linerally interpolated based off the input
+	 *         points
+	 */
+	public static Vector2 lerp(Vector2 p1, Vector2 p2)
+	{
+		double x = p1.x * 0.5d + p2.x * 0.5d;
+		double y = p1.y * 0.5d + p2.y * 0.5d;
+
+		return new Vector2(x, y);
+	}
+
+	/**
+	 * Linearly interpolates between the two points.
+	 * 
+	 * @param p1    first point
+	 * @param p2    second point
+	 * @param ratio which side to lerp towards. > 0.5 means closer to p1, < 0.5
+	 *              means closer to p2
+	 * @return a {@code Vector2} which is linerally interpolated based off the input
+	 *         points and ratio
+	 */
+	public static Vector2 lerp(Vector2 p1, Vector2 p2, double ratio)
+	{
+		double x = p1.x * ratio + p2.x * (1 - ratio);
+		double y = p1.y * ratio + p2.y * (1 - ratio);
+
+		return new Vector2(x, y);
+	}
+
+	/* Instance data */
+
+	/**
 	 * {@code x} component of the vector.
 	 */
 	public double x;
@@ -69,7 +112,12 @@ public class Vector2
 	 *         components of {@code this} and {@code v}.
 	 */
 	public Vector2 add(Vector2 v)
-	{ return new Vector2(x + v.x, y + v.y); }
+	{
+		x += v.x;
+		y += v.y;
+
+		return new Vector2(x, y);
+	}
 
 	/**
 	 * Performs subtraction between the components of {@code this} and {@code v}.
@@ -79,7 +127,12 @@ public class Vector2
 	 *         respective components of {@code this} and {@code v}.
 	 */
 	public Vector2 sub(Vector2 v)
-	{ return new Vector2(x - v.x, y - v.y); }
+	{
+		x -= v.x;
+		y -= v.y;
+
+		return new Vector2(x, y);
+	}
 
 	/**
 	 * Performs multiplication between the components of {@code this} and {@code v}.
@@ -89,7 +142,12 @@ public class Vector2
 	 *         components of {@code this} and {@code v}.
 	 */
 	public Vector2 mul(Vector2 v)
-	{ return new Vector2(x * v.x, y * v.y); }
+	{
+		x *= v.x;
+		y *= v.y;
+
+		return new Vector2(x, y);
+	}
 
 	/**
 	 * Performs division between the components of {@code this} and {@code v}.
@@ -99,6 +157,11 @@ public class Vector2
 	 *         respective components of {@code this} and {@code v}.
 	 */
 	public Vector2 div(Vector2 v)
-	{ return new Vector2(x / v.x, y / v.y); }
+	{
+		x /= v.x;
+		y /= v.y;
+
+		return new Vector2(x, y);
+	}
 
 }
