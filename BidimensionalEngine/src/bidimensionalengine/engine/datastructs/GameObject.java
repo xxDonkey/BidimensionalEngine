@@ -5,6 +5,7 @@ import java.util.ArrayList;
 
 import bidimensionalengine.core.Window;
 import bidimensionalengine.engine.playercomponents.ObjectComponent;
+import bidimensionalengine.engine.playercomponents.Transform;
 
 /**
  * @author Dylan Raiff
@@ -14,24 +15,29 @@ public class GameObject
 	/**
 	 * Name of the {@code GameObject}.
 	 */
-	private String name;
+	protected String name;
 
 	/**
 	 * {@code GameObject} that this is parented to in the hierarchy.
 	 */
-	private GameObject parent;
+	protected GameObject parent;
+
+	/**
+	 * {@code Transform} that belongs to the game object.
+	 */
+	protected Transform transform;
 
 	/**
 	 * A list containing objects of type {@code GameObject}, where each element has
 	 * its parent set to this.
 	 */
-	private ArrayList<GameObject> children;
+	protected ArrayList<GameObject> children;
 
 	/**
 	 * A list containing objects of type {@code ObjectComponent}, representing all
 	 * components attached to this {@code GameObject}.
 	 */
-	private ArrayList<ObjectComponent> components;
+	protected ArrayList<ObjectComponent> components;
 
 	/**
 	 * Default constructor.
@@ -44,8 +50,10 @@ public class GameObject
 		this.name = name;
 		this.parent = parent;
 
-		children = new ArrayList<GameObject>();
-		components = new ArrayList<ObjectComponent>();
+		this.transform = new Transform(this);
+
+		this.children = new ArrayList<GameObject>();
+		this.components = new ArrayList<ObjectComponent>();
 
 		if (Window.getGameLoop() != null)
 			Window.getGameLoop().onCreateGameObject(this);

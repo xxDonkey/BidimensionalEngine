@@ -1,14 +1,20 @@
 package bidimensionalengine.engine.ui;
 
-public abstract class UIElement
+import bidimensionalengine.engine.datastructs.GameObject;
+import bidimensionalengine.engine.playercomponents.Transform;
+
+public abstract class UIElement extends GameObject
 {
-	private String name;
-	private Container parent;
+	protected Container parent;
+
+	protected Transform transform;
 
 	public UIElement(String name, Container parent)
 	{
-		this.name = name;
+		super(name, (GameObject) parent);
 		this.parent = parent;
+
+		this.transform = new Transform((GameObject) parent);
 	}
 
 	public String getName()

@@ -9,7 +9,7 @@ public abstract class ObjectComponent
 {
 	public abstract void update();
 
-	private GameObject gameObject;
+	protected GameObject gameObject;
 
 	public ObjectComponent(GameObject gameObject)
 	{ this.gameObject = gameObject; }
