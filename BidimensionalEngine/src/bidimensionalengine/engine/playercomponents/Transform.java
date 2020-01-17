@@ -6,12 +6,12 @@ import bidimensionalengine.engine.datastructs.Vector2;
 public class Transform extends ObjectComponent
 {
 	/**
-	 * 
+	 * Transform's position as a {@code Vector2}.
 	 */
 	Vector2 position;
 
 	/**
-	 * 
+	 * Transform's rotation as a {@code Vector2}.
 	 */
 	Vector2 rotation;
 
