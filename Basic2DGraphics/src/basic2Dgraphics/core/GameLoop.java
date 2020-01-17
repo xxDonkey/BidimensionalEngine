@@ -14,7 +14,7 @@ public class GameLoop implements Runnable
 		Window.getStartMethod().method();
 
 		long lastTime = System.currentTimeMillis();
-		while (true)
+		while (Window.getTPS() != -1)
 		{
 			if (Math.abs(System.currentTimeMillis() - lastTime) > 1000d * (1d / Window.getTPS()))
 			{
