@@ -1,6 +1,5 @@
 package bidimensionalengine.engine.playercomponents;
 
-import bidimensionalengine.core.Window;
 import bidimensionalengine.engine.datastructs.GameObject;
 
 /**
@@ -10,24 +9,19 @@ public abstract class ObjectComponent
 {
 	public abstract void update();
 
-	private GameObject parent;
+	private GameObject gameObject;
 	private PlayerComponentType type;
 
-	public ObjectComponent(GameObject parent, PlayerComponentType type)
+	public ObjectComponent(GameObject gameObject, PlayerComponentType type)
 	{
-		this.parent = parent;
+		this.gameObject = gameObject;
 		this.type = type;
-
-		Window.getGameLoop().onCreateObjectComponent(this);
 	}
-
-	public void destory()
-	{ Window.getGameLoop().onDestoryObjectComponent(this); }
 
 	/* Access methods */
 
 	public GameObject getParent()
-	{ return parent; }
+	{ return gameObject; }
 
 	public PlayerComponentType getType()
 	{ return type; }
