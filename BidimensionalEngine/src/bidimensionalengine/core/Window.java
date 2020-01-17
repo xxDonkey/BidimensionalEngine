@@ -482,20 +482,20 @@ public class Window extends JFrame
 		public ComplexMouseEventInterface onMouseEntered;
 
 		/**
-		 * Called when the cursor enters the bounds of the listened to component if not
+		 * Called when the cursor exits the bounds of the listened to component if not
 		 * {@code null}.
 		 */
 		public ComplexMouseEventInterface onMouseExited;
 
 		/**
-		 * Called when the cursor enters the bounds of the listened to component if not
-		 * {@code null}.
+		 * Called when the user presses a mouse button while the cursor is over the
+		 * listened to component. if not {@code null}.
 		 */
 		public ComplexMouseEventInterface onMousePressed;
 
 		/**
-		 * Called when the cursor enters the bounds of the listened to component if not
-		 * {@code null}.
+		 * Called when the user releases a mouse button after a mouse press over the
+		 * listened to component. if not {@code null}.
 		 */
 		public ComplexMouseEventInterface onMouseReleased;
 
