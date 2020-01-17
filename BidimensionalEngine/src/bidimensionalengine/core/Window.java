@@ -424,8 +424,8 @@ public class Window extends JFrame
 	}
 
 	/**
-	 * Class for storing all method references used by the keyboard listener. All
-	 * methods return void and take a KeyEvent.
+	 * Class for storing all method references used by the {@code KeyboardListener}.
+	 * All methods return void and take a {@code KeyEvent}.
 	 * 
 	 * @author Dylan Raiff
 	 */
@@ -463,8 +463,8 @@ public class Window extends JFrame
 	}
 
 	/**
-	 * Class for storing all method references used by the mouse listener. All
-	 * methods return void and take a MouseEvent.
+	 * Class for storing all method references used by the {@code MouseListener}.
+	 * All methods return void and take a {@code MouseEvent}.
 	 * 
 	 * @author Dylan Raiff
 	 */
