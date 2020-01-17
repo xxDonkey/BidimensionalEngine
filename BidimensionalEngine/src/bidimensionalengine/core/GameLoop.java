@@ -1,10 +1,25 @@
 package bidimensionalengine.core;
 
+import java.util.ArrayList;
+
+import bidimensionalengine.engine.playercomponents.ObjectComponent;
+
 /**
  * @author Dylan Raiff
  */
 public class GameLoop implements Runnable
 {
+	/**
+	 * Holds all of the {@code ObjectComponent} attached to each {@code GameObject}.
+	 */
+	private ArrayList<ObjectComponent> components = new ArrayList<ObjectComponent>();
+
+	public void onCreateObjectComponent(ObjectComponent component)
+	{ components.add(component); }
+
+	public void onDestoryObjectComponent(ObjectComponent component)
+	{ components.remove(component); }
+
 	/**
 	 * Called on the start of the main thread.
 	 */

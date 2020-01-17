@@ -39,9 +39,13 @@ public class Window extends JFrame
 	private static CustomGraphics gfx;
 
 	/**
+	 * Reference to the {@code GameLoop} running on {@code thread}.
+	 */
+	private static GameLoop gameLoop;
+
+	/**
 	 * Method to be called once upon the start of {@code thread}.
 	 */
-
 	private static ComplexInterface startMethod;
 
 	/**
@@ -84,6 +88,9 @@ public class Window extends JFrame
 
 	public static CustomGraphics getGFX()
 	{ return Window.gfx; }
+
+	public static GameLoop getGameLoop()
+	{ return Window.gameLoop; }
 
 	public static ComplexInterface getStartMethod()
 	{ return Window.startMethod; }
@@ -411,9 +418,9 @@ public class Window extends JFrame
 			System.err.println("Images could not be loaded.");
 		}
 
-		GameLoop game = new GameLoop();
-		thread = new Thread(game);
-		thread.start();
+		Window.gameLoop = new GameLoop();
+		Window.thread = new Thread(gameLoop);
+		Window.thread.start();
 	}
 
 	/**
