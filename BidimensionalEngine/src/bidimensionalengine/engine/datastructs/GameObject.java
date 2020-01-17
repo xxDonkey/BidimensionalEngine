@@ -61,7 +61,7 @@ public class GameObject
 	 * 
 	 * @param component
 	 */
-	public void addComponent(Class<?> type)
+	public boolean addComponent(Class<?> type)
 	{
 		Object obj = null;
 		try
@@ -77,7 +77,9 @@ public class GameObject
 		if (obj != null && obj instanceof ObjectComponent)
 		{
 			components.add((ObjectComponent) obj);
+			return true;
 		}
+		return false;
 	}
 
 	/**

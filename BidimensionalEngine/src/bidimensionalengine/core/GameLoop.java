@@ -10,7 +10,7 @@ import bidimensionalengine.engine.datastructs.GameObject;
 public class GameLoop implements Runnable
 {
 	/**
-	 * Holds all of the {@code ObjectComponent} attached to each {@code GameObject}.
+	 * Holds all of the engine's active {@code GameObject}.
 	 */
 	private ArrayList<GameObject> gameObjects = new ArrayList<GameObject>();
 
