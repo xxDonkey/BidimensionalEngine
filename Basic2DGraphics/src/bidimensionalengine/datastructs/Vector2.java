@@ -49,6 +49,12 @@ public class Vector2
 	 */
 	public double y;
 
+	/**
+	 * Creates a new {@code Vector2} with components ({@code x}, {@code y}).
+	 * 
+	 * @param x initial x
+	 * @param y initial y
+	 */
 	public Vector2(double x, double y)
 	{
 		this.x = x;

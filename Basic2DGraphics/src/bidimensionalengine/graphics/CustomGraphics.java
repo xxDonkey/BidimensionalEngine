@@ -11,6 +11,12 @@ import bidimensionalengine.core.Window;
  */
 public class CustomGraphics extends Component
 {
+	/**
+	 * Called behind the scenes. <br>
+	 * Calls the graphics function passed to the constructor of
+	 * {@code bidimensionalengine.core.Window}.
+	 */
+	@Override
 	public void paint(Graphics g)
 	{ Window.getGraphicsMethod().accept((Graphics2D) g); }
 }

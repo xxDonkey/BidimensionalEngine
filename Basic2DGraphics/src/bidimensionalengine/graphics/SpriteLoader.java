@@ -22,8 +22,8 @@ public class SpriteLoader
 
 	/**
 	 * Loads the specified file. Called in
-	 * {@code basic2Dgraphics.core.Window.startMethod} for each file found in
-	 * {@code basic2Dgraphics.core.Window.assetDirectory}.
+	 * {@code bidimensionalengine.core.Window.startMethod} for each file found in
+	 * {@code bidimensionalengine.core.Window.assetDirectory}.
 	 * 
 	 * @param filename filename of image to load
 	 * @return true if successfully loaded, otherwise false
@@ -49,9 +49,11 @@ public class SpriteLoader
 	}
 
 	/**
+	 * Returns the sprite at the specified index in {@code loadedSprites},
+	 * {@code null} if index is out of bounds.
 	 * 
-	 * @param index
-	 * @return
+	 * @param index index of sprite to retrieve
+	 * @return desired sprite
 	 */
 	public Sprite getSprite(int index)
 	{
@@ -62,9 +64,11 @@ public class SpriteLoader
 	}
 
 	/**
+	 * Returns the sprite in {@code loadedSprites} if it exists, otherwise
+	 * {@code null}.
 	 * 
-	 * @param name
-	 * @return
+	 * @param name name of sprite to retrive
+	 * @return desired sprite
 	 */
 	public Sprite getSprite(String name)
 	{

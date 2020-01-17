@@ -340,10 +340,28 @@ public class Window extends JFrame
 	 */
 	public static class KeyboardInputMethodData
 	{
+		/**
+		 * Called when a key has been pressed if not {@code null}.
+		 */
 		public ComplexKeyEventInterface onKeyPressed;
+
+		/**
+		 * Called when a key has been typed if not {@code null}.
+		 */
 		public ComplexKeyEventInterface onKeyTyped;
+
+		/**
+		 * Called when a key has been released if not {@code null}.
+		 */
 		public ComplexKeyEventInterface onKeyReleased;
 
+		/**
+		 * Assigns method refences.
+		 * 
+		 * @param onKeyPressed  method called on press
+		 * @param onKeyTyped    method called on type
+		 * @param onKeyReleased method called on release
+		 */
 		public KeyboardInputMethodData(ComplexKeyEventInterface onKeyPressed, ComplexKeyEventInterface onKeyTyped,
 				ComplexKeyEventInterface onKeyReleased)
 		{
@@ -361,12 +379,44 @@ public class Window extends JFrame
 	 */
 	public static class MouseInputMethodData
 	{
+		/**
+		 * Called when the user clicks the listened to component if not {@code null}.
+		 */
 		public ComplexMouseEventInterface onMouseClicked;
+
+		/**
+		 * Called when the cursor enters the bounds of the listened to component if not
+		 * {@code null}.
+		 */
 		public ComplexMouseEventInterface onMouseEntered;
+
+		/**
+		 * Called when the cursor enters the bounds of the listened to component if not
+		 * {@code null}.
+		 */
 		public ComplexMouseEventInterface onMouseExited;
+
+		/**
+		 * Called when the cursor enters the bounds of the listened to component if not
+		 * {@code null}.
+		 */
 		public ComplexMouseEventInterface onMousePressed;
+
+		/**
+		 * Called when the cursor enters the bounds of the listened to component if not
+		 * {@code null}.
+		 */
 		public ComplexMouseEventInterface onMouseReleased;
 
+		/**
+		 * Assigns method refences.
+		 * 
+		 * @param onMouseClicked  method called on click
+		 * @param onMouseEntered  method called on enter
+		 * @param onMouseExited   method called on exit
+		 * @param onMousePressed  method called on press
+		 * @param onMouseReleased method called on release
+		 */
 		public MouseInputMethodData(ComplexMouseEventInterface onMouseClicked,
 				ComplexMouseEventInterface onMouseEntered, ComplexMouseEventInterface onMouseExited,
 				ComplexMouseEventInterface onMousePressed, ComplexMouseEventInterface onMouseReleased)
