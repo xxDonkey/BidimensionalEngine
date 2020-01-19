@@ -100,8 +100,9 @@ public class GameObject
 	}
 
 	/**
+	 * Adds a componnent to this game object.
 	 * 
-	 * @param component
+	 * @param component component to add.
 	 */
 	public void removeComponent(ObjectComponent component)
 	{
@@ -112,8 +113,19 @@ public class GameObject
 		}
 	}
 
+	public ObjectComponent getComponent(Class<?> type)
+	{
+		for (ObjectComponent component : components)
+		{
+			if (component.getClass().toString().equals(type.getClass().toString()))
+				return component;
+		}
+
+		return null;
+	}
+
 	/**
-	 * 
+	 * Destorys this game object.
 	 */
 	public void destory()
 	{ Window.getGameLoop().onDestoryGameObject(this); }

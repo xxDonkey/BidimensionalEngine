@@ -19,6 +19,12 @@ public final class CustomGraphics extends Component
 	private ArrayList<Consumer<Graphics2D>> imageRenderMethods;
 
 	/**
+	 * Initializes the {@code imageRenderMethods} {@code ArrayList}.
+	 */
+	public CustomGraphics()
+	{ imageRenderMethods = new ArrayList<Consumer<Graphics2D>>(); }
+
+	/**
 	 * Called behind the scenes. <br>
 	 * Calls the graphics function passed to the constructor of
 	 * {@code bidimensionalengine.core.Window}.
@@ -33,15 +39,17 @@ public final class CustomGraphics extends Component
 	}
 
 	/**
+	 * Adds a method to list list of render methods to call.
 	 * 
-	 * @param method
+	 * @param method method to add
 	 */
 	public void addImageRenderMethod(Consumer<Graphics2D> method)
 	{ imageRenderMethods.add(method); }
 
 	/**
+	 * Removes a method to list list of render methods to call.
 	 * 
-	 * @param method
+	 * @param method method to remove
 	 */
 	public void removeImageRenderMethod(Consumer<Graphics2D> method)
 	{ imageRenderMethods.remove(method); }

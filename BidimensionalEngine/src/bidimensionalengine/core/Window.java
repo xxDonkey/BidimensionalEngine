@@ -346,7 +346,6 @@ public final class Window extends JFrame
 	 * Window constructer with <u>no update method, and therefore no input</u>.
 	 * Calls the start method and graphics method <b>one time each</b>.
 	 * 
-	 * @param name
 	 * @param name           name of the window
 	 * @param width          width of the window
 	 * @param height         height of the window

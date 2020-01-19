@@ -23,8 +23,8 @@ public class Transform extends ObjectComponent
 	{
 		super(gameObject);
 
-		position = Vector2.zero;
-		rotation = Vector2.zero;
+		position = new Vector2(0, 0);
+		rotation = new Vector2(0, 0);
 	}
 
 	/**
