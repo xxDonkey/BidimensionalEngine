@@ -80,5 +80,6 @@ public final class GameLoop implements Runnable
 			}
 		}
 
+		Window.getInstance().setVisible(true);
 	}
 }

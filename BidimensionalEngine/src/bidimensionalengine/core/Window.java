@@ -460,6 +460,9 @@ public final class Window extends JFrame
 			this.onKeyTyped = onKeyTyped;
 			this.onKeyReleased = onKeyReleased;
 		}
+
+		public boolean allVoid()
+		{ return (onKeyPressed == null && onKeyTyped == null && onKeyReleased == null); }
 	}
 
 	/**
@@ -517,6 +520,12 @@ public final class Window extends JFrame
 			this.onMouseExited = onMouseExited;
 			this.onMousePressed = onMousePressed;
 			this.onMouseReleased = onMouseReleased;
+		}
+
+		public boolean allVoid()
+		{
+			return (onMouseClicked == null && onMouseEntered == null && onMouseExited == null && onMousePressed == null
+					&& onMouseReleased == null);
 		}
 	}
 
