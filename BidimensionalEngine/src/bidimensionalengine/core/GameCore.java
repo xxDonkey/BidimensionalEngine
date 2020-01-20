@@ -144,6 +144,21 @@ public abstract class GameCore
 	public void onMouseReleased(MouseEvent e)
 	{ useOnMouseReleased = true; }
 
+	/**
+	 * <p>
+	 * Creates a new {@code Window}. If no input methods are used, and an
+	 * {@code ticksPerSecond} is greater than 0, a window with an update method will
+	 * be created. Otherwise, a once-updated window will be instantiated.
+	 * <p>
+	 * If input is used, a window with either keyboard input, mouse input, or both
+	 * will be created.
+	 * 
+	 * @param title          title of the window
+	 * @param assetDirectory directory where assets are located
+	 * @param width          width of the window
+	 * @param height         height of the window
+	 * @param ticksPerSecond number of times the window updates in a second
+	 */
 	public void createWindow(String title, String assetDirectory, int width, int height, int ticksPerSecond)
 	{
 		Window.KeyboardInputMethodData keyboardInput = new Window.KeyboardInputMethodData(
