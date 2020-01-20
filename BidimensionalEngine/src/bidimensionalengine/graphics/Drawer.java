@@ -7,6 +7,9 @@ import java.util.ArrayList;
 
 import bidimensionalengine.datastructs.Vector2;
 
+/**
+ * @author Dylan Raiff
+ */
 public class Drawer
 {
 	/**
