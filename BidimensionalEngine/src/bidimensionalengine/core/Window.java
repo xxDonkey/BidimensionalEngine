@@ -19,6 +19,7 @@ import bidimensionalengine.input.MouseInput;
  * not instantiate, done so by {@code GameCore}.
  * 
  * @author Dylan Raiff
+ * @version 1.0
  */
 public final class Window extends JFrame
 {
