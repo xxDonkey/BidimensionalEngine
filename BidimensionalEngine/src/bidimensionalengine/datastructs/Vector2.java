@@ -1,4 +1,4 @@
-package bidimensionalengine.engine.datastructs;
+package bidimensionalengine.datastructs;
 
 /**
  * @author Dylan Raiff

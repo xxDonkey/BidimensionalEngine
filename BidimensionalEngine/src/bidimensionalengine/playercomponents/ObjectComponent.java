@@ -1,6 +1,6 @@
-package bidimensionalengine.engine.playercomponents;
+package bidimensionalengine.playercomponents;
 
-import bidimensionalengine.engine.datastructs.GameObject;
+import bidimensionalengine.datastructs.GameObject;
 
 /**
  * @author Dylan Raiff

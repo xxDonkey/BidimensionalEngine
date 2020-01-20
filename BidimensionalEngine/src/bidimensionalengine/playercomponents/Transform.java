@@ -1,7 +1,7 @@
-package bidimensionalengine.engine.playercomponents;
+package bidimensionalengine.playercomponents;
 
-import bidimensionalengine.engine.datastructs.GameObject;
-import bidimensionalengine.engine.datastructs.Vector2;
+import bidimensionalengine.datastructs.GameObject;
+import bidimensionalengine.datastructs.Vector2;
 
 public class Transform extends ObjectComponent
 {

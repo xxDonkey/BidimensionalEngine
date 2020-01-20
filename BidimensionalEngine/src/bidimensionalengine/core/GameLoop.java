@@ -2,8 +2,8 @@ package bidimensionalengine.core;
 
 import java.util.ArrayList;
 
-import bidimensionalengine.engine.datastructs.GameObject;
-import bidimensionalengine.engine.ui.UIElement;
+import bidimensionalengine.datastructs.GameObject;
+import bidimensionalengine.ui.UIElement;
 
 /**
  * @author Dylan Raiff

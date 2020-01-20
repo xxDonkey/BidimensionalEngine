@@ -1,7 +1,7 @@
-package bidimensionalengine.engine.ui;
+package bidimensionalengine.ui;
 
-import bidimensionalengine.engine.datastructs.GameObject;
-import bidimensionalengine.engine.playercomponents.Transform;
+import bidimensionalengine.datastructs.GameObject;
+import bidimensionalengine.playercomponents.Transform;
 
 /**
  * @author Dylan Raiff

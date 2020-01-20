@@ -9,10 +9,10 @@ import java.util.function.Consumer;
 
 import javax.swing.JFrame;
 
-import bidimensionalengine.core.graphics.CustomGraphics;
-import bidimensionalengine.core.graphics.SpriteLoader;
-import bidimensionalengine.core.input.KeyboardInput;
-import bidimensionalengine.core.input.MouseInput;
+import bidimensionalengine.graphics.CustomGraphics;
+import bidimensionalengine.graphics.SpriteLoader;
+import bidimensionalengine.input.KeyboardInput;
+import bidimensionalengine.input.MouseInput;
 
 /**
  * Main instantiatable class of the basic2Dgraphics package.
@@ -409,7 +409,8 @@ public final class Window extends JFrame
 			String[] files = new File(Window.assetDirectory).list();
 			for (String file : files)
 			{
-				SpriteLoader.loadImage(file);
+				if (!SpriteLoader.loadImage(file))
+					break;
 			}
 		}
 		catch (Exception e)

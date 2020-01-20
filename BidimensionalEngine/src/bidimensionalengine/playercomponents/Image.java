@@ -1,11 +1,11 @@
-package bidimensionalengine.engine.playercomponents;
+package bidimensionalengine.playercomponents;
 
 import java.awt.Graphics2D;
 
 import bidimensionalengine.core.Window;
-import bidimensionalengine.core.graphics.Sprite;
-import bidimensionalengine.core.graphics.SpriteLoader;
-import bidimensionalengine.engine.datastructs.GameObject;
+import bidimensionalengine.datastructs.GameObject;
+import bidimensionalengine.graphics.Sprite;
+import bidimensionalengine.graphics.SpriteLoader;
 
 public class Image extends ObjectComponent
 {

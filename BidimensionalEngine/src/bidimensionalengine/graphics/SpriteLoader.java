@@ -1,9 +1,8 @@
-package bidimensionalengine.core.graphics;
+package bidimensionalengine.graphics;
 
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.FileInputStream;
-import java.io.IOException;
 import java.util.ArrayList;
 
 import javax.imageio.ImageIO;
@@ -38,9 +37,9 @@ public final class SpriteLoader
 		{
 			FileInputStream fileInputStream = new FileInputStream(new File(Window.getAssetDirectory() + filename));
 			img = ImageIO.read(fileInputStream);
-			loadedSprites.add(new Sprite(null, img));
+			loadedSprites.add(new Sprite(filename, img));
 		}
-		catch (IOException e)
+		catch (Exception e)
 		{
 			e.printStackTrace();
 			return false;

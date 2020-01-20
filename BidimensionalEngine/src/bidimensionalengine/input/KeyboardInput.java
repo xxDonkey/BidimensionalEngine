@@ -1,4 +1,4 @@
-package bidimensionalengine.core.input;
+package bidimensionalengine.input;
 
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;

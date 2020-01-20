@@ -1,12 +1,12 @@
-package bidimensionalengine.engine.datastructs;
+package bidimensionalengine.datastructs;
 
 import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
 
 import bidimensionalengine.core.Window;
-import bidimensionalengine.engine.playercomponents.Image;
-import bidimensionalengine.engine.playercomponents.ObjectComponent;
-import bidimensionalengine.engine.playercomponents.Transform;
+import bidimensionalengine.playercomponents.Image;
+import bidimensionalengine.playercomponents.ObjectComponent;
+import bidimensionalengine.playercomponents.Transform;
 
 /**
  * @author Dylan Raiff

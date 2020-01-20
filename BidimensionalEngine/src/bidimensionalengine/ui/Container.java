@@ -1,4 +1,4 @@
-package bidimensionalengine.engine.ui;
+package bidimensionalengine.ui;
 
 import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
