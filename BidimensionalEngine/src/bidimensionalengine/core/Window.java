@@ -406,7 +406,7 @@ public final class Window extends JFrame
 
 		try
 		{
-			String[] files = new File(Window.assetDirectory).list();
+			String[] files = new File(Window.assetDirectory + "sprites/").list();
 			for (String file : files)
 			{
 				if (!SpriteLoader.loadImage(file))
@@ -416,6 +416,19 @@ public final class Window extends JFrame
 		catch (Exception e)
 		{
 			System.err.println("Images could not be loaded.");
+		}
+
+		try
+		{
+			String[] files = new File(Window.assetDirectory + "audio/").list();
+			for (String file : files)
+			{
+
+			}
+		}
+		catch (Exception e)
+		{
+			System.err.println("Audio files could not be loaded.");
 		}
 
 		Window.gameLoop = new GameLoop();
