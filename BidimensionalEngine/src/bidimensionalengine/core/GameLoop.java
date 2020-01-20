@@ -71,7 +71,10 @@ public final class GameLoop implements Runnable
 				for (GameObject gameObject : gameObjects)
 					gameObject.update();
 
-				Window.getGFX().repaint();
+				if (!Window.getInstance().isVisible())
+					Window.getInstance().setVisible(true);
+				else
+					Window.getGFX().repaint();
 
 				lastTime = System.currentTimeMillis();
 			}
