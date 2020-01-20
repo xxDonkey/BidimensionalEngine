@@ -15,7 +15,8 @@ import bidimensionalengine.input.KeyboardInput;
 import bidimensionalengine.input.MouseInput;
 
 /**
- * Main instantiatable class of the basic2Dgraphics package.
+ * Main class that holds all global references in the Bidimensional Engine. Do
+ * not instantiate, done so by {@code GameCore}.
  * 
  * @author Dylan Raiff
  */
