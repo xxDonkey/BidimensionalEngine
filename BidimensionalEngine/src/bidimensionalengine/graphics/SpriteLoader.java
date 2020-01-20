@@ -15,6 +15,12 @@ import bidimensionalengine.core.Window;
 public final class SpriteLoader
 {
 	/**
+	 * Private constructer to disallow instantiation of the class.
+	 */
+	private SpriteLoader()
+	{}
+
+	/**
 	 * Atlas of all loaded sprites.
 	 */
 	private static ArrayList<Sprite> loadedSprites = new ArrayList<Sprite>();
