@@ -114,6 +114,11 @@ public class Drawer
 		g.drawImage(sprite.getImage(), x, y, w, h, null);
 	}
 
+	/**
+	 * Draws the specified {@code Polygon}.
+	 * 
+	 * @param poly polygon to draw
+	 */
 	public void polygon(Polygon poly)
 	{
 		g.setColor(fillColor);
