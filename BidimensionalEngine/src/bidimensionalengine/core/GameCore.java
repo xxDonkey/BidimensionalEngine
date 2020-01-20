@@ -5,10 +5,22 @@ import java.awt.event.KeyEvent;
 import java.awt.event.MouseEvent;
 
 /**
+ * <p>
  * Your {@code Main} or {@code Run} class should implement this interface. In
  * it's {@code main()} method, it should instantiate an instance of itself. <br>
  * This interface is not required, but you will have to manually call the Window
- * constructor, <b>it would be much more difficult</b>.
+ * constructor, <b>it would be much more difficult.</b>.
+ * <p>
+ * In order to use input, you must the overridden methods in the {@code super}.
+ * At the end of your main class's constructor, invoke
+ * {@code super.createWindow}, and pass in all required arguments.
+ * <p>
+ * <u>Example:</u><br>
+ * <BLOCKQUOTE>public Main(String title, String assetDirectory, int width, int
+ * height, int ticksPerSecond) <br>
+ * { <BLOCKQUOTE>super.onKeyPressed(null);<br>
+ * super.createWindow(title, assetDirectory, width, height,
+ * ticksPerSecond);</BLOCKQUOTE> }</BLOCKQUOTE>
  * 
  * @author Dylan Raiff
  */
@@ -132,7 +144,7 @@ public abstract class GameCore
 	public void onMouseReleased(MouseEvent e)
 	{ useOnMouseReleased = true; }
 
-	public GameCore(String title, String assetDirectory, int width, int height, int ticksPerSecond)
+	public void createWindow(String title, String assetDirectory, int width, int height, int ticksPerSecond)
 	{
 		Window.KeyboardInputMethodData keyboardInput = new Window.KeyboardInputMethodData(
 				useOnKeyPressed ? this::onKeyPressed : null, useOnKeyTyped ? this::onKeyTyped : null,
@@ -145,6 +157,7 @@ public abstract class GameCore
 
 		if (keyboardInput.allVoid() && mouseInput.allVoid())
 		{
+			System.out.println("a");
 			if (ticksPerSecond <= 0)
 				new Window(title, width, height, assetDirectory, this::start, this::graphics);
 			else
