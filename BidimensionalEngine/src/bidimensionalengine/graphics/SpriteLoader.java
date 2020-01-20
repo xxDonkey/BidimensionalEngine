@@ -11,6 +11,7 @@ import bidimensionalengine.core.Window;
 
 /**
  * @author Dylan Raiff
+ * @version 1.0
  */
 public final class SpriteLoader
 {
@@ -41,7 +42,8 @@ public final class SpriteLoader
 		BufferedImage img = null;
 		try
 		{
-			FileInputStream fileInputStream = new FileInputStream(new File(Window.getAssetDirectory() + filename));
+			FileInputStream fileInputStream = new FileInputStream(
+					new File(Window.getAssetDirectory() + "sprites/" + filename));
 			img = ImageIO.read(fileInputStream);
 			loadedSprites.add(new Sprite(filename, img));
 		}
