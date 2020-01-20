@@ -32,7 +32,7 @@ public final class CustomGraphics extends Component
 	@Override
 	public void paint(Graphics g)
 	{
-		if (Window.getThread() == null || !Window.getThread().isAlive())
+		if (Window.getTPS() > 0 && (Window.getThread() == null || !Window.getThread().isAlive()))
 			return;
 
 		Window.getGraphicsMethod().accept((Graphics2D) g);
