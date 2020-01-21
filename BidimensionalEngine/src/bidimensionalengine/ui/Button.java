@@ -103,7 +103,7 @@ public class Button extends UIElement
 			image.sprite = pressedSprite;
 
 		int x = MouseInfo.getPointerInfo().getLocation().x - Window.getInstance().getLocationOnScreen().x;
-		int y = MouseInfo.getPointerInfo().getLocation().x - Window.getInstance().getLocationOnScreen().x;
+		int y = MouseInfo.getPointerInfo().getLocation().y - Window.getInstance().getLocationOnScreen().y;
 
 		hovering = (x >= transform.position.x && x <= transform.position.x + size.x && y >= transform.position.y
 				&& y <= transform.position.y + size.y);
@@ -125,16 +125,4 @@ public class Button extends UIElement
 	 */
 	public void onMouseRelease()
 	{ pressed = false; }
-
-	private boolean isMouseHovering()
-	{
-		int x = MouseInfo.getPointerInfo().getLocation().x - Window.getInstance().getLocationOnScreen().x;
-		int y = MouseInfo.getPointerInfo().getLocation().y - Window.getInstance().getLocationOnScreen().y;
-
-		if (x >= transform.position.x && x <= transform.position.x + size.x && y >= transform.position.y
-				&& y <= transform.position.y + size.y)
-			return true;
-
-		return false;
-	}
 }
