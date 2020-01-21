@@ -102,8 +102,10 @@ public class Button extends UIElement
 		else
 			image.sprite = pressedSprite;
 
-		int x = MouseInfo.getPointerInfo().getLocation().x - Window.getInstance().getLocationOnScreen().x;
-		int y = MouseInfo.getPointerInfo().getLocation().y - Window.getInstance().getLocationOnScreen().y;
+		int x = MouseInfo.getPointerInfo().getLocation().x - Window.getInstance().getLocationOnScreen().x
+				+ (int) Window.getGFX().translationVector.x;
+		int y = MouseInfo.getPointerInfo().getLocation().y - Window.getInstance().getLocationOnScreen().y
+				+ (int) Window.getGFX().translationVector.y;
 
 		hovering = (x >= transform.position.x && x <= transform.position.x + size.x && y >= transform.position.y
 				&& y <= transform.position.y + size.y);
