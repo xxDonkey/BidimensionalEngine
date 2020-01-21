@@ -70,9 +70,11 @@ public class GameObject
 	}
 
 	/**
+	 * Creates and adds a component of the specified type. If any error was thrown,
+	 * or the class is not an extension of {@code ObjectCompoennt}, false is
+	 * returned. Otherwise, returns true.
 	 * 
-	 * 
-	 * @param component
+	 * @param type class of component to add
 	 */
 	public boolean addComponent(Class<?> type)
 	{
@@ -101,9 +103,9 @@ public class GameObject
 	}
 
 	/**
-	 * Adds a componnent to this game object.
+	 * Removes a componnent to this game object.
 	 * 
-	 * @param component component to add.
+	 * @param component component to remove
 	 */
 	public void removeComponent(ObjectComponent component)
 	{
@@ -133,9 +135,15 @@ public class GameObject
 
 	/* Access methods */
 
+	/**
+	 * @return name of the game object
+	 */
 	public String getName()
 	{ return name; }
 
+	/**
+	 * @return transform of the game object
+	 */
 	public Transform getTransform()
 	{ return transform; }
 
