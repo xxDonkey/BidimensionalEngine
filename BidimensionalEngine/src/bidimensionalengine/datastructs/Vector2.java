@@ -81,8 +81,26 @@ public final class Vector2
 
 		return new Vector2(x, y);
 	}
-	
-	public static Vector2 up = new Vector2();
+
+	/**
+	 * {@code Vector2} representing up.
+	 */
+	public static final Vector2 up = new Vector2(0, 1);
+
+	/**
+	 * {@code Vector2} representing up.
+	 */
+	public static final Vector2 right = new Vector2(1, 0);
+
+	/**
+	 * {@code Vector2} representing up.
+	 */
+	public static final Vector2 down = new Vector2(0, -1);
+
+	/**
+	 * {@code Vector2} representing up.
+	 */
+	public static final Vector2 left = new Vector2(-1, 0);
 
 	/* Instance data */
 
@@ -106,7 +124,7 @@ public final class Vector2
 		this.x = x;
 		this.y = y;
 	}
-	
+
 	/**
 	 * Creates a new, empty {@code Vector2}.
 	 */
