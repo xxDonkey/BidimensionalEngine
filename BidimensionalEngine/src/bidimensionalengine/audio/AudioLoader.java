@@ -66,6 +66,13 @@ public class AudioLoader
 		return true;
 	}
 
+	/**
+	 * Gets the audio at the given index in {@code loadedAudio}. If outside the
+	 * bounds of the array, returns null.
+	 * 
+	 * @param index
+	 * @return
+	 */
 	public static Audio getAudio(int index)
 	{
 		if (index < 0 || index > loadedAudio.size() - 1)
@@ -74,6 +81,13 @@ public class AudioLoader
 		return loadedAudio.get(index);
 	}
 
+	/**
+	 * Gets the audio with the given name in {@code loadedAudio}. If no audio with a
+	 * matching name is found, null is returned.
+	 * 
+	 * @param name name to search for
+	 * @return {@code Audio} with the desired name
+	 */
 	public static Audio getAudio(String name)
 	{
 		for (Audio audio : loadedAudio)
