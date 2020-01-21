@@ -81,74 +81,6 @@ public final class Window extends JFrame
 	 */
 	private static Thread thread;
 
-	/* Access methods so variables are read-only. */
-
-	/**
-	 * @return singleton {@code Window} variable
-	 */
-	public static Window getInstance()
-	{ return Window.instance; }
-
-	/**
-	 * @return ticks per second of the engine
-	 */
-	public static int getTPS()
-	{ return Window.tps; }
-
-	/**
-	 * @return {@code CustomGraphics} object of the engine
-	 */
-	public static CustomGraphics getGFX()
-	{ return Window.gfx; }
-
-	/**
-	 * @return main game loop
-	 */
-	public static GameLoop getGameLoop()
-	{ return Window.gameLoop; }
-
-	/**
-	 * @return method called once upon start
-	 */
-	public static ComplexInterface getStartMethod()
-	{ return Window.startMethod; }
-
-	/**
-	 * @return method called every tick
-	 */
-	public static ComplexInterface getUpdateMethod()
-	{ return Window.updateMethod; }
-
-	/**
-	 * @return method that handles graphics
-	 */
-	public static Consumer<Graphics2D> getGraphicsMethod()
-	{ return Window.graphicsMethod; }
-
-	/**
-	 * @return variable to store method referenes to be used on keyboard input
-	 */
-	public static KeyboardInputMethodData getOnKeyboardInputMethodData()
-	{ return Window.onKeyboardInputMethodData; }
-
-	/**
-	 * @return variable to store method referenes to be used on mouse input
-	 */
-	public static MouseInputMethodData getOnMouseInputMethodData()
-	{ return Window.onMouseInputMethodData; }
-
-	/**
-	 * @return directory of the engine's assets
-	 */
-	public static String getAssetDirectory()
-	{ return Window.assetDirectory; }
-
-	/**
-	 * @return main thread of the engine
-	 */
-	public static Thread getThread()
-	{ return Window.thread; }
-
 	/**
 	 * Window constructer with <b>all possible arguements</b>. Creates a window and
 	 * sets up runtime calls.
@@ -510,6 +442,9 @@ public final class Window extends JFrame
 			this.onKeyReleased = onKeyReleased;
 		}
 
+		/**
+		 * @return true if all methods are null, false otherwise
+		 */
 		public boolean allVoid()
 		{ return (onKeyPressed == null && onKeyTyped == null && onKeyReleased == null); }
 	}
@@ -571,6 +506,9 @@ public final class Window extends JFrame
 			this.onMouseReleased = onMouseReleased;
 		}
 
+		/**
+		 * @return true if all methods are null, false otherwise
+		 */
 		public boolean allVoid()
 		{
 			return (onMouseClicked == null && onMouseEntered == null && onMouseExited == null && onMousePressed == null
@@ -588,6 +526,9 @@ public final class Window extends JFrame
 	@FunctionalInterface
 	public static interface ComplexInterface
 	{
+		/**
+		 * Stored method of the {@code ComplexInterface}.
+		 */
 		public void method();
 	}
 
@@ -601,6 +542,9 @@ public final class Window extends JFrame
 	@FunctionalInterface
 	public static interface ComplexKeyEventInterface
 	{
+		/**
+		 * Stored method of the {@code ComplexKeyEventInterface}.
+		 */
 		public void method(KeyEvent e);
 	}
 
@@ -614,7 +558,78 @@ public final class Window extends JFrame
 	@FunctionalInterface
 	public static interface ComplexMouseEventInterface
 	{
+		/**
+		 * Stored method of the {@code ComplexMouseEventInterface}.
+		 */
 		public void method(MouseEvent e);
 	}
+
+	/* Access methods */
+
+	/**
+	 * @return singleton {@code Window} variable
+	 */
+	public static Window getInstance()
+	{ return Window.instance; }
+
+	/**
+	 * @return ticks per second of the engine
+	 */
+	public static int getTPS()
+	{ return Window.tps; }
+
+	/**
+	 * @return {@code CustomGraphics} object of the engine
+	 */
+	public static CustomGraphics getGFX()
+	{ return Window.gfx; }
+
+	/**
+	 * @return main game loop
+	 */
+	public static GameLoop getGameLoop()
+	{ return Window.gameLoop; }
+
+	/**
+	 * @return method called once upon start
+	 */
+	public static ComplexInterface getStartMethod()
+	{ return Window.startMethod; }
+
+	/**
+	 * @return method called every tick
+	 */
+	public static ComplexInterface getUpdateMethod()
+	{ return Window.updateMethod; }
+
+	/**
+	 * @return method that handles graphics
+	 */
+	public static Consumer<Graphics2D> getGraphicsMethod()
+	{ return Window.graphicsMethod; }
+
+	/**
+	 * @return variable to store method referenes to be used on keyboard input
+	 */
+	public static KeyboardInputMethodData getOnKeyboardInputMethodData()
+	{ return Window.onKeyboardInputMethodData; }
+
+	/**
+	 * @return variable to store method referenes to be used on mouse input
+	 */
+	public static MouseInputMethodData getOnMouseInputMethodData()
+	{ return Window.onMouseInputMethodData; }
+
+	/**
+	 * @return directory of the engine's assets
+	 */
+	public static String getAssetDirectory()
+	{ return Window.assetDirectory; }
+
+	/**
+	 * @return main thread of the engine
+	 */
+	public static Thread getThread()
+	{ return Window.thread; }
 
 }
