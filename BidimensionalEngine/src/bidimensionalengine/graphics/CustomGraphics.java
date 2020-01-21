@@ -20,6 +20,11 @@ public final class CustomGraphics extends Component
 	private ArrayList<Consumer<Graphics2D>> imageRenderMethods;
 
 	/**
+	 * Whether or not {@code paint} has been called yet.
+	 */
+	boolean initialized;
+
+	/**
 	 * Initializes the {@code imageRenderMethods} {@code ArrayList}.
 	 */
 	public CustomGraphics()
@@ -33,6 +38,20 @@ public final class CustomGraphics extends Component
 	@Override
 	public void paint(Graphics g)
 	{
+		if (!initialized)
+		{
+			if (System.getProperty("os.name").startsWith("Mac"))
+			{
+				/*
+				 * The bar at the top of Mac OS Windows get counted as part of the coordinate
+				 * system. This fixes that.
+				 */
+				g.translate(0, 23);
+			}
+
+			initialized = true;
+		}
+
 		if (Window.getTPS() > 0 && (Window.getThread() == null || !Window.getThread().isAlive()))
 			return;
 

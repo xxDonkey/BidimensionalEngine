@@ -171,6 +171,9 @@ public abstract class GameCore
 				useOnMouseExited ? this::onMouseExited : null, useOnMousePressed ? this::onMousePressed : null,
 				useOnMouseReleased ? this::onMouseReleased : null);
 
+		if (System.getProperty("os.name").startsWith("Mac"))
+			height += 23;
+
 		if (keyboardInput.allVoid() && mouseInput.allVoid())
 		{
 			if (ticksPerSecond <= 0)
