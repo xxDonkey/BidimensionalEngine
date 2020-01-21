@@ -86,4 +86,12 @@ public final class GameLoop implements Runnable
 
 		Window.getInstance().setVisible(true);
 	}
+
+	/* Access methods */
+
+	/**
+	 * @return the list of {@code UIElements}
+	 */
+	public ArrayList<UIElement> getUIElements()
+	{ return uiElements; }
 }

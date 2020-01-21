@@ -194,4 +194,6 @@ public final class Vector2
 		return new Vector2(x, y);
 	}
 
+	public String toString()
+	{ return String.format("(%.2f, %.2f)", x, y); }
 }

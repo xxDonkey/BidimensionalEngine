@@ -6,6 +6,7 @@ import bidimensionalengine.core.Window;
 import bidimensionalengine.core.Window.ComplexInterface;
 import bidimensionalengine.datastructs.Vector2;
 import bidimensionalengine.graphics.Sprite;
+import bidimensionalengine.playercomponents.Image;
 
 /**
  * @author Dylan Raiff
@@ -39,6 +40,21 @@ public class Button extends UIElement
 	public Vector2 size;
 
 	/**
+	 * {@code Image} component of this button.
+	 */
+	private Image image;
+
+	/**
+	 * Whether or not the mouse is hovering over the button.
+	 */
+	private boolean hovering;
+
+	/**
+	 * Whether or not the button is being pressed.
+	 */
+	private boolean pressed;
+
+	/**
 	 * Creates a new button.
 	 * 
 	 * @param name   name of the button
@@ -48,7 +64,13 @@ public class Button extends UIElement
 	{
 		super(name, parent);
 
+		if (Window.getOnMouseInputMethodData() == null)
+			System.err.println("Error: for the Button class to function, mouse input must be on.");
+
 		size = new Vector2(10, 20);
+
+		image = (Image) addComponent(Image.class);
+		image.sprite = defaultSprite;
 	}
 
 	/**
@@ -71,14 +93,30 @@ public class Button extends UIElement
 		if (!Window.getInstance().isVisible())
 			return;
 
-		// if (defaultSprite == null || hoverSprite == null || pressedSprite == null)
-		// {
-		// System.err.println("One or more sprites in " + this + " are null.");
-		// return;
-		// }
+		int x = MouseInfo.getPointerInfo().getLocation().x - Window.getInstance().getLocationOnScreen().x;
+		int y = MouseInfo.getPointerInfo().getLocation().x - Window.getInstance().getLocationOnScreen().x;
 
-		System.out.println(isMouseHovering());
+		hovering = (x >= transform.position.x && x <= transform.position.x + size.x && y >= transform.position.y
+				&& y <= transform.position.y + size.y);
 	}
+
+	/**
+	 * Called when the mouse is clicked.
+	 */
+	public void onMouseClick()
+	{
+		if (!hovering)
+			return;
+
+		onClick.method();
+		pressed = true;
+	}
+
+	/**
+	 * Called when the mouse is released.
+	 */
+	public void onMouseRelease()
+	{ pressed = false; }
 
 	private boolean isMouseHovering()
 	{
