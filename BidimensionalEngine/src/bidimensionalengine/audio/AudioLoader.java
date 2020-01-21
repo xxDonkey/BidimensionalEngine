@@ -31,6 +31,13 @@ public class AudioLoader
 	 */
 	private static ArrayList<Audio> loadedAudio = new ArrayList<Audio>();
 
+	/**
+	 * Attempts to load an audio file and append it to the list of loaded audio
+	 * files.
+	 * 
+	 * @param filename file to load
+	 * @return true if successful, false if not
+	 */
 	public static boolean loadAudio(String filename)
 	{
 		if (Window.getInstance() == null)
