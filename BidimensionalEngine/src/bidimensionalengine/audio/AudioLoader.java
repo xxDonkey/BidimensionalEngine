@@ -67,6 +67,19 @@ public class AudioLoader
 	}
 
 	/**
+	 * Looks for an {@code Audio} object in {@code loadedAudio} with the desired
+	 * name, and if found, plays it.
+	 * 
+	 * @param name name of audio to play
+	 */
+	public void playAudio(String name)
+	{
+		Audio audio = getAudio(name);
+		if (audio != null)
+			audio.play();
+	}
+
+	/**
 	 * Gets the audio at the given index in {@code loadedAudio}. If outside the
 	 * bounds of the array, returns null.
 	 * 
