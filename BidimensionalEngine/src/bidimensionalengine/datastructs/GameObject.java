@@ -71,12 +71,12 @@ public class GameObject
 
 	/**
 	 * Creates and adds a component of the specified type. If any error was thrown,
-	 * or the class is not an extension of {@code ObjectCompoennt}, false is
-	 * returned. Otherwise, returns true.
+	 * or the class is not an extension of {@code ObjectCompoennt}, null is
+	 * returned. Otherwise, returns the added component.
 	 * 
 	 * @param type class of component to add
 	 */
-	public boolean addComponent(Class<?> type)
+	public ObjectComponent addComponent(Class<?> type)
 	{
 		Object obj = null;
 		try
@@ -97,9 +97,9 @@ public class GameObject
 				Window.getGFX().addImageRenderMethod(((Image) obj)::render);
 			}
 
-			return true;
+			return (ObjectComponent) obj;
 		}
-		return false;
+		return null;
 	}
 
 	/**
@@ -116,6 +116,12 @@ public class GameObject
 		}
 	}
 
+	/**
+	 * Gets the component of a specified type.
+	 * 
+	 * @param type type of component to retrieve
+	 * @return desired component
+	 */
 	public ObjectComponent getComponent(Class<?> type)
 	{
 		for (ObjectComponent component : components)
