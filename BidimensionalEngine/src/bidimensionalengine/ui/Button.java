@@ -90,6 +90,8 @@ public class Button extends UIElement
 	@Override
 	public void update()
 	{
+		image.size = size;
+
 		if (!Window.getInstance().isVisible())
 			return;
 
@@ -127,7 +129,7 @@ public class Button extends UIElement
 	private boolean isMouseHovering()
 	{
 		int x = MouseInfo.getPointerInfo().getLocation().x - Window.getInstance().getLocationOnScreen().x;
-		int y = MouseInfo.getPointerInfo().getLocation().x - Window.getInstance().getLocationOnScreen().x;
+		int y = MouseInfo.getPointerInfo().getLocation().y - Window.getInstance().getLocationOnScreen().y;
 
 		if (x >= transform.position.x && x <= transform.position.x + size.x && y >= transform.position.y
 				&& y <= transform.position.y + size.y)
