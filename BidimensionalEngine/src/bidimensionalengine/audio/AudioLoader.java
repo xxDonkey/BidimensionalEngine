@@ -72,7 +72,7 @@ public class AudioLoader
 	 * 
 	 * @param name name of audio to play
 	 */
-	public void playAudio(String name)
+	public static void playAudio(String name)
 	{
 		Audio audio = getAudio(name);
 		if (audio != null)

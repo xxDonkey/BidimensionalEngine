@@ -14,6 +14,16 @@ public final class Vector2
 	public static final Vector2 zero = new Vector2(0, 0);
 
 	/**
+	 * Calculates the distance between the two vectors.
+	 * 
+	 * @param v1 first vector
+	 * @param v2 second vector
+	 * @return distance between the two vectors
+	 */
+	public static double distance(Vector2 v1, Vector2 v2)
+	{ return Math.sqrt((v1.x - v2.x) * (v1.x - v2.x) + (v1.y - v2.y) * (v1.y - v2.y)); }
+
+	/**
 	 * Calculates the dot product of two vectors {@code v1} and {@code v2}.
 	 * 
 	 * @param v1 first vector

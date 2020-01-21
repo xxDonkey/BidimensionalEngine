@@ -80,4 +80,10 @@ public class Audio
 	 */
 	public String getName()
 	{ return name; }
+
+	/**
+	 * @return audio clip of the audio
+	 */
+	public Clip getClip()
+	{ return audio; }
 }
