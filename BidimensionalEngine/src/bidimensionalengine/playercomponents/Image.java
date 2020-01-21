@@ -21,7 +21,7 @@ public class Image extends ObjectComponent
 	/**
 	 * Creates a new {@code Image}, cand calls the super constructor.
 	 * 
-	 * @param gameObject
+	 * @param gameObject parent game object
 	 */
 	public Image(GameObject gameObject)
 	{
