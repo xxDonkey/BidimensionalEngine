@@ -25,13 +25,6 @@ public final class MouseInput implements MouseListener
 			return;
 
 		cmei.method(e);
-
-		if (Window.getGameLoop() != null)
-			for (UIElement uiElement : Window.getGameLoop().getUIElements())
-			{
-				if (uiElement instanceof Button)
-					((Button) uiElement).onMouseClick();
-			}
 	}
 
 	@Override
@@ -45,6 +38,13 @@ public final class MouseInput implements MouseListener
 			return;
 
 		cmei.method(e);
+
+		if (Window.getGameLoop() != null)
+			for (UIElement uiElement : Window.getGameLoop().getUIElements())
+			{
+				if (uiElement instanceof Button)
+					((Button) uiElement).onMouseClick();
+			}
 	}
 
 	@Override
@@ -58,13 +58,6 @@ public final class MouseInput implements MouseListener
 			return;
 
 		cmei.method(e);
-
-		if (Window.getGameLoop() != null)
-			for (UIElement uiElement : Window.getGameLoop().getUIElements())
-			{
-				if (uiElement instanceof Button)
-					((Button) uiElement).onMouseRelease();
-			}
 	}
 
 	@Override

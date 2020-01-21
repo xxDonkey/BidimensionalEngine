@@ -70,7 +70,6 @@ public class Button extends UIElement
 		size = new Vector2(10, 20);
 
 		image = (Image) addComponent(Image.class);
-		image.sprite = defaultSprite;
 	}
 
 	/**
@@ -93,30 +92,28 @@ public class Button extends UIElement
 		if (!Window.getInstance().isVisible())
 			return;
 
+		if (!hovering)
+		{
+			image.sprite = defaultSprite;
+			pressed = false;
+		}
+		else if (!pressed)
+			image.sprite = hoverSprite;
+
 		int x = MouseInfo.getPointerInfo().getLocation().x - Window.getInstance().getLocationOnScreen().x;
 		int y = MouseInfo.getPointerInfo().getLocation().x - Window.getInstance().getLocationOnScreen().x;
 
 		hovering = (x >= transform.position.x && x <= transform.position.x + size.x && y >= transform.position.y
 				&& y <= transform.position.y + size.y);
+
+		System.out.println(hovering + " " + pressed);
 	}
 
 	/**
 	 * Called when the mouse is clicked.
 	 */
 	public void onMouseClick()
-	{
-		if (!hovering)
-			return;
-
-		onClick.method();
-		pressed = true;
-	}
-
-	/**
-	 * Called when the mouse is released.
-	 */
-	public void onMouseRelease()
-	{ pressed = false; }
+	{ image.sprite = pressedSprite; }
 
 	private boolean isMouseHovering()
 	{

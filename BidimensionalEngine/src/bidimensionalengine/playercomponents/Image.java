@@ -24,10 +24,7 @@ public class Image extends ObjectComponent
 	 * @param gameObject parent game object
 	 */
 	public Image(GameObject gameObject)
-	{
-		super(gameObject);
-		sprite = null;
-	}
+	{ super(gameObject); }
 
 	/**
 	 * Sets the name of the sprite.
