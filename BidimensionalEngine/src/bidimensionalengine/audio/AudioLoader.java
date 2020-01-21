@@ -73,4 +73,15 @@ public class AudioLoader
 
 		return loadedAudio.get(index);
 	}
+
+	public static Audio getAudio(String name)
+	{
+		for (Audio audio : loadedAudio)
+		{
+			if (audio.getName().equals(name))
+				return audio;
+		}
+
+		return null;
+	}
 }
