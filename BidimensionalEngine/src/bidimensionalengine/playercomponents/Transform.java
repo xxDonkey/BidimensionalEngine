@@ -12,44 +12,59 @@ public class Transform extends ObjectComponent
 	/**
 	 * Transform's position as a {@code Vector2}.
 	 */
-	Vector2 position;
+	private Vector2 position;
 
 	/**
-	 * Transform's rotation as a {@code Vector2}.
+	 * Transform's rotation in degrees.<br>
+	 * Zero degrees is east, or the positive end of the x-axis.
 	 */
-	Vector2 rotation;
+	private double rotation;
 
 	/**
+	 * Creates a new {@code Transform}, cand calls the super constructor.
 	 * 
-	 * @param gameObject
+	 * @param gameObject parent game object
 	 */
 	public Transform(GameObject gameObject)
 	{
 		super(gameObject);
 
 		position = new Vector2(0, 0);
-		rotation = new Vector2(0, 0);
+		rotation = 0;
 	}
 
-	/**
-	 * 
-	 */
 	@Override
 	public void update()
 	{}
 
 	/**
+	 * Translates the {@code Transform} along a translation vector.
 	 * 
-	 * @param translationVector
+	 * @param translationVector vector to move along
 	 */
 	public void translate(Vector2 translationVector)
 	{ this.position.add(translationVector); }
 
 	/**
+	 * Rotates the {@code Transform} around the axis sticking out of the computer.
 	 * 
-	 * @param rotationVector
+	 * @param rotationVector amount to rotate, in degrees
 	 */
-	public void rotate(Vector2 rotationVector)
-	{ this.rotation.add(rotationVector); }
+	public void rotate(double rotationAmount)
+	{ this.rotation += rotationAmount; }
+
+	/* Access methods */
+
+	/**
+	 * @return position of this {@code Transform}
+	 */
+	public Vector2 getPosition()
+	{ return position; }
+
+	/**
+	 * @return rotation of this {@code Transform}
+	 */
+	public double getRotation()
+	{ return rotation; }
 
 }
