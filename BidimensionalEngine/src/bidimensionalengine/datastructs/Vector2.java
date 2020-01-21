@@ -81,6 +81,8 @@ public final class Vector2
 
 		return new Vector2(x, y);
 	}
+	
+	public static Vector2 up = new Vector2();
 
 	/* Instance data */
 
@@ -103,6 +105,15 @@ public final class Vector2
 	{
 		this.x = x;
 		this.y = y;
+	}
+	
+	/**
+	 * Creates a new, empty {@code Vector2}.
+	 */
+	public Vector2()
+	{
+		this.x = 0;
+		this.y = 0;
 	}
 
 	/**
