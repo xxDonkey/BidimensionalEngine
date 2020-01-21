@@ -6,7 +6,6 @@ package bidimensionalengine.physics;
  */
 public final class Physics
 {
-
 	/**
 	 * Private constructer to disallow instantiation of the class.
 	 */
@@ -14,5 +13,4 @@ public final class Physics
 	{}
 
 	// TODO: implement static phys methods
-
 }
