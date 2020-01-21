@@ -53,8 +53,8 @@ public class Image extends ObjectComponent
 		if (sprite == null)
 			return;
 
-		int x = (int) gameObject.getTransform().getPosition().x;
-		int y = (int) gameObject.getTransform().getPosition().y;
+		int x = (int) gameObject.getTransform().position.x;
+		int y = (int) gameObject.getTransform().position.y;
 
 		g.drawImage(sprite.getImage(), x, y, Window.getGFX());
 	}

@@ -12,13 +12,13 @@ public class Transform extends ObjectComponent
 	/**
 	 * Transform's position as a {@code Vector2}.
 	 */
-	private Vector2 position;
+	public Vector2 position;
 
 	/**
 	 * Transform's rotation in degrees.<br>
 	 * Zero degrees is east, or the positive end of the x-axis.
 	 */
-	private double rotation;
+	public double rotation;
 
 	/**
 	 * Creates a new {@code Transform}, cand calls the super constructor.
@@ -52,19 +52,4 @@ public class Transform extends ObjectComponent
 	 */
 	public void rotate(double rotationAmount)
 	{ this.rotation += rotationAmount; }
-
-	/* Access methods */
-
-	/**
-	 * @return position of this {@code Transform}
-	 */
-	public Vector2 getPosition()
-	{ return position; }
-
-	/**
-	 * @return rotation of this {@code Transform}
-	 */
-	public double getRotation()
-	{ return rotation; }
-
 }
