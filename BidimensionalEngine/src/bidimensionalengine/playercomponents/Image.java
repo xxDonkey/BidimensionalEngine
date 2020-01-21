@@ -2,8 +2,8 @@ package bidimensionalengine.playercomponents;
 
 import java.awt.Graphics2D;
 
-import bidimensionalengine.core.Window;
 import bidimensionalengine.datastructs.GameObject;
+import bidimensionalengine.datastructs.Vector2;
 import bidimensionalengine.graphics.Sprite;
 import bidimensionalengine.graphics.SpriteLoader;
 
@@ -17,6 +17,11 @@ public class Image extends ObjectComponent
 	 * {@code Sprite} object to render.
 	 */
 	public Sprite sprite;
+
+	/**
+	 * Size of the image.
+	 */
+	public Vector2 size;
 
 	/**
 	 * Creates a new {@code Image}, cand calls the super constructor.
@@ -53,7 +58,7 @@ public class Image extends ObjectComponent
 		int x = (int) gameObject.getTransform().position.x;
 		int y = (int) gameObject.getTransform().position.y;
 
-		g.drawImage(sprite.getImage(), x, y, Window.getGFX());
+		g.drawImage(sprite.getImage(), x, y, (int) size.x, (int) size.y, null);
 	}
 
 }
