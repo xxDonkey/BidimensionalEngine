@@ -39,6 +39,9 @@ public abstract class UIElement extends GameObject
 
 	/* Access methods */
 
+	/**
+	 * @return {@code Container} this element is in
+	 */
 	public Container getParent()
 	{ return uiParent; }
 }
