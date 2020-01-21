@@ -5,6 +5,7 @@ import bidimensionalengine.playercomponents.Transform;
 
 /**
  * @author Dylan Raiff
+ * @version 1.0
  */
 public abstract class UIElement extends GameObject
 {

@@ -10,6 +10,7 @@ import bidimensionalengine.playercomponents.Transform;
 
 /**
  * @author Dylan Raiff
+ * @version 1.0
  */
 public class GameObject
 {

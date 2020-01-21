@@ -3,6 +3,10 @@ package bidimensionalengine.playercomponents;
 import bidimensionalengine.datastructs.GameObject;
 import bidimensionalengine.datastructs.Vector2;
 
+/**
+ * @author Dylan Raiff
+ * @version 1.0
+ */
 public class Transform extends ObjectComponent
 {
 	/**

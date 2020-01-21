@@ -2,6 +2,7 @@ package bidimensionalengine.datastructs;
 
 /**
  * @author Dylan Raiff
+ * @version 1.0
  */
 public final class Vector2
 {

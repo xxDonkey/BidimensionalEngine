@@ -4,6 +4,7 @@ import java.awt.image.BufferedImage;
 
 /**
  * @author Dylan Raiff
+ * @version 1.0
  */
 public final class Sprite
 {

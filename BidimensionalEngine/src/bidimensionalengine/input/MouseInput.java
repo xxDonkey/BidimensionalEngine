@@ -8,6 +8,7 @@ import bidimensionalengine.core.Window.ComplexMouseEventInterface;
 
 /**
  * @author Dylan Raiff
+ * @version 1.0
  */
 public final class MouseInput implements MouseListener
 {

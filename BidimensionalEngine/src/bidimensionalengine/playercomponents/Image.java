@@ -7,6 +7,10 @@ import bidimensionalengine.datastructs.GameObject;
 import bidimensionalengine.graphics.Sprite;
 import bidimensionalengine.graphics.SpriteLoader;
 
+/**
+ * @author Dylan Raiff
+ * @version 1.0
+ */
 public class Image extends ObjectComponent
 {
 	public Sprite sprite;

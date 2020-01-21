@@ -2,6 +2,7 @@ package bidimensionalengine.physics;
 
 /**
  * @author Dylan Raiff
+ * @version 1.0
  */
 public final class Physics
 {

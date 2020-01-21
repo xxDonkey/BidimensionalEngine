@@ -8,6 +8,7 @@ import bidimensionalengine.core.Window.ComplexKeyEventInterface;
 
 /**
  * @author Dylan Raiff
+ * @version 1.0
  */
 public final class KeyboardInput implements KeyListener
 {
