@@ -72,6 +72,9 @@ public final class GameLoop implements Runnable
 				for (GameObject gameObject : gameObjects)
 					gameObject.update();
 
+				for (UIElement uiElement : uiElements)
+					uiElement.update();
+
 				if (!Window.getInstance().isVisible())
 					Window.getInstance().setVisible(true);
 				else
