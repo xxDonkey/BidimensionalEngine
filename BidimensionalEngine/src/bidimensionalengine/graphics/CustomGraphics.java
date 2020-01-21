@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import java.util.function.Consumer;
 
 import bidimensionalengine.core.Window;
+import bidimensionalengine.datastructs.Vector2;
 
 /**
  * @author Dylan Raiff
@@ -20,9 +21,9 @@ public final class CustomGraphics extends Component
 	private ArrayList<Consumer<Graphics2D>> imageRenderMethods;
 
 	/**
-	 * Whether or not {@code paint} has been called yet.
+	 * Translation vector of the {@code Graphics2D}.
 	 */
-	boolean initialized;
+	private Vector2 translationVector = new Vector2(0, -23);
 
 	/**
 	 * Initializes the {@code imageRenderMethods} {@code ArrayList}.
@@ -38,27 +39,22 @@ public final class CustomGraphics extends Component
 	@Override
 	public void paint(Graphics g)
 	{
-		if (!initialized)
-		{
-			if (System.getProperty("os.name").startsWith("Mac"))
-			{
-				/*
-				 * The bar at the top of Mac OS Windows get counted as part of the coordinate
-				 * system. This fixes that.
-				 */
-				g.translate(0, 23);
-			}
+		Graphics2D g2d = (Graphics2D) g;
 
-			initialized = true;
-		}
+		/*
+		 * The bar at the top of Mac OS Windows get counted as part of the coordinate
+		 * system. This fixes that.
+		 */
+		if (System.getProperty("os.name").startsWith("Mac"))
+			g2d.translate(translationVector.x, translationVector.y);
 
 		if (Window.getTPS() > 0 && (Window.getThread() == null || !Window.getThread().isAlive()))
 			return;
 
-		Window.getGraphicsMethod().accept((Graphics2D) g);
+		Window.getGraphicsMethod().accept(g2d);
 
 		for (Consumer<Graphics2D> method : imageRenderMethods)
-			method.accept((Graphics2D) g);
+			method.accept(g2d);
 	}
 
 	/**
@@ -76,4 +72,10 @@ public final class CustomGraphics extends Component
 	 */
 	public void removeImageRenderMethod(Consumer<Graphics2D> method)
 	{ imageRenderMethods.remove(method); }
+
+	/**
+	 * @return translation vector of the {@code Graphics2D}
+	 */
+	public Vector2 getTranslationVector()
+	{ return translationVector; }
 }
