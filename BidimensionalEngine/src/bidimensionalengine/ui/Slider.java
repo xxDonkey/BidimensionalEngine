@@ -74,7 +74,7 @@ public class Slider extends UIElement
 	 * @param fillSpriteName       name of the fill sprite
 	 * @param backgroundSpriteName name of the background sprite
 	 */
-	public void setSprites(String buttonSpriteName, String fillSpriteName, String backgroundSpriteName)
+	public void setSprites(String buttonSpriteName, String backgroundSpriteName)
 	{
 		this.buttonSprite = SpriteLoader.getSprite(buttonSpriteName);
 		this.backgroundSprite = SpriteLoader.getSprite(backgroundSpriteName);
@@ -83,6 +83,9 @@ public class Slider extends UIElement
 	@Override
 	public void update()
 	{
+		if (image == null || button == null || buttonSprite == null)
+			return;
+
 		image.size = size;
 		button.size = buttonSize;
 
@@ -94,7 +97,7 @@ public class Slider extends UIElement
 
 		if (button.isPressed())
 		{
-			System.out.println("pressed");
+			System.out.println(button.size);
 		}
 	}
 
