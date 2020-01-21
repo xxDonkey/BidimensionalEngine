@@ -83,36 +83,69 @@ public final class Window extends JFrame
 
 	/* Access methods so variables are read-only. */
 
+	/**
+	 * @return singleton {@code Window} variable
+	 */
 	public static Window getInstance()
 	{ return Window.instance; }
 
+	/**
+	 * @return ticks per second of the engine
+	 */
 	public static int getTPS()
 	{ return Window.tps; }
 
+	/**
+	 * @return {@code CustomGraphics} object of the engine
+	 */
 	public static CustomGraphics getGFX()
 	{ return Window.gfx; }
 
+	/**
+	 * @return main game loop
+	 */
 	public static GameLoop getGameLoop()
 	{ return Window.gameLoop; }
 
+	/**
+	 * @return method called once upon start
+	 */
 	public static ComplexInterface getStartMethod()
 	{ return Window.startMethod; }
 
+	/**
+	 * @return method called every tick
+	 */
 	public static ComplexInterface getUpdateMethod()
 	{ return Window.updateMethod; }
 
+	/**
+	 * @return method that handles graphics
+	 */
 	public static Consumer<Graphics2D> getGraphicsMethod()
 	{ return Window.graphicsMethod; }
 
+	/**
+	 * @return variable to store method referenes to be used on keyboard input
+	 */
 	public static KeyboardInputMethodData getOnKeyboardInputMethodData()
 	{ return Window.onKeyboardInputMethodData; }
 
+	/**
+	 * @return variable to store method referenes to be used on mouse input
+	 */
 	public static MouseInputMethodData getOnMouseInputMethodData()
 	{ return Window.onMouseInputMethodData; }
 
+	/**
+	 * @return directory of the engine's assets
+	 */
 	public static String getAssetDirectory()
 	{ return Window.assetDirectory; }
 
+	/**
+	 * @return main thread of the engine
+	 */
 	public static Thread getThread()
 	{ return Window.thread; }
 
