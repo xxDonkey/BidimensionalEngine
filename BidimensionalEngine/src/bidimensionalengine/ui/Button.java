@@ -68,7 +68,7 @@ public class Button extends UIElement
 		if (Window.getOnMouseInputMethodData() == null)
 			System.err.println("Error: for the Button class to function, mouse input must be on.");
 
-		size = new Vector2(10, 20);
+		size = new Vector2(50, 50);
 
 		image = (Image) addComponent(Image.class);
 	}
@@ -127,4 +127,10 @@ public class Button extends UIElement
 	 */
 	public void onMouseRelease()
 	{ pressed = false; }
+
+	/**
+	 * @return whether or not the button is pressed
+	 */
+	public boolean isPressed()
+	{ return pressed; }
 }
