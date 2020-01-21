@@ -9,6 +9,7 @@ import java.util.function.Consumer;
 
 import javax.swing.JFrame;
 
+import bidimensionalengine.audio.AudioLoader;
 import bidimensionalengine.graphics.CustomGraphics;
 import bidimensionalengine.graphics.SpriteLoader;
 import bidimensionalengine.input.KeyboardInput;
@@ -424,7 +425,8 @@ public final class Window extends JFrame
 			String[] files = new File(Window.assetDirectory + "audio/").list();
 			for (String file : files)
 			{
-
+				if (!AudioLoader.loadAudio(file))
+					break;
 			}
 		}
 		catch (Exception e)
