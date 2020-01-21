@@ -33,9 +33,15 @@ public final class Sprite
 
 	/* Access methods */
 
+	/**
+	 * @return name of the sprite
+	 */
 	public String getName()
 	{ return name; }
 
+	/**
+	 * @return image of the sprite
+	 */
 	public BufferedImage getImage()
 	{ return image; }
 }
