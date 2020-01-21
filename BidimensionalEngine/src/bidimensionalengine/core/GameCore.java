@@ -173,7 +173,6 @@ public abstract class GameCore
 
 		if (keyboardInput.allVoid() && mouseInput.allVoid())
 		{
-			System.out.println("a");
 			if (ticksPerSecond <= 0)
 				new Window(title, width, height, assetDirectory, this::start, this::graphics);
 			else
