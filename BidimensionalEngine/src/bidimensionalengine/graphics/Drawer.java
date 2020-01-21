@@ -8,6 +8,8 @@ import java.util.ArrayList;
 import bidimensionalengine.datastructs.Vector2;
 
 /**
+ * Adds easy-to-use graphics functions.
+ * 
  * @author Dylan Raiff
  * @version 1.0
  */
