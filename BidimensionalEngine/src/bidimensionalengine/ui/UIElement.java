@@ -28,15 +28,6 @@ public abstract class UIElement extends GameObject
 		this.transform = new Transform((GameObject) parent);
 	}
 
-	/**
-	 * Called every tick in the main thread.
-	 */
-	@Override
-	public void update()
-	{
-
-	}
-
 	/* Access methods */
 
 	/**
