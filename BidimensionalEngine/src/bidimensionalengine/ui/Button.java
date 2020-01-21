@@ -94,9 +94,7 @@ public class Button extends UIElement
 			return;
 
 		if (!hovering)
-		{
 			image.sprite = defaultSprite;
-		}
 		else if (!pressed)
 			image.sprite = hoverSprite;
 		else
