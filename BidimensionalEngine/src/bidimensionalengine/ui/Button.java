@@ -51,6 +51,20 @@ public class Button extends UIElement
 		size = new Vector2(10, 20);
 	}
 
+	/**
+	 * Assigns all three {@code Sprite} variables at once.
+	 * 
+	 * @param defaultSprite sprite to assign to {@code defaultSprite}.
+	 * @param hoverSprite   sprite to assign to {@code hoverSprite}.
+	 * @param pressedSprite sprite to assign to {@code pressedSprite}.
+	 */
+	public void setSprites(Sprite defaultSprite, Sprite hoverSprite, Sprite pressedSprite)
+	{
+		this.defaultSprite = defaultSprite;
+		this.hoverSprite = hoverSprite;
+		this.pressedSprite = pressedSprite;
+	}
+
 	@Override
 	public void update()
 	{
