@@ -23,7 +23,7 @@ public final class CustomGraphics extends Component
 	/**
 	 * Translation vector of the {@code Graphics2D}.
 	 */
-	private Vector2 translationVector = new Vector2(0, -23);
+	public Vector2 translationVector = new Vector2(0, 0);
 
 	/**
 	 * Initializes the {@code imageRenderMethods} {@code ArrayList}.
@@ -72,10 +72,4 @@ public final class CustomGraphics extends Component
 	 */
 	public void removeImageRenderMethod(Consumer<Graphics2D> method)
 	{ imageRenderMethods.remove(method); }
-
-	/**
-	 * @return translation vector of the {@code Graphics2D}
-	 */
-	public Vector2 getTranslationVector()
-	{ return translationVector; }
 }
