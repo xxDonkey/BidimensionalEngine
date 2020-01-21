@@ -6,6 +6,7 @@ import bidimensionalengine.core.Window;
 import bidimensionalengine.core.Window.ComplexInterface;
 import bidimensionalengine.datastructs.Vector2;
 import bidimensionalengine.graphics.Sprite;
+import bidimensionalengine.graphics.SpriteLoader;
 import bidimensionalengine.playercomponents.Image;
 
 /**
@@ -79,11 +80,11 @@ public class Button extends UIElement
 	 * @param hoverSprite   sprite to assign to {@code hoverSprite}.
 	 * @param pressedSprite sprite to assign to {@code pressedSprite}.
 	 */
-	public void setSprites(Sprite defaultSprite, Sprite hoverSprite, Sprite pressedSprite)
+	public void setSprites(String defaultSpriteName, String hoverSpriteName, String pressedSpriteName)
 	{
-		this.defaultSprite = defaultSprite;
-		this.hoverSprite = hoverSprite;
-		this.pressedSprite = pressedSprite;
+		this.defaultSprite = SpriteLoader.getSprite(defaultSpriteName);
+		this.hoverSprite = SpriteLoader.getSprite(hoverSpriteName);
+		this.pressedSprite = SpriteLoader.getSprite(pressedSpriteName);
 	}
 
 	@Override
@@ -95,7 +96,6 @@ public class Button extends UIElement
 		if (!hovering)
 		{
 			image.sprite = defaultSprite;
-			pressed = false;
 		}
 		else if (!pressed)
 			image.sprite = hoverSprite;
@@ -107,8 +107,6 @@ public class Button extends UIElement
 
 		hovering = (x >= transform.position.x && x <= transform.position.x + size.x && y >= transform.position.y
 				&& y <= transform.position.y + size.y);
-
-		// System.out.println(hovering + " " + pressed);
 	}
 
 	/**
