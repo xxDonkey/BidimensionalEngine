@@ -41,12 +41,7 @@ public final class CustomGraphics extends Component
 	{
 		Graphics2D g2d = (Graphics2D) g;
 
-		/*
-		 * The bar at the top of Mac OS Windows get counted as part of the coordinate
-		 * system. This fixes that.
-		 */
-		if (System.getProperty("os.name").startsWith("Mac"))
-			g2d.translate(translationVector.x, translationVector.y);
+		g2d.translate(translationVector.x, translationVector.y);
 
 		if (Window.getTPS() > 0 && (Window.getThread() == null || !Window.getThread().isAlive()))
 			return;

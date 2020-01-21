@@ -171,6 +171,7 @@ public abstract class GameCore
 				useOnMouseExited ? this::onMouseExited : null, useOnMousePressed ? this::onMousePressed : null,
 				useOnMouseReleased ? this::onMouseReleased : null);
 
+		// Accounts for top bar of a Mac window.
 		if (System.getProperty("os.name").startsWith("Mac"))
 			height += 23;
 
