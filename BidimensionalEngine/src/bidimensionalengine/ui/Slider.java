@@ -1,7 +1,10 @@
 package bidimensionalengine.ui;
 
+import bidimensionalengine.core.Window;
+import bidimensionalengine.datastructs.Vector2;
 import bidimensionalengine.graphics.Sprite;
 import bidimensionalengine.graphics.SpriteLoader;
+import bidimensionalengine.playercomponents.Image;
 
 /**
  * @author Dylan Raiff
@@ -15,14 +18,29 @@ public class Slider extends UIElement
 	public Sprite buttonSprite;
 
 	/**
-	 * Sprite of the filled slider (space to the right of the slider button).
-	 */
-	public Sprite fillSprite;
-
-	/**
 	 * Background sprite of the slider.
 	 */
 	public Sprite backgroundSprite;
+
+	/**
+	 * Dimensions of the silder.
+	 */
+	public Vector2 size;
+
+	/**
+	 * Size of the silder's button.
+	 */
+	public Vector2 buttonSize;
+
+	/**
+	 * Button belonging to of the slider.
+	 */
+	private Button button;
+
+	/**
+	 * Background image of the slider.
+	 */
+	private Image image;
 
 	/**
 	 * Creates a new slider.
@@ -31,7 +49,23 @@ public class Slider extends UIElement
 	 * @param parent parent of the slider
 	 */
 	public Slider(String name, Container parent)
-	{ super(name, parent); }
+	{
+		super(name, parent);
+
+		if (Window.getOnMouseInputMethodData() == null || Window.getOnMouseInputMethodData().onMousePressed == null
+				|| Window.getOnMouseInputMethodData().onMouseReleased == null)
+		{
+			System.err.println(
+					"Error: for the Button class to function, MouseInput:onMousePressed and MouseInput:onMouseReleased must be enabled/");
+			return;
+		}
+
+		size = new Vector2(50, 5);
+		buttonSize = new Vector2(10, 10);
+
+		button = new Button(name + ".button", null);
+		image = (Image) addComponent(Image.class);
+	}
 
 	/**
 	 * Assigns all three {@code Sprite} variables at once.
@@ -43,14 +77,25 @@ public class Slider extends UIElement
 	public void setSprites(String buttonSpriteName, String fillSpriteName, String backgroundSpriteName)
 	{
 		this.buttonSprite = SpriteLoader.getSprite(buttonSpriteName);
-		this.fillSprite = SpriteLoader.getSprite(fillSpriteName);
 		this.backgroundSprite = SpriteLoader.getSprite(backgroundSpriteName);
 	}
 
 	@Override
 	public void update()
 	{
+		image.size = size;
+		button.size = buttonSize;
 
+		if (!Window.getInstance().isVisible())
+			return;
+
+		image.sprite = backgroundSprite;
+		button.setSprites(buttonSprite.getName(), buttonSprite.getName(), buttonSprite.getName());
+
+		if (button.isPressed())
+		{
+			System.out.println("pressed");
+		}
 	}
 
 }
