@@ -5,6 +5,7 @@ import java.awt.Graphics2D;
 import java.awt.Polygon;
 import java.util.ArrayList;
 
+import bidimensionalengine.core.Window;
 import bidimensionalengine.datastructs.Vector2;
 
 /**
@@ -51,6 +52,17 @@ public class Drawer
 		this.g = g;
 		polygonVerticies = new ArrayList<Vector2>();
 	}
+
+	/**
+	 * Translates the {@code Graphics2D} by x horizontally and y vertically.
+	 *
+	 * @param x x component of the translation vector
+	 * @param y y component of the translation vector
+	 * @return the {@code Vector2} of the new translation vector stored in the
+	 *         window's {@code CustomGraphics}
+	 */
+	public Vector2 translate(int x, int y)
+	{ return Window.getGFX().translationVector.add(new Vector2(x, y)); }
 
 	/**
 	 * Draws a rect with the dimensions (w, h) with a top left corner at (x, y).
