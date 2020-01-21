@@ -1,5 +1,6 @@
 package bidimensionalengine.ui;
 
+import bidimensionalengine.core.Window;
 import bidimensionalengine.datastructs.GameObject;
 import bidimensionalengine.playercomponents.Transform;
 
@@ -26,6 +27,9 @@ public abstract class UIElement extends GameObject
 		this.parent = parent;
 
 		this.transform = new Transform((GameObject) parent);
+
+		if (Window.getGameLoop() != null)
+			Window.getGameLoop().onCreateGameObject(this);
 	}
 
 	/* Access methods */

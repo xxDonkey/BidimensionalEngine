@@ -7,6 +7,7 @@ import bidimensionalengine.core.Window;
 import bidimensionalengine.playercomponents.Image;
 import bidimensionalengine.playercomponents.ObjectComponent;
 import bidimensionalengine.playercomponents.Transform;
+import bidimensionalengine.ui.UIElement;
 
 /**
  * @author Dylan Raiff
@@ -57,7 +58,7 @@ public class GameObject
 		this.children = new ArrayList<GameObject>();
 		this.components = new ArrayList<ObjectComponent>();
 
-		if (Window.getGameLoop() != null)
+		if (Window.getGameLoop() != null && !(this instanceof UIElement))
 			Window.getGameLoop().onCreateGameObject(this);
 	}
 
