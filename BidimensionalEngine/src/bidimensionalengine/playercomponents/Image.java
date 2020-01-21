@@ -13,14 +13,27 @@ import bidimensionalengine.graphics.SpriteLoader;
  */
 public class Image extends ObjectComponent
 {
+	/**
+	 * {@code Sprite} object to render.
+	 */
 	public Sprite sprite;
 
+	/**
+	 * Creates a new {@code Image}, cand calls the super constructor.
+	 * 
+	 * @param gameObject
+	 */
 	public Image(GameObject gameObject)
 	{
 		super(gameObject);
 		sprite = null;
 	}
 
+	/**
+	 * Sets the name of the sprite.
+	 * 
+	 * @param spriteName name to give to the sprite
+	 */
 	public void setSprite(String spriteName)
 	{ sprite = SpriteLoader.getSprite(spriteName); }
 
@@ -30,6 +43,11 @@ public class Image extends ObjectComponent
 
 	}
 
+	/**
+	 * Renders the image.
+	 * 
+	 * @param g {@code Graphics2D} object to draw to
+	 */
 	public void render(Graphics2D g)
 	{
 		if (sprite == null)
