@@ -56,7 +56,6 @@ public class AudioLoader
 			info = new DataLine.Info(Clip.class, format);
 
 			clip = (Clip) AudioSystem.getLine(info);
-			System.out.println(clip);
 			loadedAudio.add(new Audio(filename, clip, stream));
 		}
 		catch (UnsupportedAudioFileException | IOException | LineUnavailableException e)
@@ -65,5 +64,13 @@ public class AudioLoader
 			return false;
 		}
 		return true;
+	}
+
+	public static Audio getAudio(int index)
+	{
+		if (index < 0 || index > loadedAudio.size() - 1)
+			return null;
+
+		return loadedAudio.get(index);
 	}
 }
