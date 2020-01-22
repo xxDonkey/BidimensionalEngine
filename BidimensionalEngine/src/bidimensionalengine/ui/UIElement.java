@@ -35,10 +35,13 @@ public abstract class UIElement extends GameObject
 	/**
 	 * Aborts the program. Used when input is incorrectly configured for anyc
 	 * {@code UIElement}.
+	 * 
+	 * @param element {@code UIElement} that called abort.
 	 */
-	protected void abort()
+	protected void abort(UIElement element)
 	{
-
+		System.err.println("ERROR IN " + this + " : Input incorrectly setup.");
+		System.exit(0);
 	}
 
 	/* Access methods */
