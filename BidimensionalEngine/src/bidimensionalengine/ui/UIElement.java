@@ -32,6 +32,15 @@ public abstract class UIElement extends GameObject
 			Window.getGameLoop().onCreateGameObject(this);
 	}
 
+	/**
+	 * Aborts the program. Used when input is incorrectly configured for any
+	 * {@code UIElement}.
+	 */
+	protected void abort()
+	{
+
+	}
+
 	/* Access methods */
 
 	/**
