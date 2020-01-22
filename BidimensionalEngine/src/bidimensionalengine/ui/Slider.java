@@ -55,9 +55,7 @@ public class Slider extends UIElement
 		if (Window.getOnMouseInputMethodData() == null || Window.getOnMouseInputMethodData().onMousePressed == null
 				|| Window.getOnMouseInputMethodData().onMouseReleased == null)
 		{
-			System.err.println(
-					"Error: for the Button class to function, MouseInput:onMousePressed and MouseInput:onMouseReleased must be enabled/");
-			return;
+			abort(this);
 		}
 
 		size = new Vector2(50, 5);
