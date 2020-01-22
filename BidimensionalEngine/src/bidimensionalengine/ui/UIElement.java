@@ -33,7 +33,7 @@ public abstract class UIElement extends GameObject
 	}
 
 	/**
-	 * Aborts the program. Used when input is incorrectly configured for any
+	 * Aborts the program. Used when input is incorrectly configured for anyc
 	 * {@code UIElement}.
 	 */
 	protected void abort()
