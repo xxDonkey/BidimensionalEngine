@@ -3,7 +3,6 @@ package bidimensionalengine.ui;
 import java.awt.MouseInfo;
 
 import bidimensionalengine.core.Window;
-import bidimensionalengine.core.Window.ComplexInterface;
 import bidimensionalengine.datastructs.Vector2;
 import bidimensionalengine.graphics.Sprite;
 import bidimensionalengine.graphics.SpriteLoader;
@@ -33,7 +32,7 @@ public class Button extends UIElement
 	/**
 	 * Method to be called on button click.
 	 */
-	public ComplexInterface onClick;
+	public ComplexButtonInterface onClick;
 
 	/**
 	 * Size of the button.
@@ -124,7 +123,7 @@ public class Button extends UIElement
 		pressed = true;
 
 		if (onClick != null)
-			onClick.method();
+			onClick.method(this);
 	}
 
 	/**
@@ -138,4 +137,19 @@ public class Button extends UIElement
 	 */
 	public boolean isPressed()
 	{ return pressed; }
+
+	/**
+	 * Stores a method.<br>
+	 * <BLOCKQUOTE> <u>Returns:</u> void <br>
+	 * <u>Arguments (1):</u> Button </BLOCKQUOTE>
+	 * 
+	 * @author Dylan Raiff
+	 */
+	public static interface ComplexButtonInterface
+	{
+		/**
+		 * Stored method of the {@code ComplexButtonInterface}.
+		 */
+		public void method(Button button);
+	}
 }
