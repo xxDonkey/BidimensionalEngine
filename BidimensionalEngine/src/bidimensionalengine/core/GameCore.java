@@ -178,10 +178,10 @@ public abstract class GameCore
 		if (keyboardInput.allVoid() && mouseInput.allVoid())
 		{
 			if (ticksPerSecond <= 0)
-				new Window(title, width, height, assetDirectory, this::start, this::graphics);
+				new Window(title, width, height, assetDirectory, this::start, this::graphics, this);
 			else
 				new Window(title, width, height, ticksPerSecond, assetDirectory, this::start, this::update,
-						this::graphics);
+						this::graphics, this);
 		}
 		else if (!keyboardInput.allVoid() && mouseInput.allVoid())
 		{
@@ -189,7 +189,7 @@ public abstract class GameCore
 				System.err.println("Cannot have less than or equal to 0 tps and input.");
 			else
 				new Window(title, width, height, ticksPerSecond, assetDirectory, this::start, this::update,
-						this::graphics, keyboardInput);
+						this::graphics, keyboardInput, this);
 		}
 		else if (keyboardInput.allVoid() && !mouseInput.allVoid())
 		{
@@ -197,7 +197,7 @@ public abstract class GameCore
 				System.err.println("Cannot have less than or equal to 0 tps and input.");
 			else
 				new Window(title, width, height, ticksPerSecond, assetDirectory, this::start, this::update,
-						this::graphics, mouseInput);
+						this::graphics, mouseInput, this);
 		}
 		else
 		{
@@ -205,7 +205,7 @@ public abstract class GameCore
 				System.err.println("Cannot have less than or equal to 0 tps and input.");
 			else
 				new Window(title, width, height, ticksPerSecond, assetDirectory, this::start, this::update,
-						this::graphics, keyboardInput, mouseInput);
+						this::graphics, keyboardInput, mouseInput, this);
 		}
 	}
 }

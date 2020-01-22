@@ -31,6 +31,11 @@ public final class Window extends JFrame
 	private static Window instance;
 
 	/**
+	 * The main program running the game.
+	 */
+	private static GameCore gameCore;
+
+	/**
 	 * How many times per second {@code updateMethod} and {@code graphicsMethod} are
 	 * called.
 	 */
@@ -111,7 +116,8 @@ public final class Window extends JFrame
 	 */
 	public Window(String name, int width, int height, int ticksPerSecond, String assetDirectory,
 			ComplexInterface startMethod, ComplexInterface updateMethod, Consumer<Graphics2D> graphicsMethod,
-			KeyboardInputMethodData onKeyboardInputMethodData, MouseInputMethodData onMouseInputMethodData)
+			KeyboardInputMethodData onKeyboardInputMethodData, MouseInputMethodData onMouseInputMethodData,
+			GameCore gameCore)
 	{
 		super(name);
 
@@ -140,7 +146,7 @@ public final class Window extends JFrame
 		this.addKeyListener(new KeyboardInput());
 		this.addMouseListener(new MouseInput());
 
-		onConstructed(this, width, height);
+		onConstructed(this, width, height, gameCore);
 	}
 
 	/**
@@ -167,7 +173,8 @@ public final class Window extends JFrame
 	 *                       <u>Arguments (1)</u>: Graphics2D
 	 */
 	public Window(String name, int width, int height, int ticksPerSecond, String assetDirectory,
-			ComplexInterface startMethod, ComplexInterface updateMethod, Consumer<Graphics2D> graphicsMethod)
+			ComplexInterface startMethod, ComplexInterface updateMethod, Consumer<Graphics2D> graphicsMethod,
+			GameCore gameCore)
 	{
 		super(name);
 
@@ -190,7 +197,7 @@ public final class Window extends JFrame
 		Window.gfx = new CustomGraphics();
 		this.add(gfx);
 
-		onConstructed(this, width, height);
+		onConstructed(this, width, height, gameCore);
 	}
 
 	/**
@@ -222,7 +229,7 @@ public final class Window extends JFrame
 	 */
 	public Window(String name, int width, int height, int ticksPerSecond, String assetDirectory,
 			ComplexInterface startMethod, ComplexInterface updateMethod, Consumer<Graphics2D> graphicsMethod,
-			KeyboardInputMethodData onKeyboardInputMethodData)
+			KeyboardInputMethodData onKeyboardInputMethodData, GameCore gameCore)
 	{
 		super(name);
 
@@ -249,7 +256,7 @@ public final class Window extends JFrame
 
 		this.addKeyListener(new KeyboardInput());
 
-		onConstructed(this, width, height);
+		onConstructed(this, width, height, gameCore);
 	}
 
 	/**
@@ -280,7 +287,7 @@ public final class Window extends JFrame
 	 */
 	public Window(String name, int width, int height, int ticksPerSecond, String assetDirectory,
 			ComplexInterface startMethod, ComplexInterface updateMethod, Consumer<Graphics2D> graphicsMethod,
-			MouseInputMethodData onMouseInputMethodData)
+			MouseInputMethodData onMouseInputMethodData, GameCore gameCore)
 	{
 		super(name);
 
@@ -307,7 +314,7 @@ public final class Window extends JFrame
 
 		this.addMouseListener(new MouseInput());
 
-		onConstructed(this, width, height);
+		onConstructed(this, width, height, gameCore);
 	}
 
 	/**
@@ -328,7 +335,7 @@ public final class Window extends JFrame
 	 *                       <u>Arguments (1)</u>: Graphics2D
 	 */
 	public Window(String name, int width, int height, String assetDirectory, ComplexInterface startMethod,
-			Consumer<Graphics2D> graphicsMethod)
+			Consumer<Graphics2D> graphicsMethod, GameCore gameCore)
 	{
 		super(name);
 
@@ -350,7 +357,7 @@ public final class Window extends JFrame
 		Window.gfx = new CustomGraphics();
 		this.add(gfx);
 
-		onConstructed(this, width, height);
+		onConstructed(this, width, height, gameCore);
 	}
 
 	/**
@@ -360,7 +367,7 @@ public final class Window extends JFrame
 	 * @param width  width of the window
 	 * @param height height of the window
 	 */
-	private static void onConstructed(JFrame frame, int width, int height)
+	private static void onConstructed(JFrame frame, int width, int height, GameCore gameCore)
 	{
 		frame.setPreferredSize(new Dimension(width, height));
 		frame.setMaximumSize(new Dimension(width, height));
@@ -571,6 +578,12 @@ public final class Window extends JFrame
 	 */
 	public static Window getInstance()
 	{ return Window.instance; }
+
+	/**
+	 * @return main {@code GameCore} variable
+	 */
+	public static GameCore getGameCore()
+	{ return Window.gameCore; }
 
 	/**
 	 * @return ticks per second of the engine
