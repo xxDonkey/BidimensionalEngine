@@ -58,9 +58,20 @@ public class GameObject
 		this.children = new ArrayList<GameObject>();
 		this.components = new ArrayList<ObjectComponent>();
 
+		if (parent != null)
+			parent.addChild(this);
+
 		if (Window.getGameLoop() != null && !(this instanceof UIElement))
 			Window.getGameLoop().onCreateGameObject(this);
 	}
+
+	/**
+	 * Adds a child to the list.
+	 * 
+	 * @param child child to add.
+	 */
+	private void addChild(GameObject child)
+	{ children.add(child); }
 
 	/**
 	 * Called every tick in the main thread.
@@ -135,6 +146,29 @@ public class GameObject
 	}
 
 	/**
+	 * Recursively finds all game objects related to {@code this}.
+	 * 
+	 * @return all desendants
+	 */
+	public ArrayList<GameObject> getDesendants()
+	{
+		if (children.size() == 0)
+			return new ArrayList<GameObject>();
+
+		ArrayList<GameObject> descendants = new ArrayList<GameObject>();
+		for (GameObject child : children)
+		{
+			ArrayList<GameObject> childDescendants = child.getDesendants();
+			for (GameObject descendant : childDescendants)
+			{
+				descendant.addChild(descendant);
+			}
+		}
+
+		return descendants;
+	}
+
+	/**
 	 * Destorys this game object.
 	 */
 	public void destory()
@@ -149,9 +183,21 @@ public class GameObject
 	{ return name; }
 
 	/**
+	 * @return parent of the game object
+	 */
+	public GameObject getParent()
+	{ return parent; }
+
+	/**
 	 * @return transform of the game object
 	 */
 	public Transform getTransform()
 	{ return transform; }
+
+	/**
+	 * @return list of children of the game object
+	 */
+	public ArrayList<GameObject> getChildren()
+	{ return children; }
 
 }

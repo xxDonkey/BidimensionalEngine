@@ -102,6 +102,12 @@ public class Drawer
 				h - 2 * (borderThickness - 1));
 	}
 
+	public void text(String text, int x, int y)
+	{
+		g.setColor(borderColor);
+		g.drawChars(text.toCharArray(), 0, text.length(), x, y);
+	}
+
 	/**
 	 * Draws an ellipse with the dimensions (w, h) with a top left corner (where two
 	 * lines tangent to the cirle and perpendicular to eachother would intersect) at

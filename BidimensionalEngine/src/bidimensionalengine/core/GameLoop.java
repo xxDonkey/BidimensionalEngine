@@ -115,6 +115,12 @@ public final class GameLoop implements Runnable
 	/* Access methods */
 
 	/**
+	 * @return the list of {@code GameObjecta}
+	 */
+	public ArrayList<GameObject> getGameObjects()
+	{ return gameObjects; }
+
+	/**
 	 * @return the list of {@code UIElements}
 	 */
 	public ArrayList<UIElement> getUIElements()
