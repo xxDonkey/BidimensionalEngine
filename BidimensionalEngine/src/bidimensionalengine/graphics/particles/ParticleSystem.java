@@ -1,20 +1,21 @@
 package bidimensionalengine.graphics.particles;
 
+import java.awt.Graphics2D;
 import java.util.ArrayList;
 
-import bidimensionalengine.datastructs.Vector2;
+import bidimensionalengine.graphics.Drawer;
 import bidimensionalengine.graphics.Sprite;
 
 /**
  * @author Dylan Raiff
  * @version 1.0
  */
-public class ParticleSystem
+public final class ParticleSystem
 {
 	/**
 	 * List of all living particles.
 	 */
-	private ArrayList<Vector2> particles;
+	private ArrayList<Particle> particles;
 
 	/**
 	 * Sprite of all particles.
@@ -37,6 +38,11 @@ public class ParticleSystem
 	public double speedDecay;
 
 	/**
+	 * Size of each particle.
+	 */
+	public double particleSize;
+
+	/**
 	 * Amount of size lost each update.
 	 */
 	public double sizeDecay;
@@ -56,9 +62,12 @@ public class ParticleSystem
 	 */
 	public ParticleSystem()
 	{
-		particles = new ArrayList<Vector2>();
+		particles = new ArrayList<Particle>();
 
 		lifeSpan = 1;
+		initialSpeed = 5;
+		speedDecay = 0.1;
+		sizeDecay = 0.2;
 		gravityMultiplier = 0;
 		bounciness = 0;
 	}
@@ -70,18 +79,42 @@ public class ParticleSystem
 	 * @param gravityMultiplier how much gravity affects each particle
 	 * @param bounciness        bounciness of each particle
 	 */
-	public ParticleSystem(double lifeSpan, double gravityMultiplier, double bounciness)
+	public ParticleSystem(double lifeSpan, double initialSpeed, double speedDecay, double particleSize,
+			double sizeDecay, double gravityMultiplier, double bounciness)
 	{
-		particles = new ArrayList<Vector2>();
+		particles = new ArrayList<Particle>();
 
 		this.lifeSpan = lifeSpan;
+		this.initialSpeed = initialSpeed;
+		this.speedDecay = speedDecay;
+		this.particleSize = particleSize;
+		this.sizeDecay = sizeDecay;
 		this.gravityMultiplier = gravityMultiplier;
 		this.bounciness = bounciness;
 	}
 
-	public static final void update()
+	/**
+	 * Called every tick to update the {@code ParticleSystem}.
+	 */
+	public void update()
 	{
 
+	}
+
+	/**
+	 * Called every redraw to render the {@code ParticleSystem}.
+	 * 
+	 * @param g graphics to draw to
+	 */
+	public void render(Graphics2D g)
+	{
+		Drawer d = new Drawer(g);
+
+		for (Particle particle : particles)
+		{
+			d.image(particleSprite, (int) Math.round(particle.position.x), (int) Math.round(particle.position.y),
+					(int) Math.round(particle.size.x), (int) Math.round(particle.size.y), false);
+		}
 	}
 
 }
