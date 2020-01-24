@@ -3,6 +3,7 @@ package bidimensionalengine.graphics.particles;
 import java.awt.Graphics2D;
 import java.util.ArrayList;
 
+import bidimensionalengine.core.Window;
 import bidimensionalengine.graphics.Drawer;
 import bidimensionalengine.graphics.Sprite;
 
@@ -60,8 +61,9 @@ public final class ParticleSystem
 	/**
 	 * Default constructor, initializes variables to default values.
 	 */
-	public ParticleSystem()
+	public ParticleSystem(Sprite particleSprite)
 	{
+		this.particleSprite = particleSprite;
 		particles = new ArrayList<Particle>();
 
 		lifeSpan = 1;
@@ -70,6 +72,8 @@ public final class ParticleSystem
 		sizeDecay = 0.2;
 		gravityMultiplier = 0;
 		bounciness = 0;
+
+		onConstructed();
 	}
 
 	/**
@@ -79,9 +83,10 @@ public final class ParticleSystem
 	 * @param gravityMultiplier how much gravity affects each particle
 	 * @param bounciness        bounciness of each particle
 	 */
-	public ParticleSystem(double lifeSpan, double initialSpeed, double speedDecay, double particleSize,
-			double sizeDecay, double gravityMultiplier, double bounciness)
+	public ParticleSystem(Sprite particleSprite, double lifeSpan, double initialSpeed, double speedDecay,
+			double particleSize, double sizeDecay, double gravityMultiplier, double bounciness)
 	{
+		this.particleSprite = particleSprite;
 		particles = new ArrayList<Particle>();
 
 		this.lifeSpan = lifeSpan;
@@ -91,6 +96,17 @@ public final class ParticleSystem
 		this.sizeDecay = sizeDecay;
 		this.gravityMultiplier = gravityMultiplier;
 		this.bounciness = bounciness;
+
+		onConstructed();
+	}
+
+	/**
+	 * 
+	 */
+	private void onConstructed()
+	{
+		Window.getGameLoop().onCreateParticleSystem(this);
+		Window.getGFX().addParticleSytemRenderMethod(this::render);
 	}
 
 	/**
