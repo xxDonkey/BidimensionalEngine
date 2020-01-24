@@ -5,6 +5,8 @@ import java.awt.Graphics2D;
 import java.awt.Polygon;
 import java.util.ArrayList;
 
+import javax.swing.JFrame;
+
 import bidimensionalengine.core.Window;
 import bidimensionalengine.datastructs.Vector2;
 
@@ -20,6 +22,11 @@ public class Drawer
 	 * {@code Graphics2D} to draw to.
 	 */
 	private Graphics2D g;
+
+	/**
+	 * {@code JFrame} the drawer is drawing to.
+	 */
+	private JFrame window;
 
 	/**
 	 * A list of all points that will be used to create a custom polygon.
@@ -47,7 +54,7 @@ public class Drawer
 	 * 
 	 * @param g graphics object of {@code this}
 	 */
-	public Drawer(Graphics2D g)
+	public Drawer(Graphics2D g, JFrame window)
 	{
 		this.g = g;
 		polygonVerticies = new ArrayList<Vector2>();
@@ -63,6 +70,17 @@ public class Drawer
 	 */
 	public Vector2 translate(int x, int y)
 	{ return Window.getGFX().translationVector.add(new Vector2(x, y)); }
+
+	/**
+	 * Sets the background to the desired color.
+	 * 
+	 * @param c color to set the background to.
+	 */
+	public void background(Color c)
+	{
+		g.setColor(c);
+		g.fillRect(0, 0, window.getWidth(), window.getHeight());
+	}
 
 	/**
 	 * Draws a rect with the dimensions (w, h) with a top left corner at (x, y).
