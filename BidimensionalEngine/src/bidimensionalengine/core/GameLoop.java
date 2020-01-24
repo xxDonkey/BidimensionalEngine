@@ -3,6 +3,7 @@ package bidimensionalengine.core;
 import java.util.ArrayList;
 
 import bidimensionalengine.datastructs.GameObject;
+import bidimensionalengine.graphics.particles.ParticleSystem;
 import bidimensionalengine.ui.UIElement;
 
 /**
@@ -20,6 +21,11 @@ public final class GameLoop implements Runnable
 	 * Holds all of the engine's active {@code UIElements}.
 	 */
 	private ArrayList<UIElement> uiElements = new ArrayList<UIElement>();
+
+	/**
+	 * Holds all of the engine's active {@code ParticleSystems}.
+	 */
+	private ArrayList<ParticleSystem> particleSystems = new ArrayList<ParticleSystem>();
 
 	/**
 	 * Called when a {@code GameObject} is created.
@@ -40,18 +46,34 @@ public final class GameLoop implements Runnable
 	/**
 	 * Called when a {@code UIElement} is created.
 	 * 
-	 * @param gameObject game object that is being created
+	 * @param uiElement game object that is being created
 	 */
-	public void onCreateGameObject(UIElement uiElement)
+	public void onCreateUIElement(UIElement uiElement)
 	{ uiElements.add(uiElement); }
 
 	/**
 	 * Called when a {@code UIElement} is destoryed.
 	 * 
-	 * @param gameObject UI element that is being destroyed
+	 * @param uiElement UI element that is being destroyed
 	 */
-	public void onDestoryGameObject(UIElement uiElement)
+	public void onDestoryUIElement(UIElement uiElement)
 	{ uiElements.remove(uiElement); }
+
+	/**
+	 * Called when a {@code ParticleSystem} is created.
+	 * 
+	 * @param particleSystem particle system that is being created
+	 */
+	public void onCreateParticleSystem(ParticleSystem particleSystem)
+	{ particleSystems.add(particleSystem); }
+
+	/**
+	 * Called when a {@code ParticleSystem} is destoryed.
+	 * 
+	 * @param particleSystem particle system that is being destroyed
+	 */
+	public void onDestoryParticleSystem(ParticleSystem particleSystem)
+	{ particleSystems.remove(particleSystem); }
 
 	/**
 	 * Called on the start of the main thread.
@@ -74,6 +96,9 @@ public final class GameLoop implements Runnable
 
 				for (UIElement uiElement : uiElements)
 					uiElement.update();
+
+				for (ParticleSystem particleSystem : particleSystems)
+					particleSystem.update();
 
 				if (!Window.getInstance().isVisible())
 					Window.getInstance().setVisible(true);

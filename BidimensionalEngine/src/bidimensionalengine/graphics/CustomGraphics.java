@@ -21,6 +21,11 @@ public final class CustomGraphics extends Component
 	private ArrayList<Consumer<Graphics2D>> imageRenderMethods;
 
 	/**
+	 * Methods to be called to render particle systems.
+	 */
+	private ArrayList<Consumer<Graphics2D>> particleSytemRenderMethods;
+
+	/**
 	 * Translation vector of the {@code Graphics2D}.
 	 */
 	public Vector2 translationVector = new Vector2(0, 0);
@@ -29,7 +34,10 @@ public final class CustomGraphics extends Component
 	 * Initializes the {@code imageRenderMethods} {@code ArrayList}.
 	 */
 	public CustomGraphics()
-	{ imageRenderMethods = new ArrayList<Consumer<Graphics2D>>(); }
+	{
+		imageRenderMethods = new ArrayList<Consumer<Graphics2D>>();
+		particleSytemRenderMethods = new ArrayList<Consumer<Graphics2D>>();
+	}
 
 	/**
 	 * Called behind the scenes. <br>
@@ -49,6 +57,9 @@ public final class CustomGraphics extends Component
 		Window.getGraphicsMethod().accept(g2d);
 
 		for (Consumer<Graphics2D> method : imageRenderMethods)
+			method.accept(g2d);
+
+		for (Consumer<Graphics2D> method : particleSytemRenderMethods)
 			method.accept(g2d);
 	}
 
