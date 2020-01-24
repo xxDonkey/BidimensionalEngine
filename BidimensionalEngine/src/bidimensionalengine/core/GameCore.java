@@ -160,8 +160,14 @@ public abstract class GameCore
 	 * @param height         height of the window
 	 * @param ticksPerSecond number of times the window updates in a second
 	 */
-	public void createWindow(String title, String assetDirectory, int width, int height, int ticksPerSecond)
+	public void createWindow(String title, String assetDirectory, int width, int height, boolean update)
 	{
+		int ticksPerSecond = 0;
+
+		/* Sets ticks per second to predifined 60 tps if update is true. */
+		if (update)
+			ticksPerSecond = 60;
+
 		Window.KeyboardInputMethodData keyboardInput = new Window.KeyboardInputMethodData(
 				useOnKeyPressed ? this::onKeyPressed : null, useOnKeyTyped ? this::onKeyTyped : null,
 				useOnKeyReleased ? this::onKeyReleased : null);
