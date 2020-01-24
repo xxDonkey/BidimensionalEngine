@@ -14,6 +14,19 @@ public final class Vector2
 	public static final Vector2 zero = new Vector2(0, 0);
 
 	/**
+	 * Returns a random normalized vector whose components are 0-1 (1 excluded).
+	 * 
+	 * @return a random normalized vector
+	 */
+	public static Vector2 random()
+	{
+		double x = Math.random();
+		double y = Math.random();
+
+		return new Vector2(Math.random() < 0.5 ? x : -x, Math.random() < 0.5 ? -y : y);
+	}
+
+	/**
 	 * Calculates the distance between the two vectors.
 	 * 
 	 * @param v1 first vector
