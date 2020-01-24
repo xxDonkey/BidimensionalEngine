@@ -206,7 +206,7 @@ public final class ParticleSystem
 	 */
 	public void render(Graphics2D g)
 	{
-		Drawer d = new Drawer(g);
+		Drawer d = new Drawer(g, Window.getInstance());
 		for (Particle particle : particles)
 		{
 			d.image(particleSprite, (int) Math.round(particle.position.x), (int) Math.round(particle.position.y),
