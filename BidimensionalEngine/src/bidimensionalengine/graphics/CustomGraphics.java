@@ -64,7 +64,7 @@ public final class CustomGraphics extends Component
 	}
 
 	/**
-	 * Adds a method to list list of render methods to call.
+	 * Adds a method to list list of {@code Image} render methods to call.
 	 * 
 	 * @param method method to add
 	 */
@@ -72,10 +72,27 @@ public final class CustomGraphics extends Component
 	{ imageRenderMethods.add(method); }
 
 	/**
-	 * Removes a method to list list of render methods to call.
+	 * Removes a method to list list of {@code Image} render methods to call.
 	 * 
 	 * @param method method to remove
 	 */
 	public void removeImageRenderMethod(Consumer<Graphics2D> method)
 	{ imageRenderMethods.remove(method); }
+
+	/**
+	 * Adds a method to list list of {@code ParticleSystem} render methods to call.
+	 * 
+	 * @param method method to add
+	 */
+	public void addParticleSytemRenderMethod(Consumer<Graphics2D> method)
+	{ particleSytemRenderMethods.add(method); }
+
+	/**
+	 * Removes a method to list list of {@code ParticleSystem} render methods to
+	 * call.
+	 * 
+	 * @param method method to remove
+	 */
+	public void removeParticleSytemRenderMethod(Consumer<Graphics2D> method)
+	{ particleSytemRenderMethods.remove(method); }
 }
