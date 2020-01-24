@@ -1,23 +1,23 @@
 package bidimensionalengine.core;
 
-import java.awt.Color;
 import java.awt.Dimension;
-import java.awt.Graphics2D;
 import java.awt.Point;
 import java.awt.Toolkit;
 
 import javax.swing.JFrame;
 
 /**
+ * Helps with visualization of the games structure/hierarchy. Graphics handled
+ * in {@code StructureVisualizerCustomGraphics}.
+ * 
  * @author Dylan Raiff
  * @version 1.0
  */
 class StructureVisualizer extends JFrame
 {
-	private final static int DEFAULT_WIDTH = 250;
-
-	private final static int DEFAULT_HEIGHT = 600;
-
+	/**
+	 * Creates a visualizer for the game's structure.
+	 */
 	public StructureVisualizer()
 	{
 		super("Structure Visualizer");
@@ -31,7 +31,4 @@ class StructureVisualizer extends JFrame
 		this.pack();
 		this.setVisible(true);
 	}
-
-	public void graphics(Graphics2D g)
-	{ g.setBackground(Color.WHITE); }
 }
