@@ -4,8 +4,10 @@ import java.awt.Graphics2D;
 import java.util.ArrayList;
 
 import bidimensionalengine.core.Window;
+import bidimensionalengine.datastructs.Vector2;
 import bidimensionalengine.graphics.Drawer;
 import bidimensionalengine.graphics.Sprite;
+import bidimensionalengine.playercomponents.Transform;
 
 /**
  * @author Dylan Raiff
@@ -13,6 +15,11 @@ import bidimensionalengine.graphics.Sprite;
  */
 public final class ParticleSystem
 {
+	/**
+	 * Transform of this system.
+	 */
+	private Transform transform;
+
 	/**
 	 * List of all living particles.
 	 */
@@ -101,12 +108,29 @@ public final class ParticleSystem
 	}
 
 	/**
-	 * 
+	 * Called on any constructor call.
 	 */
 	private void onConstructed()
 	{
 		Window.getGameLoop().onCreateParticleSystem(this);
 		Window.getGFX().addParticleSytemRenderMethod(this::render);
+
+		transform = new Transform(null);
+		transform.position = new Vector2(100, 100);
+	}
+
+	/**
+	 * Adds a particle to the system.
+	 */
+	public void addParticle()
+	{
+		particles.add(new Particle()
+		{
+			{
+				position = new Vector2(100, 100);
+				size = new Vector2(10, 10);
+			}
+		});
 	}
 
 	/**
@@ -114,7 +138,17 @@ public final class ParticleSystem
 	 */
 	public void update()
 	{
+		for (int i = 0; i < particles.size(); i++)
+		{
+			Particle particle = particles.get(i);
 
+			if (particle.getAge() > lifeSpan * 1000)
+			{
+				particles.remove(particle);
+				i--;
+			}
+
+		}
 	}
 
 	/**
@@ -125,7 +159,6 @@ public final class ParticleSystem
 	public void render(Graphics2D g)
 	{
 		Drawer d = new Drawer(g);
-
 		for (Particle particle : particles)
 		{
 			d.image(particleSprite, (int) Math.round(particle.position.x), (int) Math.round(particle.position.y),
