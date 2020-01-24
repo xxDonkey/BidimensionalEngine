@@ -36,6 +36,11 @@ public final class Window extends JFrame
 	private static GameCore gameCore;
 
 	/**
+	 * The structure visualizer running along side the engine.
+	 */
+	private static StructureVisualizer visualizer;
+
+	/**
 	 * How many times per second {@code updateMethod} and {@code graphicsMethod} are
 	 * called.
 	 */
@@ -127,7 +132,8 @@ public final class Window extends JFrame
 			return;
 		}
 
-		instance = this;
+		Window.instance = this;
+		Window.visualizer = new StructureVisualizer();
 
 		Window.startMethod = startMethod;
 		Window.graphicsMethod = graphicsMethod;
@@ -184,7 +190,8 @@ public final class Window extends JFrame
 			return;
 		}
 
-		instance = this;
+		Window.instance = this;
+		Window.visualizer = new StructureVisualizer();
 
 		Window.startMethod = startMethod;
 		Window.graphicsMethod = graphicsMethod;
@@ -239,7 +246,8 @@ public final class Window extends JFrame
 			return;
 		}
 
-		instance = this;
+		Window.instance = this;
+		Window.visualizer = new StructureVisualizer();
 
 		Window.startMethod = startMethod;
 		Window.graphicsMethod = graphicsMethod;
@@ -297,7 +305,8 @@ public final class Window extends JFrame
 			return;
 		}
 
-		instance = this;
+		Window.instance = this;
+		Window.visualizer = new StructureVisualizer();
 
 		Window.startMethod = startMethod;
 		Window.graphicsMethod = graphicsMethod;
@@ -345,7 +354,8 @@ public final class Window extends JFrame
 			return;
 		}
 
-		instance = this;
+		Window.instance = this;
+		Window.visualizer = new StructureVisualizer();
 
 		Window.startMethod = startMethod;
 		Window.graphicsMethod = graphicsMethod;
