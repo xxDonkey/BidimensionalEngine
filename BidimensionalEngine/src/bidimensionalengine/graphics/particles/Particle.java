@@ -10,6 +10,9 @@ class Particle
 {
 	public Vector2 position;
 	public Vector2 size;
+	public Vector2 direction;
+
+	public double speed = 0;
 
 	private long timeCreated;
 
