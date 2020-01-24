@@ -57,6 +57,8 @@ public class Drawer
 	public Drawer(Graphics2D g, JFrame window)
 	{
 		this.g = g;
+		this.window = window;
+
 		polygonVerticies = new ArrayList<Vector2>();
 	}
 
