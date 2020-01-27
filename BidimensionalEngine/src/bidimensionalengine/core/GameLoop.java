@@ -2,7 +2,6 @@ package bidimensionalengine.core;
 
 import java.util.ArrayList;
 
-import bidimensionalengine.core.structurevisualizer.StructureVisualizer;
 import bidimensionalengine.datastructs.GameObject;
 import bidimensionalengine.graphics.particles.ParticleSystem;
 import bidimensionalengine.ui.UIElement;
@@ -34,10 +33,7 @@ public final class GameLoop implements Runnable
 	 * @param gameObject game object that is being created
 	 */
 	public void onCreateGameObject(GameObject gameObject)
-	{
-		gameObjects.add(gameObject);
-		StructureVisualizer.getInstance().addToHierarchy(gameObject);
-	}
+	{ gameObjects.add(gameObject); }
 
 	/**
 	 * Called when a {@code GameObject} is destoryed.
@@ -45,10 +41,7 @@ public final class GameLoop implements Runnable
 	 * @param gameObject UI element that is being destroyed
 	 */
 	public void onDestoryGameObject(GameObject gameObject)
-	{
-		gameObjects.remove(gameObject);
-		StructureVisualizer.getInstance().removeFromHierarchy(gameObject);
-	}
+	{ gameObjects.remove(gameObject); }
 
 	/**
 	 * Called when a {@code UIElement} is created.
@@ -56,10 +49,7 @@ public final class GameLoop implements Runnable
 	 * @param uiElement game object that is being created
 	 */
 	public void onCreateUIElement(UIElement uiElement)
-	{
-		uiElements.add(uiElement);
-		StructureVisualizer.getInstance().addToHierarchy(uiElement);
-	}
+	{ uiElements.add(uiElement); }
 
 	/**
 	 * Called when a {@code UIElement} is destoryed.
@@ -67,10 +57,7 @@ public final class GameLoop implements Runnable
 	 * @param uiElement UI element that is being destroyed
 	 */
 	public void onDestoryUIElement(UIElement uiElement)
-	{
-		uiElements.remove(uiElement);
-		StructureVisualizer.getInstance().removeFromHierarchy(uiElement);
-	}
+	{ uiElements.remove(uiElement); }
 
 	/**
 	 * Called when a {@code ParticleSystem} is created.
