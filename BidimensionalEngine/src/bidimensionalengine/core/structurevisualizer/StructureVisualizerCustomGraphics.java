@@ -12,7 +12,7 @@ import bidimensionalengine.graphics.Drawer;
  * @author Dylan Raiff
  * @version 1.0
  */
-public class StructureVisualizerCustomGraphics extends Component
+class StructureVisualizerCustomGraphics extends Component
 {
 	/**
 	 * Visualizer {@code this} is drawing for.

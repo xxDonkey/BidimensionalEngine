@@ -3,10 +3,12 @@ package bidimensionalengine.core.structurevisualizer;
 import java.awt.Dimension;
 import java.awt.Point;
 import java.awt.Toolkit;
+import java.util.TreeMap;
 
 import javax.swing.JFrame;
 
 import bidimensionalengine.core.Window;
+import bidimensionalengine.datastructs.GameObject;
 
 /**
  * Helps with visualization of the games structure/hierarchy. Graphics handled
@@ -33,6 +35,11 @@ public class StructureVisualizer extends JFrame
 	private StructureVisualizerCustomGraphics gfx;
 
 	/**
+	 * {@code TreeMap} representing the hierarchy of the engine.
+	 */
+	TreeMap<String, GameObject> hierarchy;
+
+	/**
 	 * Creates a visualizer for the game's structure.
 	 */
 	public StructureVisualizer()
@@ -45,6 +52,8 @@ public class StructureVisualizer extends JFrame
 			return;
 		}
 		StructureVisualizer.instance = this;
+		this.hierarchy = new TreeMap<String, GameObject>();
+
 		this.gfx = new StructureVisualizerCustomGraphics(this);
 		this.add(gfx);
 
@@ -58,9 +67,9 @@ public class StructureVisualizer extends JFrame
 			public void run()
 			{
 				long last = System.currentTimeMillis();
-				while (true)
+				while (Window.getTPS() != 0)
 				{
-					if (System.currentTimeMillis() - last > 1000 / (Window.getTPS() == 0 ? 1 : Window.getTPS()))
+					if (System.currentTimeMillis() - last > 1000 / Window.getTPS())
 					{
 						gfx.repaint();
 						last = System.currentTimeMillis();
@@ -73,4 +82,32 @@ public class StructureVisualizer extends JFrame
 		this.pack();
 		this.setVisible(true);
 	}
+
+	/**
+	 * Adds the specified {@code GameObject} to the hierarchy.
+	 * 
+	 * @param gameObject game object to add
+	 */
+	public void addToHierarchy(GameObject gameObject)
+	{
+
+	}
+
+	/**
+	 * Removes the specified {@code GameObject} from the hierarchy.
+	 * 
+	 * @param gameObject game object to remove
+	 */
+	public void removeFromHierarchy(GameObject gameObject)
+	{
+
+	}
+
+	/* Access methods */
+
+	/**
+	 * @return instance variable of {@code StructureVisualizer} class
+	 */
+	public static StructureVisualizer getInstance()
+	{ return instance; }
 }
