@@ -102,6 +102,7 @@ public final class Window extends JFrame
 	 * @param ticksPerSecond            number of times per second to update game
 	 *                                  logic and graphics
 	 * @param assetDirectory            directory of assets: <u>images to use in
+	 * @param runVisualizer             whether or not to run a structure visualizer
 	 *                                  graphics, audio files, etc...</u>
 	 * @param startMethod               reference to the method that will be called
 	 *                                  once on start <br>
@@ -119,8 +120,9 @@ public final class Window extends JFrame
 	 *                                  will be called by the key listener
 	 * @param onMouseInputMethodData    object with references to the methods that
 	 *                                  will be called by the mouse listener
+	 * @param gameCore                  user extended core of the game
 	 */
-	public Window(String name, int width, int height, int ticksPerSecond, String assetDirectory,
+	public Window(String name, int width, int height, int ticksPerSecond, String assetDirectory, boolean runVisualizer,
 			ComplexInterface startMethod, ComplexInterface updateMethod, Consumer<Graphics2D> graphicsMethod,
 			KeyboardInputMethodData onKeyboardInputMethodData, MouseInputMethodData onMouseInputMethodData,
 			GameCore gameCore)
@@ -134,7 +136,9 @@ public final class Window extends JFrame
 		}
 
 		Window.instance = this;
-		Window.visualizer = new StructureVisualizer();
+		if (runVisualizer)
+			if (runVisualizer)
+				Window.visualizer = new StructureVisualizer();
 
 		Window.startMethod = startMethod;
 		Window.graphicsMethod = graphicsMethod;
@@ -167,6 +171,7 @@ public final class Window extends JFrame
 	 *                       graphics
 	 * @param assetDirectory directory of assets: <u>images to use in graphics,
 	 *                       audio files, etc...</u>
+	 * @param runVisualizer  whether or not to run a structure visualizer
 	 * @param startMethod    reference to the method that will be called once on
 	 *                       start <br>
 	 *                       <BLOCKQUOTE><u>Returns:</u> void <br>
@@ -178,8 +183,9 @@ public final class Window extends JFrame
 	 * @param graphicsMethod reference to the method that will draw graphics <br>
 	 *                       <BLOCKQUOTE><u>Returns:</u> void <br>
 	 *                       <u>Arguments (1)</u>: Graphics2D
+	 * @param gameCore       user extended core of the game
 	 */
-	public Window(String name, int width, int height, int ticksPerSecond, String assetDirectory,
+	public Window(String name, int width, int height, int ticksPerSecond, String assetDirectory, boolean runVisualizer,
 			ComplexInterface startMethod, ComplexInterface updateMethod, Consumer<Graphics2D> graphicsMethod,
 			GameCore gameCore)
 	{
@@ -192,7 +198,9 @@ public final class Window extends JFrame
 		}
 
 		Window.instance = this;
-		Window.visualizer = new StructureVisualizer();
+		if (runVisualizer)
+			if (runVisualizer)
+				Window.visualizer = new StructureVisualizer();
 
 		Window.startMethod = startMethod;
 		Window.graphicsMethod = graphicsMethod;
@@ -220,6 +228,7 @@ public final class Window extends JFrame
 	 *                                  logic and graphics
 	 * @param assetDirectory            directory of assets: <u>images to use in
 	 *                                  graphics, audio files, etc...</u>
+	 * @param runVisualizer             whether or not to run a structure visualizer
 	 * @param startMethod               reference to the method that will be called
 	 *                                  once on start <br>
 	 *                                  <BLOCKQUOTE><u>Returns:</u> void <br>
@@ -234,8 +243,9 @@ public final class Window extends JFrame
 	 *                                  <u>Arguments (1)</u>: Graphics2D
 	 * @param onKeyboardInputMethodData object with references to the methods that
 	 *                                  will be called by the key listener
+	 * @param gameCore                  user extended core of the game
 	 */
-	public Window(String name, int width, int height, int ticksPerSecond, String assetDirectory,
+	public Window(String name, int width, int height, int ticksPerSecond, String assetDirectory, boolean runVisualizer,
 			ComplexInterface startMethod, ComplexInterface updateMethod, Consumer<Graphics2D> graphicsMethod,
 			KeyboardInputMethodData onKeyboardInputMethodData, GameCore gameCore)
 	{
@@ -248,7 +258,8 @@ public final class Window extends JFrame
 		}
 
 		Window.instance = this;
-		Window.visualizer = new StructureVisualizer();
+		if (runVisualizer)
+			Window.visualizer = new StructureVisualizer();
 
 		Window.startMethod = startMethod;
 		Window.graphicsMethod = graphicsMethod;
@@ -279,6 +290,7 @@ public final class Window extends JFrame
 	 *                               and graphics
 	 * @param assetDirectory         directory of assets: <u>images to use in
 	 *                               graphics, audio files, etc...</u>
+	 * @param runVisualizer          whether or not to run a structure visualizer
 	 * @param startMethod            reference to the method that will be called
 	 *                               once on start <br>
 	 *                               <BLOCKQUOTE><u>Returns:</u> void <br>
@@ -293,8 +305,9 @@ public final class Window extends JFrame
 	 *                               <u>Arguments (1)</u>: Graphics2D
 	 * @param onMouseInputMethodData object with references to the methods that will
 	 *                               be called by the mouse listener
+	 * @param gameCore               user extended core of the game
 	 */
-	public Window(String name, int width, int height, int ticksPerSecond, String assetDirectory,
+	public Window(String name, int width, int height, int ticksPerSecond, String assetDirectory, boolean runVisualizer,
 			ComplexInterface startMethod, ComplexInterface updateMethod, Consumer<Graphics2D> graphicsMethod,
 			MouseInputMethodData onMouseInputMethodData, GameCore gameCore)
 	{
@@ -307,7 +320,8 @@ public final class Window extends JFrame
 		}
 
 		Window.instance = this;
-		Window.visualizer = new StructureVisualizer();
+		if (runVisualizer)
+			Window.visualizer = new StructureVisualizer();
 
 		Window.startMethod = startMethod;
 		Window.graphicsMethod = graphicsMethod;
@@ -336,6 +350,7 @@ public final class Window extends JFrame
 	 * @param height         height of the window
 	 * @param assetDirectory directory of assets: <u>images to use in graphics,
 	 *                       audio files, etc...</u>
+	 * @param runVisualizer  whether or not to run a structure visualizer
 	 * @param startMethod    reference to the method that will be called once on
 	 *                       start <br>
 	 *                       <BLOCKQUOTE><u>Returns:</u> void <br>
@@ -343,9 +358,10 @@ public final class Window extends JFrame
 	 * @param graphicsMethod reference to the method that will draw graphics <br>
 	 *                       <BLOCKQUOTE><u>Returns:</u> void <br>
 	 *                       <u>Arguments (1)</u>: Graphics2D
+	 * @param gameCore       user extended core of the game
 	 */
-	public Window(String name, int width, int height, String assetDirectory, ComplexInterface startMethod,
-			Consumer<Graphics2D> graphicsMethod, GameCore gameCore)
+	public Window(String name, int width, int height, String assetDirectory, boolean runVisualizer,
+			ComplexInterface startMethod, Consumer<Graphics2D> graphicsMethod, GameCore gameCore)
 	{
 		super(name);
 
@@ -356,7 +372,8 @@ public final class Window extends JFrame
 		}
 
 		Window.instance = this;
-		Window.visualizer = new StructureVisualizer();
+		if (runVisualizer)
+			Window.visualizer = new StructureVisualizer();
 
 		Window.startMethod = startMethod;
 		Window.graphicsMethod = graphicsMethod;

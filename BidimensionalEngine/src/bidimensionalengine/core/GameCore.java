@@ -160,7 +160,8 @@ public abstract class GameCore
 	 * @param height         height of the window
 	 * @param ticksPerSecond number of times the window updates in a second
 	 */
-	public void createWindow(String title, String assetDirectory, int width, int height, boolean update)
+	public void createWindow(String title, String assetDirectory, int width, int height, boolean update,
+			boolean runVisualizer)
 	{
 		int ticksPerSecond = 0;
 
@@ -184,34 +185,34 @@ public abstract class GameCore
 		if (keyboardInput.allVoid() && mouseInput.allVoid())
 		{
 			if (!update)
-				new Window(title, width, height, assetDirectory, this::start, this::graphics, this);
+				new Window(title, width, height, assetDirectory, runVisualizer, this::start, this::graphics, this);
 			else
-				new Window(title, width, height, ticksPerSecond, assetDirectory, this::start, this::update,
-						this::graphics, this);
+				new Window(title, width, height, ticksPerSecond, assetDirectory, runVisualizer, this::start,
+						this::update, this::graphics, this);
 		}
 		else if (!keyboardInput.allVoid() && mouseInput.allVoid())
 		{
 			if (!update)
 				System.err.println("Cannot have less than or equal to 0 tps and input.");
 			else
-				new Window(title, width, height, ticksPerSecond, assetDirectory, this::start, this::update,
-						this::graphics, keyboardInput, this);
+				new Window(title, width, height, ticksPerSecond, assetDirectory, runVisualizer, this::start,
+						this::update, this::graphics, keyboardInput, this);
 		}
 		else if (keyboardInput.allVoid() && !mouseInput.allVoid())
 		{
 			if (!update)
 				System.err.println("Cannot have less than or equal to 0 tps and input.");
 			else
-				new Window(title, width, height, ticksPerSecond, assetDirectory, this::start, this::update,
-						this::graphics, mouseInput, this);
+				new Window(title, width, height, ticksPerSecond, assetDirectory, runVisualizer, this::start,
+						this::update, this::graphics, mouseInput, this);
 		}
 		else
 		{
 			if (ticksPerSecond <= 0)
 				System.err.println("Cannot have less than or equal to 0 tps and input.");
 			else
-				new Window(title, width, height, ticksPerSecond, assetDirectory, this::start, this::update,
-						this::graphics, keyboardInput, mouseInput, this);
+				new Window(title, width, height, ticksPerSecond, assetDirectory, runVisualizer, this::start,
+						this::update, this::graphics, keyboardInput, mouseInput, this);
 		}
 	}
 }
