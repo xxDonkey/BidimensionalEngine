@@ -10,6 +10,7 @@ import java.util.function.Consumer;
 import javax.swing.JFrame;
 
 import bidimensionalengine.audio.AudioLoader;
+import bidimensionalengine.core.structurevisualizer.StructureVisualizer;
 import bidimensionalengine.graphics.CustomGraphics;
 import bidimensionalengine.graphics.SpriteLoader;
 import bidimensionalengine.input.KeyboardInput;
