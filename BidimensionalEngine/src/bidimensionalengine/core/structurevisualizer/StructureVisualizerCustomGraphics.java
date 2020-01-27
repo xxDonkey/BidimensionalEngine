@@ -6,6 +6,7 @@ import java.awt.Graphics;
 import java.awt.Graphics2D;
 
 import bidimensionalengine.core.Window;
+import bidimensionalengine.datastructs.GameObject;
 import bidimensionalengine.graphics.Drawer;
 
 /**
@@ -18,6 +19,11 @@ class StructureVisualizerCustomGraphics extends Component
 	 * Visualizer {@code this} is drawing for.
 	 */
 	private StructureVisualizer visualizer;
+
+	/**
+	 * Number of names draw on the structure visualizer.
+	 */
+	private int numNamesDrawn = 0;
 
 	/**
 	 * Creates a {@code StructureVisualizerCustomGraphics}.
@@ -36,5 +42,38 @@ class StructureVisualizerCustomGraphics extends Component
 		if (Window.getGameLoop() == null)
 			return;
 
+		for (GameObject gameObject : Window.getGameLoop().getGameObjects())
+		{
+			if (gameObject.getParent() == null)
+				drawChildren(d, gameObject);
+		}
+
+		numNamesDrawn = 0;
+	}
+
+	private void drawChildren(Drawer d, GameObject gameObject)
+	{
+		int depth = getDepth(gameObject);
+		d.text(gameObject.getName(), 10 + 20 * depth, 15 + (numNamesDrawn * 20));
+		numNamesDrawn++;
+
+		if (gameObject.getChildren().size() == 0)
+			return;
+
+		for (GameObject child : gameObject.getChildren())
+		{
+			drawChildren(d, child);
+		}
+	}
+
+	private int getDepth(GameObject gameObject)
+	{
+		int depth = 0;
+		while (gameObject.getParent() != null)
+		{
+			depth++;
+			gameObject = gameObject.getParent();
+		}
+		return depth;
 	}
 }
