@@ -102,6 +102,13 @@ public class Drawer
 				h - 2 * (borderThickness - 1));
 	}
 
+	/**
+	 * Draws text at the specified location.
+	 * 
+	 * @param text text to draw
+	 * @param x    x coordinate of the text
+	 * @param y    y coordinate of the text
+	 */
 	public void text(String text, int x, int y)
 	{
 		g.setColor(borderColor);
