@@ -597,6 +597,13 @@ public final class Window extends JFrame
 	{ return Window.gameCore; }
 
 	/**
+	 * @return {@code StructureVisualizer} of the instance of the engine that is
+	 *         running
+	 */
+	public static StructureVisualizer getStructureVisualizer()
+	{ return Window.visualizer; }
+
+	/**
 	 * @return ticks per second of the engine
 	 */
 	public static int getTPS()
