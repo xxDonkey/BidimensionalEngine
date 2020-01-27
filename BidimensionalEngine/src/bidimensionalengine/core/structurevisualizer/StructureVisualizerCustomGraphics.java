@@ -4,8 +4,10 @@ import java.awt.Color;
 import java.awt.Component;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
+import java.util.TreeMap;
 
 import bidimensionalengine.core.Window;
+import bidimensionalengine.datastructs.GameObject;
 import bidimensionalengine.graphics.Drawer;
 
 /**
@@ -36,5 +38,14 @@ class StructureVisualizerCustomGraphics extends Component
 		if (Window.getGameLoop() == null)
 			return;
 
+		TreeMap<String, GameObject> hierarchy = visualizer.getHierarchy();
+		if (hierarchy.isEmpty())
+			return;
+
+		TreeMap<GameObject, Integer> desendancy = new TreeMap<GameObject, Integer>();
+		for (String key : hierarchy.keySet())
+		{
+
+		}
 	}
 }

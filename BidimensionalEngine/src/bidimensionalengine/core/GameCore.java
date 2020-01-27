@@ -183,7 +183,7 @@ public abstract class GameCore
 
 		if (keyboardInput.allVoid() && mouseInput.allVoid())
 		{
-			if (ticksPerSecond <= 0)
+			if (!update)
 				new Window(title, width, height, assetDirectory, this::start, this::graphics, this);
 			else
 				new Window(title, width, height, ticksPerSecond, assetDirectory, this::start, this::update,
@@ -191,7 +191,7 @@ public abstract class GameCore
 		}
 		else if (!keyboardInput.allVoid() && mouseInput.allVoid())
 		{
-			if (ticksPerSecond <= 0)
+			if (!update)
 				System.err.println("Cannot have less than or equal to 0 tps and input.");
 			else
 				new Window(title, width, height, ticksPerSecond, assetDirectory, this::start, this::update,
@@ -199,7 +199,7 @@ public abstract class GameCore
 		}
 		else if (keyboardInput.allVoid() && !mouseInput.allVoid())
 		{
-			if (ticksPerSecond <= 0)
+			if (!update)
 				System.err.println("Cannot have less than or equal to 0 tps and input.");
 			else
 				new Window(title, width, height, ticksPerSecond, assetDirectory, this::start, this::update,

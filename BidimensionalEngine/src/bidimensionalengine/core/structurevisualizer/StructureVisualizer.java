@@ -67,9 +67,9 @@ public class StructureVisualizer extends JFrame
 			public void run()
 			{
 				long last = System.currentTimeMillis();
-				while (Window.getTPS() != 0)
+				while (true)
 				{
-					if (System.currentTimeMillis() - last > 1000 / Window.getTPS())
+					if (System.currentTimeMillis() - last > 1000 / (Window.getTPS() == 0 ? 1 : Window.getTPS()))
 					{
 						gfx.repaint();
 						last = System.currentTimeMillis();
@@ -89,9 +89,7 @@ public class StructureVisualizer extends JFrame
 	 * @param gameObject game object to add
 	 */
 	public void addToHierarchy(GameObject gameObject)
-	{
-
-	}
+	{ hierarchy.put(gameObject.getParent() == null ? "none" : gameObject.getParent().getName(), gameObject); }
 
 	/**
 	 * Removes the specified {@code GameObject} from the hierarchy.
@@ -110,4 +108,10 @@ public class StructureVisualizer extends JFrame
 	 */
 	public static StructureVisualizer getInstance()
 	{ return instance; }
+
+	/**
+	 * @return {@code TreeMap} containing hierarchy data
+	 */
+	public TreeMap<String, GameObject> getHierarchy()
+	{ return hierarchy; }
 }
