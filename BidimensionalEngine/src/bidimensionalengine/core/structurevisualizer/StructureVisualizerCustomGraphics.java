@@ -1,14 +1,12 @@
-package bidimensionalengine.graphics;
+package bidimensionalengine.core.structurevisualizer;
 
 import java.awt.Color;
 import java.awt.Component;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
-import java.util.ArrayList;
 
-import bidimensionalengine.core.StructureVisualizer;
 import bidimensionalengine.core.Window;
-import bidimensionalengine.datastructs.GameObject;
+import bidimensionalengine.graphics.Drawer;
 
 /**
  * @author Dylan Raiff
@@ -38,19 +36,5 @@ public class StructureVisualizerCustomGraphics extends Component
 		if (Window.getGameLoop() == null)
 			return;
 
-		ArrayList<String> hierarchy = new ArrayList<String>();
-		ArrayList<GameObject> nullParents = new ArrayList<GameObject>();
-
-		for (GameObject gameObject : Window.getGameLoop().getGameObjects())
-		{
-			if (gameObject.getParent() == null)
-				nullParents.add(gameObject);
-		}
-
-		for (int i = 0; i < hierarchy.size(); i++)
-		{
-			String line = hierarchy.get(i);
-			d.text(line, 10, 15 * (i + 1));
-		}
 	}
 }
