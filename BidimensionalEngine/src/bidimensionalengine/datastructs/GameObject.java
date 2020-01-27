@@ -1,7 +1,9 @@
 package bidimensionalengine.datastructs;
 
 import java.lang.reflect.InvocationTargetException;
+import java.text.Collator;
 import java.util.ArrayList;
+import java.util.Locale;
 
 import bidimensionalengine.core.Window;
 import bidimensionalengine.playercomponents.Image;
@@ -13,7 +15,7 @@ import bidimensionalengine.ui.UIElement;
  * @author Dylan Raiff
  * @version 1.0
  */
-public class GameObject
+public class GameObject implements Comparable<GameObject>
 {
 	/**
 	 * Name of the {@code GameObject}.
@@ -173,6 +175,14 @@ public class GameObject
 	 */
 	public void destory()
 	{ Window.getGameLoop().onDestoryGameObject(this); }
+
+	@Override
+	public int compareTo(GameObject o)
+	{
+		Collator collator = Collator.getInstance(Locale.US);
+		collator.setStrength(Collator.PRIMARY);
+		return collator.compare(name, o.name);
+	}
 
 	/* Access methods */
 

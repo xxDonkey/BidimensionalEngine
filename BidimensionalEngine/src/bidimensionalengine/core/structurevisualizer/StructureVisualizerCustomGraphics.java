@@ -4,6 +4,8 @@ import java.awt.Color;
 import java.awt.Component;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
+import java.util.ArrayList;
+import java.util.Collections;
 
 import bidimensionalengine.core.Window;
 import bidimensionalengine.datastructs.GameObject;
@@ -42,7 +44,10 @@ class StructureVisualizerCustomGraphics extends Component
 		if (Window.getGameLoop() == null)
 			return;
 
-		for (GameObject gameObject : Window.getGameLoop().getGameObjects())
+		ArrayList<GameObject> objects = Window.getGameLoop().getGameObjects();
+		Collections.sort(objects);
+
+		for (GameObject gameObject : objects)
 		{
 			if (gameObject.getParent() == null)
 				drawChildren(d, gameObject);
@@ -60,7 +65,10 @@ class StructureVisualizerCustomGraphics extends Component
 		if (gameObject.getChildren().size() == 0)
 			return;
 
-		for (GameObject child : gameObject.getChildren())
+		ArrayList<GameObject> children = gameObject.getChildren();
+		Collections.sort(children);
+
+		for (GameObject child : children)
 		{
 			drawChildren(d, child);
 		}
