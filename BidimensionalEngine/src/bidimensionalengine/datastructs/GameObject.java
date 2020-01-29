@@ -45,6 +45,12 @@ public class GameObject implements Comparable<GameObject>
 	protected ArrayList<ObjectComponent> components;
 
 	/**
+	 * Depth from top (having a {@code null parent}) the {@code GameObject} is. A
+	 * {@code depth} of 0 means {@code parent = null}.
+	 */
+	private int depth = 0;
+
+	/**
 	 * Default constructor.
 	 * 
 	 * @param name   name of the game object
@@ -60,8 +66,18 @@ public class GameObject implements Comparable<GameObject>
 		this.children = new ArrayList<GameObject>();
 		this.components = new ArrayList<ObjectComponent>();
 
+		if (name.equals("WorldParent"))
+			return;
+
 		if (parent != null)
+		{
 			parent.addChild(this);
+			this.depth = parent.depth + 1;
+		}
+		else
+		{
+			this.parent = Window.getWorldParent();
+		}
 
 		if (Window.getGameLoop() != null && !(this instanceof UIElement))
 			Window.getGameLoop().onCreateGameObject(this);
@@ -210,4 +226,9 @@ public class GameObject implements Comparable<GameObject>
 	public ArrayList<GameObject> getChildren()
 	{ return children; }
 
+	/**
+	 * @return the depth of the game object
+	 */
+	public int getDepth()
+	{ return depth; }
 }

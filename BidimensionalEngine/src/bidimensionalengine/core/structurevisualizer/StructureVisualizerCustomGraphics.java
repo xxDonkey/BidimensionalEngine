@@ -49,7 +49,7 @@ class StructureVisualizerCustomGraphics extends Component
 
 		for (GameObject gameObject : objects)
 		{
-			if (gameObject.getParent() == null)
+			if (gameObject.getParent().getName().equals(Window.getWorldParent().getName()))
 				drawChildren(d, gameObject);
 		}
 
@@ -58,8 +58,7 @@ class StructureVisualizerCustomGraphics extends Component
 
 	private void drawChildren(Drawer d, GameObject gameObject)
 	{
-		int depth = getDepth(gameObject);
-		d.text(gameObject.getName(), 10 + 20 * depth, 15 + (numNamesDrawn * 20));
+		d.text(gameObject.getName(), 10 + 20 * gameObject.getDepth(), 15 + (numNamesDrawn * 20));
 		numNamesDrawn++;
 
 		if (gameObject.getChildren().size() == 0)
@@ -72,16 +71,5 @@ class StructureVisualizerCustomGraphics extends Component
 		{
 			drawChildren(d, child);
 		}
-	}
-
-	private int getDepth(GameObject gameObject)
-	{
-		int depth = 0;
-		while (gameObject.getParent() != null)
-		{
-			depth++;
-			gameObject = gameObject.getParent();
-		}
-		return depth;
 	}
 }

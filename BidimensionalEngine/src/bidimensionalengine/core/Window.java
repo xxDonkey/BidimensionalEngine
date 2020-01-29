@@ -11,6 +11,7 @@ import javax.swing.JFrame;
 
 import bidimensionalengine.audio.AudioLoader;
 import bidimensionalengine.core.structurevisualizer.StructureVisualizer;
+import bidimensionalengine.datastructs.GameObject;
 import bidimensionalengine.graphics.CustomGraphics;
 import bidimensionalengine.graphics.SpriteLoader;
 import bidimensionalengine.input.KeyboardInput;
@@ -35,6 +36,11 @@ public final class Window extends JFrame
 	 * The main program running the game.
 	 */
 	private static GameCore gameCore;
+
+	/**
+	 * Parent of all {@code GameObjects} who are constructed with a null parent.
+	 */
+	private static GameObject worldParent;
 
 	/**
 	 * The structure visualizer running along side the engine.
@@ -434,6 +440,8 @@ public final class Window extends JFrame
 			System.err.println("Audio files could not be loaded.");
 		}
 
+		Window.worldParent = new GameObject("WorldParent", null);
+
 		Window.gameLoop = new GameLoop();
 		Window.thread = new Thread(gameLoop);
 		Window.thread.start();
@@ -612,6 +620,12 @@ public final class Window extends JFrame
 	 */
 	public static GameCore getGameCore()
 	{ return Window.gameCore; }
+
+	/**
+	 * @return {@code GameObject} that all others are desendant from
+	 */
+	public static GameObject getWorldParent()
+	{ return Window.worldParent; }
 
 	/**
 	 * @return {@code StructureVisualizer} of the instance of the engine that is
