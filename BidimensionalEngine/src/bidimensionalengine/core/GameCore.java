@@ -9,7 +9,7 @@ import java.awt.event.MouseEvent;
  * Your {@code Main} or {@code Run} class should implement this interface. In
  * it's {@code main()} method, it should instantiate an instance of itself. <br>
  * This interface is not required, but you will have to manually call the Window
- * constructor, <b>it would be much more difficult.</b>.
+ * constructor, <b>it would be much more difficult.</b>
  * <p>
  * In order to use input, you must the overridden methods in the {@code super}.
  * At the end of your main class's constructor, invoke
