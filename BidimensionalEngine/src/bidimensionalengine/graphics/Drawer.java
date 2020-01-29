@@ -54,6 +54,20 @@ public class Drawer
 	 * 
 	 * @param g graphics object of {@code this}
 	 */
+	public Drawer(Graphics2D g)
+	{
+		this.g = g;
+		this.window = Window.getInstance();
+
+		polygonVerticies = new ArrayList<Vector2>();
+	}
+
+	/**
+	 * Assigns a {@code Graphics2D}.
+	 * 
+	 * @param g      graphics object of {@code this}
+	 * @param window window to draw to
+	 */
 	public Drawer(Graphics2D g, JFrame window)
 	{
 		this.g = g;
