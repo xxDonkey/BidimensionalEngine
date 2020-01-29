@@ -180,7 +180,7 @@ public abstract class GameCore
 
 		// Accounts for top bar of a Mac window.
 		if (System.getProperty("os.name").startsWith("Mac"))
-			height += 23;
+			height += 22;
 
 		if (keyboardInput.allVoid() && mouseInput.allVoid())
 		{
