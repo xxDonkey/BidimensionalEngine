@@ -55,7 +55,7 @@ public class Slider extends UIElement
 		if (Window.getOnMouseInputMethodData() == null || Window.getOnMouseInputMethodData().onMousePressed == null
 				|| Window.getOnMouseInputMethodData().onMouseReleased == null)
 		{
-			abort(this);
+			abort();
 		}
 
 		size = new Vector2(50, 5);
