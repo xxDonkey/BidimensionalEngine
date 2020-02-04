@@ -565,6 +565,7 @@ public final class Window extends JFrame
 	 * <u>Arguments:</u> None </BLOCKQUOTE>
 	 * 
 	 * @author Dylan Raiff
+	 * @version 1.0
 	 */
 	@FunctionalInterface
 	public static interface ComplexInterface
@@ -581,6 +582,7 @@ public final class Window extends JFrame
 	 * <u>Arguments (1):</u> KeyEvent </BLOCKQUOTE>
 	 * 
 	 * @author Dylan Raiff
+	 * @version 1.0
 	 */
 	@FunctionalInterface
 	public static interface ComplexKeyEventInterface
@@ -597,6 +599,7 @@ public final class Window extends JFrame
 	 * <u>Arguments (1):</u> MouseEvent </BLOCKQUOTE>
 	 * 
 	 * @author Dylan Raiff
+	 * @version 1.0
 	 */
 	@FunctionalInterface
 	public static interface ComplexMouseEventInterface
