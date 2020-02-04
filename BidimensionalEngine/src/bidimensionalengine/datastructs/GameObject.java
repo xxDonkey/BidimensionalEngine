@@ -186,6 +186,15 @@ public class GameObject implements Comparable<GameObject>
 		return descendants;
 	}
 
+	public void forEachChild(GameObjectForEachChildAction action)
+	{
+		for (GameObject child : children)
+		{
+			action.method(child);
+			child.forEachChild(action);
+		}
+	}
+
 	/**
 	 * Destorys this game object.
 	 */
@@ -198,6 +207,23 @@ public class GameObject implements Comparable<GameObject>
 		Collator collator = Collator.getInstance(Locale.US);
 		collator.setStrength(Collator.PRIMARY);
 		return collator.compare(name, o.name);
+	}
+
+	/**
+	 * Stores a method to be called on each child.<br>
+	 * <BLOCKQUOTE> <u>Returns:</u> void <br>
+	 * <u>Arguments (1):</u> GameObject </BLOCKQUOTE>
+	 * 
+	 * @author Dylan Raiff
+	 * @version 1.0
+	 */
+	@FunctionalInterface
+	public static interface GameObjectForEachChildAction
+	{
+		/**
+		 * Stored method of each child.
+		 */
+		public void method(GameObject gameObject);
 	}
 
 	/* Access methods */
