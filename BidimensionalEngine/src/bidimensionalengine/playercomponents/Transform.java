@@ -43,7 +43,13 @@ public class Transform extends ObjectComponent
 	 * @param translationVector vector to move along
 	 */
 	public void translate(Vector2 translationVector)
-	{ this.position.add(translationVector); }
+	{
+		this.position.add(translationVector);
+		gameObject.forEachChild((GameObject go) ->
+		{
+			go.getTransform().translate(translationVector);
+		});
+	}
 
 	/**
 	 * Rotates the {@code Transform} around the axis sticking out of the computer.
