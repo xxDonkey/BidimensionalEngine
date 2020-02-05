@@ -70,9 +70,10 @@ public class Button extends UIElement
 			abort();
 		}
 
-		size = new Vector2(50, 50);
+		size = new Vector2(0, 0);
 
 		image = (Image) addComponent(Image.class);
+		image.size = size;
 	}
 
 	/**

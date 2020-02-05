@@ -45,9 +45,13 @@ public class Transform extends ObjectComponent
 	public void translate(Vector2 translationVector)
 	{
 		this.position.add(translationVector);
+		if (gameObject == null)
+			return;
+
 		gameObject.forEachChild((GameObject go) ->
 		{
-			go.getTransform().translate(translationVector);
+			if (go != null)
+				go.getTransform().translate(translationVector);
 		});
 	}
 
