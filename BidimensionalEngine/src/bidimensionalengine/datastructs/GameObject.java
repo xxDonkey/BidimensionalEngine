@@ -186,6 +186,12 @@ public class GameObject implements Comparable<GameObject>
 		return descendants;
 	}
 
+	/**
+	 * Calls the desired method for each child, passing that child in.<br>
+	 * It also calls this method for each child, passing the method.
+	 * 
+	 * @param action method to call
+	 */
 	public void forEachChild(GameObjectForEachChildAction action)
 	{
 		for (GameObject child : children)
