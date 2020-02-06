@@ -8,7 +8,7 @@ import bidimensionalengine.playercomponents.Transform;
  * @author Dylan Raiff
  * @version 1.0
  */
-public abstract class UIElement extends GameObject
+public abstract class UIElement extends GameObject implements Draggable
 {
 	/**
 	 * Container that this {@code UIElement} belongs to.
@@ -33,6 +33,33 @@ public abstract class UIElement extends GameObject
 	}
 
 	/**
+	 * Called the frame this object starts to be dragged.
+	 */
+	@Override
+	public void onDragStarted()
+	{
+
+	}
+
+	/**
+	 * Called during the time this object is being dragged.
+	 */
+	@Override
+	public void onDrag()
+	{
+
+	}
+
+	/**
+	 * Called the frame this object stops being dragged.
+	 */
+	@Override
+	public void onDragEnded()
+	{
+
+	}
+
+	/**
 	 * Aborts the program. Used when input is incorrectly configured for any
 	 * {@code UIElement}.
 	 * 
@@ -51,4 +78,5 @@ public abstract class UIElement extends GameObject
 	 */
 	public Container getParent()
 	{ return uiParent; }
+
 }
