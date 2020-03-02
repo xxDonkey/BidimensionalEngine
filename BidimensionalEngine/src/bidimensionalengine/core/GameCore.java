@@ -3,6 +3,9 @@ package bidimensionalengine.core;
 import java.awt.Graphics2D;
 import java.awt.event.KeyEvent;
 import java.awt.event.MouseEvent;
+import java.io.File;
+
+import bidimensionalengine.graphics.CustomGraphics;
 
 /**
  * <p>
@@ -27,6 +30,16 @@ import java.awt.event.MouseEvent;
  */
 public abstract class GameCore
 {
+	/* Static Data */
+
+	public static String getAssetDirectory()
+	{
+		File file = new File(CustomGraphics.class.getProtectionDomain().getCodeSource().getLocation().getPath());
+		String packagePath = file.toString().substring(0, file.toString().length() - 4);
+		return packagePath + "/assets/";
+	}
+
+	/* Instance Data */
 
 	/**
 	 * Game's start method. See {@code Window} for more detail.
