@@ -27,45 +27,6 @@ import java.awt.event.MouseEvent;
  */
 public abstract class GameCore
 {
-	/**
-	 * Whether or not to use the {@code onKeyPressed} method.
-	 */
-	private boolean useOnKeyPressed;
-
-	/**
-	 * Whether or not to use the {@code onKeyTyped} method.
-	 */
-	private boolean useOnKeyTyped;
-
-	/**
-	 * Whether or not to use the {@code onKeyReleased} method.
-	 */
-	private boolean useOnKeyReleased;
-
-	/**
-	 * Whether or not to use the {@code onMouseClicked} method.
-	 */
-	private boolean useOnMouseClicked;
-
-	/**
-	 * Whether or not to use the {@code onMouseEntered} method.
-	 */
-	private boolean useOnMouseEntered;
-
-	/**
-	 * Whether or not to use the {@code onMouseExited} method.
-	 */
-	private boolean useOnMouseExited;
-
-	/**
-	 * Whether or not to use the {@code onMousePressed} method.
-	 */
-	private boolean useOnMousePressed;
-
-	/**
-	 * Whether or not to use the {@code onMouseReleased} method.
-	 */
-	private boolean useOnMouseReleased;
 
 	/**
 	 * Game's start method. See {@code Window} for more detail.
@@ -84,66 +45,58 @@ public abstract class GameCore
 	public abstract void graphics(Graphics2D g);
 
 	/**
-	 * Called when a key has been pressed if keyboard input has been turned on. <br>
-	 * Call the super if used.
+	 * Called when a key has been pressed if keyboard input has been turned on.
 	 */
 	public void onKeyPressed(KeyEvent e)
-	{ useOnKeyPressed = true; }
+	{}
 
 	/**
-	 * Called when a key has been typed if keyboard input has been turned on. <br>
-	 * Call the super if used.
+	 * Called when a key has been typed if keyboard input has been turned on.
 	 */
 	public void onKeyTyped(KeyEvent e)
-	{ useOnKeyTyped = true; }
+	{}
 
 	/**
 	 * Called when a key has been released if keyboard input has been turned on.
-	 * <br>
-	 * Call the super if used.
+	 * 
 	 */
 	public void onKeyReleased(KeyEvent e)
-	{ useOnKeyReleased = true; }
+	{}
 
 	/**
 	 * Called when the user clicks the listened to component if mouse input has been
-	 * turned on. <br>
-	 * Call the super if used.
+	 * turned on.
 	 */
 	public void onMouseClicked(MouseEvent e)
-	{ useOnMouseClicked = true; }
+	{}
 
 	/**
 	 * Called when the cursor enters the bounds of the listened to component if
-	 * mouse input has been turned on. <br>
-	 * Call the super if used.
+	 * mouse input has been turned on.
 	 */
 	public void onMouseEntered(MouseEvent e)
-	{ useOnMouseEntered = true; }
+	{}
 
 	/**
 	 * Called when the cursor exits the bounds of the listened to component if mouse
-	 * input has been turned on. <br>
-	 * Call the super if used.
+	 * input has been turned on.
 	 */
 	public void onMouseExited(MouseEvent e)
-	{ useOnMouseExited = true; }
+	{}
 
 	/**
 	 * Called when the user presses a mouse button while the cursor is over the
-	 * listened to component if mouse input has been turned on. <br>
-	 * Call the super if used.
+	 * listened to component if mouse input has been turned on.
 	 */
 	public void onMousePressed(MouseEvent e)
-	{ useOnMousePressed = true; }
+	{}
 
 	/**
 	 * Called when the user releases a mouse button after a mouse press over the
-	 * listened to component if mouse input has been turned on. <br>
-	 * Call the super if used.
+	 * listened to component if mouse input has been turned on.
 	 */
 	public void onMouseReleased(MouseEvent e)
-	{ useOnMouseReleased = true; }
+	{}
 
 	/**
 	 * <p>
@@ -156,12 +109,15 @@ public abstract class GameCore
 	 * 
 	 * @param title          title of the window
 	 * @param assetDirectory directory where assets are located
+	 * @param useInput       data for input
 	 * @param width          width of the window
 	 * @param height         height of the window
-	 * @param ticksPerSecond number of times the window updates in a second
+	 * @param update         whether or not to run the game loop and graphics method
+	 *                       multiple times
+	 * @param runVisualizer  whether or not to run the structure visualizer
 	 */
-	public void createWindow(String title, String assetDirectory, int width, int height, boolean update,
-			boolean runVisualizer)
+	public void createWindow(String title, String assetDirectory, UseInput useInput, int width, int height,
+			boolean update, boolean runVisualizer)
 	{
 		int ticksPerSecond = 0;
 
@@ -170,13 +126,15 @@ public abstract class GameCore
 			ticksPerSecond = 60;
 
 		Window.KeyboardInputMethodData keyboardInput = new Window.KeyboardInputMethodData(
-				useOnKeyPressed ? this::onKeyPressed : null, useOnKeyTyped ? this::onKeyTyped : null,
-				useOnKeyReleased ? this::onKeyReleased : null);
+				useInput.useOnKeyPressed ? this::onKeyPressed : null, useInput.useOnKeyTyped ? this::onKeyTyped : null,
+				useInput.useOnKeyReleased ? this::onKeyReleased : null);
 
 		Window.MouseInputMethodData mouseInput = new Window.MouseInputMethodData(
-				useOnMouseClicked ? this::onMouseClicked : null, useOnMouseEntered ? this::onMouseEntered : null,
-				useOnMouseExited ? this::onMouseExited : null, useOnMousePressed ? this::onMousePressed : null,
-				useOnMouseReleased ? this::onMouseReleased : null);
+				useInput.useOnMouseClicked ? this::onMouseClicked : null,
+				useInput.useOnMouseEntered ? this::onMouseEntered : null,
+				useInput.useOnMouseExited ? this::onMouseExited : null,
+				useInput.useOnMousePressed ? this::onMousePressed : null,
+				useInput.useOnMouseReleased ? this::onMouseReleased : null);
 
 		// Accounts for top bar of a Mac window.
 		if (System.getProperty("os.name").startsWith("Mac"))
@@ -213,6 +171,82 @@ public abstract class GameCore
 			else
 				new Window(title, width, height, ticksPerSecond, assetDirectory, runVisualizer, this::start,
 						this::update, this::graphics, keyboardInput, mouseInput, this);
+		}
+	}
+
+	/**
+	 * Structure for holding data to be used in construction of the window to
+	 * determine what input listeners to set up.
+	 * 
+	 * @author Dylan Raiff
+	 * @version 1.0
+	 */
+	public static class UseInput
+	{
+		/**
+		 * Whether or not to use the {@code onKeyPressed} method.
+		 */
+		private boolean useOnKeyPressed;
+
+		/**
+		 * Whether or not to use the {@code onKeyTyped} method.
+		 */
+		private boolean useOnKeyTyped;
+
+		/**
+		 * Whether or not to use the {@code onKeyReleased} method.
+		 */
+		private boolean useOnKeyReleased;
+
+		/**
+		 * Whether or not to use the {@code onMouseClicked} method.
+		 */
+		private boolean useOnMouseClicked;
+
+		/**
+		 * Whether or not to use the {@code onMouseEntered} method.
+		 */
+		private boolean useOnMouseEntered;
+
+		/**
+		 * Whether or not to use the {@code onMouseExited} method.
+		 */
+		private boolean useOnMouseExited;
+
+		/**
+		 * Whether or not to use the {@code onMousePressed} method.
+		 */
+		private boolean useOnMousePressed;
+
+		/**
+		 * Whether or not to use the {@code onMouseReleased} method.
+		 */
+		private boolean useOnMouseReleased;
+
+		/**
+		 * Creates a new object to hold boolean values of the {@code Window's} input.
+		 * 
+		 * @param kp  Whether or not to use the {@code onKeyTyped} method
+		 * @param kt  Whether or not to use the {@code onKeyReleased} method.
+		 * @param kr  Whether or not to use the {@code onMouseClicked} method.
+		 * @param mc  Whether or not to use the {@code onMouseClicked} method.
+		 * @param mEn Whether or not to use the {@code onMouseEntered} method.
+		 * @param mEx Whether or not to use the {@code onMouseExited} method.
+		 * @param mp  Whether or not to use the {@code onMousePressed} method.
+		 * @param mr  Whether or not to use the {@code onMouseReleased} method.
+		 */
+		public UseInput(boolean kp, boolean kt, boolean kr, boolean mc, boolean mEn, boolean mEx, boolean mp,
+				boolean mr)
+		{
+			useOnKeyPressed = kp;
+			useOnKeyTyped = kt;
+			useOnKeyReleased = kr;
+
+			useOnMouseClicked = mc;
+			useOnMouseEntered = mEn;
+			useOnMouseExited = mEx;
+			useOnMousePressed = mp;
+			useOnMouseReleased = mr;
 		}
 	}
 }
