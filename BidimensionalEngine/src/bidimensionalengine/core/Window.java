@@ -221,7 +221,7 @@ public final class Window extends JFrame
 	}
 
 	/**
-	 * Window constructer with <u>no mouse listener</u>. Creates a window and runs
+	 * Window constructer with <b>no mouse listener</b>. Creates a window and runs
 	 * sets up runtime calls.
 	 * 
 	 * @param name
@@ -284,7 +284,7 @@ public final class Window extends JFrame
 	}
 
 	/**
-	 * Window constructer with <u>no keyboard listener</u>. Creates a window and
+	 * Window constructer with <b>no keyboard listener</b>. Creates a window and
 	 * runs sets up runtime calls.
 	 * 
 	 * @param name                   name of the window
@@ -346,8 +346,8 @@ public final class Window extends JFrame
 	}
 
 	/**
-	 * Window constructer with <u>no update method, and therefore no input</u>.
-	 * Calls the start method and graphics method <b>one time each</b>.
+	 * Window constructer with <b>no update method, and therefore no input</b>. <br>
+	 * Calls the start method and graphics method <u>one time each</u>.
 	 * 
 	 * @param name           name of the window
 	 * @param width          width of the window
