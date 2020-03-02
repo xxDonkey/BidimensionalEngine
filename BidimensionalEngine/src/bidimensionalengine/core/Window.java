@@ -143,8 +143,7 @@ public final class Window extends JFrame
 
 		Window.instance = this;
 		if (runVisualizer)
-			if (runVisualizer)
-				Window.visualizer = new StructureVisualizer();
+			Window.visualizer = new StructureVisualizer();
 
 		Window.startMethod = startMethod;
 		Window.graphicsMethod = graphicsMethod;
@@ -205,8 +204,7 @@ public final class Window extends JFrame
 
 		Window.instance = this;
 		if (runVisualizer)
-			if (runVisualizer)
-				Window.visualizer = new StructureVisualizer();
+			Window.visualizer = new StructureVisualizer();
 
 		Window.startMethod = startMethod;
 		Window.graphicsMethod = graphicsMethod;
