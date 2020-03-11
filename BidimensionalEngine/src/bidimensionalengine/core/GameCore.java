@@ -32,6 +32,11 @@ public abstract class GameCore
 {
 	/* Static Data */
 
+	/**
+	 * Gets the asset directory.
+	 * 
+	 * @return asset directory
+	 */
 	public static String getAssetDirectory()
 	{
 		File file = new File(CustomGraphics.class.getProtectionDomain().getCodeSource().getLocation().getPath());
